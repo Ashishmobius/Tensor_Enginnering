@@ -17,6 +17,8 @@ from mobius.tensors import TensorSystem
 from mobius.geometry import FieldGeometry
 from mobius.closureloop import StabilityDiagnostician, ClosureLoop
 from mobius.verification import ChitraLedger
+from mobius.regions import extract_regions
+from mobius.interop import InteropBus
 
 logger = logging.getLogger(__name__)
 
@@ -77,6 +79,19 @@ class MobiusMasterPipeline:
         # 5. PDG Endogenous Controller
         self.pdg = PlatformDependencyGraph()
 
+        # 6. Interop & Region Discovery (Stages 1.5 & 7)
+        self.interop = InteropBus(self.chitra)
+        
+        # We store the latest regions for API discovery
+        self.last_extracted_regions = []
+        self.refresh_regions()
+
+    def refresh_regions(self):
+        """Invoke Stage 1.5: Region Extraction."""
+        gm = {"H": [b.__dict__ for b in self.carrier.H_blankets.values()], 
+              "E": [{"src": e.src, "dst": e.dst} for e in self.carrier.E_c]}
+        self.last_extracted_regions = extract_regions(gm)
+
     def execute_cycle(self, dt: float = DEFAULT_DT) -> Dict[str, Any]:
         """Runs the loop according to Equation of Existence + Field PDEs."""
         
@@ -119,11 +134,31 @@ class MobiusMasterPipeline:
         
         self.t += dt
         
+        return self.get_full_state(jg, active_morphisms, stability_vec)
+
+    def get_full_state(self, jg: float = 0.0, active_morphisms: List = None, stability_vec: Any = None) -> Dict[str, Any]:
+        """Provides a JSON-serializable snapshot of the system state."""
+        if stability_vec is None:
+             stability_vec = self.stability_diag.check_5d_stability(self.geometry, self.carrier, self.chitra)
+             
+        t_states = {tid.name: t.state.tolist() for tid, t in self.tensors.registry.items()}
+        
+        # Pull field averages for projection view
+        nodes = list(self.carrier.V.keys())
+        field_avgs = {
+            "PHI_T": np.mean([self.geometry.field_at_node(n, 0) for n in nodes]) if nodes else 0,
+            "PHI_S": np.mean([self.geometry.field_at_node(n, 1) for n in nodes]) if nodes else 0,
+            "PHI_B": np.mean([self.geometry.field_at_node(n, 2) for n in nodes]) if nodes else 0,
+            "PHI_M": np.mean([self.geometry.field_at_node(n, 3) for n in nodes]) if nodes else 0,
+        }
+
         return {
             "time": self.t,
             "closure_jg": jg,
-            "morphisms_active": len(active_morphisms),
-            "stability": stability_vec.__dict__,
+            "morphisms_active": len(active_morphisms) if active_morphisms else 0,
+            "tensors": t_states,
+            "fields": field_avgs,
+            "stability": stability_vec.__get_state__() if hasattr(stability_vec, '__get_state__') else str(stability_vec),
             "lawful_closure": self.closure.is_lawful()
         }
 
