@@ -1,0 +1,172 @@
+{
+  "blanket_id": "bka-31",
+  "archetype_id": "BkA-31",
+  "semantic_name": "Epochal Oversight & Trans-Cycle Memory Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "cycles_to_epochal_knowledge",
+    "from": ["BM.D*", "BL.D*", "BT.P*", "BEv.P*"],
+    "into": ["BM.D*", "BM.P*", "BT.P*", "BEv.P*"],
+    "plane_shift": "α -> Θ",
+    "trace_required": true,
+    "description": "Governs the ontological transition where complete existential cycles become objects of comparison, memory, and meta-learning."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "Θ",
+    "A": "Chronarch",
+    "C": "Epochal"
+  },
+
+  "mobius_plane": "Θ",
+  "usage_type": "Trans-Existential",
+  "owner_agent": "Chronarch",
+
+  "dominant_canonical": "BM.D3",
+
+  "permeability_model": "cycle-isolated",
+  "lifespan": "supra-cyclic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.D3",
+      "BM.D4",
+      "BM.P3",
+      "BT.P3"
+    ],
+    "sensory_set": [
+      "BT.P3",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "active_set": [
+      "BM.D*",
+      "BM.P*",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.*",
+      "BL.P*",
+      "BM.P1"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D3",
+    "BM.D4",
+    "BM.D7",
+    "BT.D1",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "epoch_record": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "cycle_boundary_enforced": true,
+    "cross_epoch_lineage_required": true,
+    "non_intervention_required": true
+  },
+
+  "normative_surface": {
+    "epochal_principles": [
+      "BM.D1",
+      "BM.D3",
+      "BM.D4",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BT.P1",
+      "BT.P3",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "description": "Only sealed cycle records, lineage trace, and genesis/closure events may puncture the epochal membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.D*",
+      "BM.P*",
+      "BT.P3",
+      "BEv.P1"
+    ],
+    "description": "Epochal oversight produces trans-cycle principles, invariant patterns, civilizational archetypes, and epochal records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "epoch_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "epochal_membrane",
+    "surprise_sensitive": false,
+    "cycle_isolation_enforced": true,
+    "invariant_extraction": true,
+    "puncture_conditions": [
+      "cycle_completed",
+      "genesis_event",
+      "existential_transition",
+      "epochal_review"
+    ],
+    "automatic_actions": [
+      "epoch_record_create",
+      "invariant_extraction",
+      "archetype_synthesis",
+      "epoch_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-25-Ontological-Stewardship-Blanket",
+      "BkA-27-Emergence-Transcendence-Blanket",
+      "BkA-30-Recursive-Genesis-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-30-Recursive-Genesis-Blanket",
+      "BkA-29-Legacy-Post-Existence-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where full existential cycles become epochal knowledge. It is the membrane of civilizational memory, trans-cycle learning, and supra-historical oversight.",
+    "design_notes": [
+      "This blanket never enters a live world.",
+      "It only observes completed arcs.",
+      "It extracts invariants, not events.",
+      "It governs epochs, not systems.",
+      "This is where Mobius becomes historical."
+    ],
+    "observability_role": [
+      "epoch_surface",
+      "cycle_surface",
+      "invariant_surface",
+      "civilization_surface"
+    ]
+  }
+}

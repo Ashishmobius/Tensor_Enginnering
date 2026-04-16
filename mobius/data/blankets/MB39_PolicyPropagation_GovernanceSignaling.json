@@ -1,0 +1,178 @@
+{
+  "blanket_id": "bka-39",
+  "archetype_id": "BkA-39",
+  "semantic_name": "Policy Propagation & Governance Signaling Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "binding_law_to_governance_events",
+    "from": ["BL.D*", "BL.P*", "BP.D*", "BT.P*"],
+    "into": ["BEv.P*", "BT.P*"],
+    "plane_shift": "L -> Ev",
+    "trace_required": true,
+    "description": "Governs the ontological transition where binding law, amendments, and directives become authoritative governance events distributed across Mobius."
+  },
+
+  "bpac_signature": {
+    "B": "BEv",
+    "P": "Ev",
+    "A": "Holacracy",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "Business-Events",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "Holacracy",
+
+  "dominant_canonical": "BEv.P1",
+
+  "permeability_model": "broadcast",
+  "lifespan": "continuous",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BEv.P1",
+      "BEv.P2",
+      "BEv.P3",
+      "BEv.P6"
+    ],
+    "sensory_set": [
+      "BL.D1",
+      "BL.D2",
+      "BL.P4",
+      "BP.D*",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BEv.P1",
+      "BEv.P2",
+      "BEv.P3",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.P*",
+      "BE.P*",
+      "BR.*",
+      "BM.*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BEv.D1",
+    "BEv.D2",
+    "BEv.D3",
+    "BEv.D4",
+    "BEv.D7",
+    "BL.D5",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "event_log": "BT.P1",
+    "provenance": "BT.P5",
+    "witness": "BT.P6",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "propagation_lineage_required": true,
+    "non_repudiation_required": true,
+    "witness_required": true
+  },
+
+  "normative_surface": {
+    "event_law": [
+      "BEv.D1",
+      "BEv.D2",
+      "BEv.D3",
+      "BEv.D7"
+    ],
+    "governance_law": [
+      "BL.D5"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BL.D*",
+      "BL.P4",
+      "BP.D*",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "description": "Only ratified law, executive mandates, governance processes, and constitutional trace may puncture the propagation membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BEv.P1",
+      "BEv.P2",
+      "BEv.P3",
+      "BEv.P6",
+      "BT.P3"
+    ],
+    "description": "Policy propagation produces governance announcements, synchronization signals, alert events, delivery records, diffusion measurements, and trace-bound witness records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "broadcast_events": ["BEv.P1"],
+    "alert_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "policy_propagation_membrane",
+    "surprise_sensitive": true,
+    "broadcast_enforced": true,
+    "synchronization_required": true,
+    "puncture_conditions": [
+      "law_ratified",
+      "constitutional_amendment",
+      "executive_directive",
+      "regime_update"
+    ],
+    "automatic_actions": [
+      "governance_event_emit",
+      "network_broadcast",
+      "delivery_record_bind",
+      "witness_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-02-Workflow-Orchestration-Blanket",
+      "BkA-14-Evaluation-Cycle-Blanket",
+      "BkA-21-Sovereignty-Authority-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-38-Directive-Strategic-Execution-Blanket",
+      "BkA-36-Constitutional-Law-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius law and directives become authoritative governance events distributed across the civilization.",
+    "design_notes": [
+      "This blanket does not decide; it announces.",
+      "This blanket does not enforce; it synchronizes.",
+      "All governance signals are trace-bound.",
+      "This is the nervous system of Mobius."
+    ],
+    "observability_role": [
+      "governance_event_surface",
+      "broadcast_surface",
+      "alert_surface",
+      "synchronization_surface"
+    ]
+  }
+}

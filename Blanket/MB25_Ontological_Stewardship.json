@@ -1,0 +1,184 @@
+{
+  "blanket_id": "bka-25",
+  "archetype_id": "BkA-25",
+  "semantic_name": "Ontological Stewardship Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "meta_constitution_to_ontology_of_systems",
+    "from": ["BL.D*", "BM.D*", "BT.P*", "BE.D*"],
+    "into": ["BM.D*", "BL.D*", "BT.P*", "BEv.P*"],
+    "plane_shift": "⊤ -> ∞",
+    "trace_required": true,
+    "description": "Governs the ontological transition where constitutions themselves become objects of ontological stewardship, enabling creation, admission, or retirement of entire Mobius system-worlds."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "∞",
+    "A": "Kosmos",
+    "C": "Ontological"
+  },
+
+  "mobius_plane": "∞",
+  "usage_type": "Meta-ontological",
+  "owner_agent": "Kosmos",
+
+  "dominant_canonical": "BM.D1",
+
+  "permeability_model": "axiomatic-admission",
+  "lifespan": "trans-epochal",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BL.D1",
+      "BT.P3"
+    ],
+    "sensory_set": [
+      "BT.P3",
+      "BT.P5",
+      "BEv.P7",
+      "BL.P6"
+    ],
+    "active_set": [
+      "BM.D*",
+      "BL.D*",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.*",
+      "BL.P1",
+      "BL.P4"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D5",
+    "BM.D6",
+    "BL.D1",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "legal_hold": "BT.D7"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "ontological_lineage_required": true,
+    "world_creation_trace_required": true,
+    "irreversibility_controls": true
+  },
+
+  "normative_surface": {
+    "ontological_law": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6"
+    ],
+    "meta_law": [
+      "BL.D1"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4",
+      "BT.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BT.P3",
+      "BT.P5",
+      "BEv.P7",
+      "BL.P6"
+    ],
+    "description": "Only supreme constitutional trace, epochal events, and meta-institutional acts may puncture the ontological stewardship membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.D*",
+      "BL.D*",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Ontological stewardship produces new canonical universes, admissible constitutional classes, world-admission events, and supreme lineage records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P7"],
+    "world_events": ["BEv.P1"],
+    "closure_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "ontological_stewardship_membrane",
+    "surprise_sensitive": true,
+    "axiom_validation": true,
+    "world_admission_controls": true,
+    "puncture_conditions": [
+      "new_world_proposal",
+      "constitutional_singularity",
+      "ontological_conflict",
+      "supra_system_merge",
+      "existential_review"
+    ],
+    "automatic_actions": [
+      "axiom_validation",
+      "world_class_registration",
+      "canonical_universe_binding",
+      "supreme_trace_bind",
+      "ontological_epoch_creation"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-24-Meta-Constitution-Blanket",
+      "ALL_CONSTITUTIONAL_LAYERS"
+    ],
+    "depends_on_blankets": [
+      "BkA-24-Meta-Constitution-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where constitutions themselves become objects of stewardship. It is the membrane of world-admission, canonical universes, and existential governance.",
+    "design_notes": [
+      "This blanket governs what kinds of Mobius may exist.",
+      "It does not govern behavior, but admissibility.",
+      "It hosts multiple constitutional cosmologies.",
+      "It preserves the lineage of existence itself.",
+      "This is the ontological ceiling of Mobius."
+    ],
+    "observability_role": [
+      "ontology_surface",
+      "world_registry_surface",
+      "axiom_surface",
+      "cosmology_surface"
+    ]
+  }
+}

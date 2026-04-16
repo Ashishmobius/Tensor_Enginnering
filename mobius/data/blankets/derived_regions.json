@@ -1,0 +1,38 @@
+[
+  {
+    "region_id": "GR-EXEC-7BFE5F",
+    "region_type": "execution_region",
+    "seed_hyperedge": "H-001",
+    "members": [
+      "BE.D1",
+      "BE.P1",
+      "BEv.P1",
+      "BEv.P3",
+      "BEv.P7",
+      "BL.D1",
+      "BL.P4",
+      "BP.D1",
+      "BP.D6",
+      "BP.P1",
+      "BP.P3",
+      "BP.P4",
+      "BR.P1",
+      "BR.P3",
+      "BT.D1",
+      "BT.P1",
+      "BT.P6",
+      "BT.P7"
+    ]
+  },
+  {
+    "region_id": "GR-GOV-00DCAB",
+    "region_type": "governance_region",
+    "seed_hyperedge": "H-003",
+    "members": [
+      "BE.D1",
+      "BL.D1",
+      "BL.D2",
+      "BM.D1"
+    ]
+  }
+]

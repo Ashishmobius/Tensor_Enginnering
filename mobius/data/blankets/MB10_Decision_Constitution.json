@@ -1,0 +1,201 @@
+{
+  "blanket_id": "bka-10",
+  "archetype_id": "BkA-10",
+  "semantic_name": "Decision Constitution Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "possibility_to_decision_state",
+    "from": ["BM.P*", "BR.P*", "BT.P*"],
+    "into": ["BP.P*", "BEv.P*", "BL.P*", "BT.P*"],
+    "plane_shift": "C/E -> O",
+    "trace_required": true,
+    "description": "Governs the ontological transition where cognitive and creative possibility is collapsed into formal institutional decision and intent."
+  },
+
+  "bpac_signature": {
+    "B": "BL",
+    "P": "O",
+    "A": "Consilium",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "O",
+  "usage_type": "Governance",
+  "owner_agent": "Consilium",
+
+  "dominant_canonical": "BL.P4",
+
+  "permeability_model": "constitutional",
+  "lifespan": "dynamic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BL.P1",
+      "BL.P4",
+      "BL.P5",
+      "BL.P7",
+      "BR.P2",
+      "BR.P5"
+    ],
+    "sensory_set": [
+      "BM.P1",
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BM.P6",
+      "BR.P1",
+      "BR.P2",
+      "BT.P1",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BP.P2",
+      "BEv.P1",
+      "BEv.P3",
+      "BL.P6",
+      "BR.P3",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BE.P5",
+      "BM.D*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D2",
+    "BL.D4",
+    "BL.D5",
+    "BL.D7",
+    "BM.D1",
+    "BM.D2",
+    "BM.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "decision_evidence_required": true,
+    "rationale_required": true,
+    "authorization_lineage_required": true
+  },
+
+  "normative_surface": {
+    "decision_law": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D4",
+      "BL.D5",
+      "BL.D7"
+    ],
+    "ethical_law": [
+      "BM.D2",
+      "BM.D5"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5",
+      "BT.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.P*",
+      "BR.P1",
+      "BR.P2",
+      "BR.P5",
+      "BT.P1",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "description": "Only grounded meaning, cognitive projections, confidence measures, and trace artifacts may puncture the decision membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BP.P2",
+      "BEv.P1",
+      "BEv.P3",
+      "BL.P6",
+      "BR.P3",
+      "BT.P3"
+    ],
+    "description": "Decision constitution produces approved intents, authorization events, escalation signals, compliance-relevant acts, and legally admissible decision trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "approval_events": ["BEv.P1"],
+    "escalation_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "institutional_decision_membrane",
+    "surprise_sensitive": true,
+    "authorization_controls": ["BL.P4"],
+    "consensus_controls": ["BL.P2"],
+    "accountability_binding": ["BM.D7"],
+    "puncture_conditions": [
+      "decision_request",
+      "approval_cycle",
+      "risk_threshold_crossed",
+      "strategic_commitment_needed"
+    ],
+    "automatic_actions": [
+      "rationale_evaluation",
+      "authorization_binding",
+      "decision_event_emit",
+      "escalation_trigger",
+      "decision_trace_seal"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-02-Workflow-Orchestration",
+      "BkA-03-Compliance-Control-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-08-Reasoning-Cognition-Blanket",
+      "BkA-09-Creative-Insight-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-36-Constitutional-Governance-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where cognitive and creative possibilities become formal institutional decisions. It is the membrane of commitment, authorization, and accountable intent.",
+    "design_notes": [
+      "Decisions are not actions.",
+      "Decisions bind the system but do not execute it.",
+      "Every decision must be trace-evidenced.",
+      "Every decision must have accountable lineage.",
+      "This is where Mobius acquires will."
+    ],
+    "observability_role": [
+      "decision_surface",
+      "authorization_surface",
+      "escalation_surface",
+      "governance_surface"
+    ]
+  }
+}

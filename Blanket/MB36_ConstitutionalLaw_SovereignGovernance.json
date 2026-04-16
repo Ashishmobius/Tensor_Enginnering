@@ -1,0 +1,190 @@
+{
+  "blanket_id": "bka-36",
+  "archetype_id": "BkA-36",
+  "semantic_name": "Constitutional Law & Sovereign Governance Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "institutional_meaning_to_binding_law",
+    "from": ["BM.D*", "BE.D*", "BT.P*"],
+    "into": ["BL.D*", "BL.P*", "BT.P*"],
+    "plane_shift": "M -> L",
+    "trace_required": true,
+    "description": "Governs the ontological transition where institutional meaning, authority, and history become binding constitutional law."
+  },
+
+  "bpac_signature": {
+    "B": "BL",
+    "P": "L",
+    "A": "Zubin",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "Business-Law",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "Zubin",
+
+  "dominant_canonical": "BL.D1",
+
+  "permeability_model": "sovereign",
+  "lifespan": "constitutional",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D3",
+      "BL.D4",
+      "BL.D5",
+      "BL.D6",
+      "BL.D7"
+    ],
+    "sensory_set": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D7",
+      "BE.D1",
+      "BE.D3",
+      "BT.P5",
+      "BT.P1"
+    ],
+    "active_set": [
+      "BL.D*",
+      "BL.P4",
+      "BL.P6",
+      "BL.P7",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BR.*",
+      "BE.P*",
+      "BM.P*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D2",
+    "BL.D3",
+    "BL.D4",
+    "BL.D5",
+    "BL.D6",
+    "BL.D7",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "law_record": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "amendment_lineage_required": true,
+    "tamper_evident_required": true,
+    "constitutional_audit_ready": true
+  },
+
+  "normative_surface": {
+    "constitutional_law": [
+      "BL.D1",
+      "BL.D7"
+    ],
+    "regulatory_law": [
+      "BL.D2",
+      "BL.D3"
+    ],
+    "governance_law": [
+      "BL.D4",
+      "BL.D5",
+      "BL.D6"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.D*",
+      "BE.D*",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "description": "Only institutional meaning, recognized authorities, and constitutional history may puncture the law membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BL.D*",
+      "BL.P4",
+      "BL.P6",
+      "BL.P7",
+      "BT.P3",
+      "BEv.P1"
+    ],
+    "description": "Constitutional governance produces binding laws, enforcement mandates, remediation regimes, assurance artifacts, and trace-bound legal acts."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "ratification_events": ["BEv.P1"],
+    "violation_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "constitutional_law_membrane",
+    "surprise_sensitive": false,
+    "sovereignty_enforced": true,
+    "amendment_validation": true,
+    "puncture_conditions": [
+      "constitutional_ratification",
+      "law_amendment",
+      "regime_change",
+      "authority_rebinding"
+    ],
+    "automatic_actions": [
+      "law_registry_update",
+      "amendment_trace_bind",
+      "jurisdiction_update",
+      "sovereign_event_emit"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-21-Sovereignty-Authority-Blanket",
+      "BkA-23-Adjudication-Arbitration-Blanket",
+      "BkA-19-Economic-Settlement-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-25-Ontological-Stewardship-Blanket",
+      "BkA-07-Trace-Constitution-Blanket",
+      "BkA-34-Meaning-Brand-Coherence-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the sovereign membrane where Mobius institutional meaning becomes binding constitutional law.",
+    "design_notes": [
+      "This blanket defines what law is.",
+      "All other legal blankets derive authority here.",
+      "Law is inert here; execution happens elsewhere.",
+      "All amendments are trace-bound."
+    ],
+    "observability_role": [
+      "constitutional_surface",
+      "law_surface",
+      "sovereignty_surface",
+      "amendment_surface"
+    ]
+  }
+}

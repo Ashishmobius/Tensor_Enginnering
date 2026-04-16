@@ -1,0 +1,184 @@
+{
+  "blanket_id": "bka-45",
+  "archetype_id": "BkA-45",
+  "semantic_name": "Truth Modulation & Epistemic Reconciliation Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "plural_claims_to_stabilized_truth",
+    "from": ["BEv.P*", "BT.P*", "BM.P*", "BR.P*", "BP.P*"],
+    "into": ["BM.P*", "BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "Evidence -> Truth",
+    "trace_required": true,
+    "description": "Governs the ontological transition where conflicting observations, evidence, and interpretations are reconciled into stabilized truth states."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "Truth",
+    "A": "SATYA",
+    "C": "Meta-Modulatory"
+  },
+
+  "mobius_plane": "Cross-Canonical",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "SATYA",
+
+  "dominant_canonical": "BM.P4",
+
+  "permeability_model": "epistemic-adaptive",
+  "lifespan": "continuous",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.P4",
+      "BR.P2",
+      "BR.P4",
+      "BT.P4"
+    ],
+    "sensory_set": [
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P1",
+      "BT.P3",
+      "BT.P6",
+      "BM.P3",
+      "BM.P7",
+      "BR.P3"
+    ],
+    "active_set": [
+      "BM.P4",
+      "BR.P2",
+      "BR.P4",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BL.D*",
+      "BP.D*",
+      "BE.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D2",
+    "BM.D5",
+    "BR.D3",
+    "BR.D5",
+    "BT.D2",
+    "BT.D3"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "forensics": "BT.P7",
+    "replay": "BT.P4",
+    "provenance": "BT.P5",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "forensic_lineage_required": true,
+    "replayable_required": true,
+    "non_fabrication_required": true
+  },
+
+  "normative_surface": {
+    "epistemic_law": [
+      "BM.D2",
+      "BM.D5"
+    ],
+    "measurement_law": [
+      "BR.D3",
+      "BR.D5"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BEv.P*",
+      "BT.P1",
+      "BT.P3",
+      "BT.P6",
+      "BM.P3",
+      "BM.P7",
+      "BR.P3"
+    ],
+    "description": "Only trace-bound events, forensic evidence, interpretations, cultural signals, and incident indicators may puncture the truth membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.P4",
+      "BR.P2",
+      "BR.P4",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P3",
+      "BT.P4"
+    ],
+    "description": "Truth modulation produces reconciled interpretations, confidence calibrations, epistemic postmortems, resolution or paradox events, and replayable truth states."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1", "BEv.P7"],
+    "resolution_events": ["BEv.P1"],
+    "paradox_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "epistemic_reconciliation_membrane",
+    "surprise_sensitive": true,
+    "conflict_detection": true,
+    "evidence_weighting": true,
+    "puncture_conditions": [
+      "contradictory_trace",
+      "audit_dispute",
+      "semantic_conflict",
+      "reality_anomaly"
+    ],
+    "automatic_actions": [
+      "evidence_alignment",
+      "truth_state_compute",
+      "confidence_recalibration",
+      "forensic_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-23-Adjudication-Arbitration-Blanket",
+      "BkA-41-Operational-Meaning-Blanket",
+      "BkA-44-Cultural-Norms-Blanket",
+      "BkA-43-Evolutionary-Law-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-35-Financial-Trace-Blanket",
+      "BkA-40-Governance-Results-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius resolves competing truth claims into stabilized civilizational reality.",
+    "design_notes": [
+      "This blanket governs truth, not policy.",
+      "It stabilizes belief from evidence.",
+      "It detects paradox, drift, and epistemic collapse.",
+      "This is Mobius’ reality reconciliation layer."
+    ],
+    "observability_role": [
+      "truth_surface",
+      "forensics_surface",
+      "consensus_surface",
+      "paradox_surface"
+    ]
+  }
+}

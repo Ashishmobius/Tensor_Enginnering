@@ -1,0 +1,201 @@
+{
+  "blanket_id": "bka-03",
+  "archetype_id": "BkA-03",
+  "semantic_name": "Compliance Control Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "fact_to_legitimacy",
+    "from": ["BE.P*", "BP.P*", "BEv.P*", "BR.P*", "BT.P*"],
+    "into": ["BL.P*", "BR.P*", "BT.P*"],
+    "plane_shift": "G/L -> O",
+    "trace_required": true,
+    "description": "Governs the ontological transition where observed operational facts are evaluated, sanctioned, certified, or remediated as institutional realities."
+  },
+
+  "bpac_signature": {
+    "B": "BL",
+    "P": "O",
+    "A": "RunDheer",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "O",
+  "usage_type": "Governance",
+  "owner_agent": "RunDheer",
+
+  "dominant_canonical": "BL.P1",
+
+  "permeability_model": "selective",
+  "lifespan": "static",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BL.P1",
+      "BL.P4",
+      "BL.P5",
+      "BL.P6",
+      "BL.P7"
+    ],
+    "sensory_set": [
+      "BE.P7",
+      "BE.P6",
+      "BP.P1",
+      "BEv.P1",
+      "BEv.P3",
+      "BT.P1",
+      "BT.P3"
+    ],
+    "active_set": [
+      "BEv.P1",
+      "BL.P6",
+      "BR.P1",
+      "BR.P3",
+      "BT.P5",
+      "BT.P7"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BP.P4",
+      "BM.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D2",
+    "BL.D3",
+    "BL.D6",
+    "BL.D7",
+    "BL.P1",
+    "BL.P4",
+    "BL.P5",
+    "BL.P6"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P7",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "privacy": "BT.D5"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "emits": ["BT.P1", "BT.P5", "BT.P7"],
+    "legal_hold": "BT.D7",
+    "evidence_standard": "BT.D2"
+  },
+
+  "normative_surface": {
+    "law": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D3",
+      "BL.D6",
+      "BL.D7"
+    ],
+    "process_compliance": [
+      "BP.D2",
+      "BP.D7"
+    ],
+    "trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5",
+      "BT.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BE.P7",
+      "BE.P6",
+      "BP.P1",
+      "BEv.P1",
+      "BEv.P3",
+      "BT.P1",
+      "BT.P3"
+    ],
+    "description": "Only observed operational facts, credentials, audit artifacts, and trace fragments may puncture the compliance transition membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BL.P6",
+      "BEv.P1",
+      "BR.P1",
+      "BR.P3",
+      "BT.P5",
+      "BT.P7"
+    ],
+    "emits_trace": ["BT.P1", "BT.P5", "BT.P7"],
+    "authorization_events": ["BEv.P1"],
+    "description": "Compliance collapses facts into authorization decisions, sanctions, remediation plans, institutional metrics, and evidentiary trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "violation_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"],
+    "escalation_rules": ["BEv.D7"],
+    "exit_events": ["BEv.P1"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "institutional_legitimacy_membrane",
+    "surprise_sensitive": true,
+    "enforcement_mechanisms": ["BL.P4"],
+    "control_impl": ["BL.P1"],
+    "audit_channels": ["BL.P5"],
+    "puncture_conditions": [
+      "detected_violation",
+      "audit_checkpoint",
+      "certification_request",
+      "onboarding_gate"
+    ],
+    "automatic_actions": [
+      "compliance_evaluation",
+      "authorization_decision",
+      "sanction_trigger",
+      "remediation_plan_issue",
+      "evidence_capture"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-01-Execution-Boundary",
+      "BkA-02-Workflow-Orchestration"
+    ],
+    "depends_on_blankets": [
+      "BkA-36-Constitutional-Law-Blanket",
+      "BkA-09-Identity-Governance-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-40-Governance-Result-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where operational facts become institutional realities. It is the lawful membrane for compliance, certification, sanction, and remediation.",
+    "design_notes": [
+      "No execution occurs here.",
+      "No workflows are orchestrated here.",
+      "All compliance decisions must be evidentiary.",
+      "Violations collapse into institutional trace.",
+      "Authorization is a product of compliance, not execution."
+    ],
+    "observability_role": [
+      "compliance_status_surface",
+      "violation_surface",
+      "audit_surface",
+      "remediation_surface"
+    ]
+  }
+}

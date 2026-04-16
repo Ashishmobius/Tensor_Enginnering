@@ -1,0 +1,181 @@
+{
+  "blanket_id": "bka-34",
+  "archetype_id": "BkA-34",
+  "semantic_name": "Meaning, Brand & Identity Coherence Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "institutional_meaning_to_expressed_meaning",
+    "from": ["BM.D*", "BM.P*", "BE.P*", "BT.P*"],
+    "into": ["BM.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "M -> S",
+    "trace_required": true,
+    "description": "Governs the ontological transition where mission, values, and identity are transformed into coherent outward meaning, brand expression, and lived perception."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "S",
+    "A": "Monet",
+    "C": "Semantic"
+  },
+
+  "mobius_plane": "Business-Meaning",
+  "usage_type": "Marketplace-core",
+  "owner_agent": "Monet",
+
+  "dominant_canonical": "BM.P4",
+
+  "permeability_model": "semantic",
+  "lifespan": "continuous",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.P4",
+      "BM.P5",
+      "BM.P6",
+      "BM.P7"
+    ],
+    "sensory_set": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D4",
+      "BM.P2",
+      "BM.P5",
+      "BE.P1",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BM.P4",
+      "BM.P5",
+      "BM.P6",
+      "BM.P7",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BL.P*",
+      "BR.P7"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D6",
+    "BM.D7",
+    "BL.D5",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "observability": "BT.P6",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "semantic_lineage_required": true,
+    "provenance_binding_required": true,
+    "non_fabrication_required": true
+  },
+
+  "normative_surface": {
+    "meaning_law": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D4",
+      "BM.D6"
+    ],
+    "identity_law": [
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.D*",
+      "BM.P2",
+      "BM.P5",
+      "BE.P1",
+      "BT.P5"
+    ],
+    "description": "Only constitutional meaning, stakeholder insight, identity-bound entities, and semantic provenance may puncture the meaning membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.P4",
+      "BM.P5",
+      "BM.P6",
+      "BM.P7",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Meaning coherence produces brand rationale artifacts, perception signals, adoption signals, cultural trust indicators, and trace-bound semantic records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "approval_events": ["BEv.P1"],
+    "misalignment_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "meaning_coherence_membrane",
+    "surprise_sensitive": true,
+    "semantic_validation": true,
+    "identity_binding": true,
+    "puncture_conditions": [
+      "new_interface_release",
+      "brand_change",
+      "narrative_update",
+      "user_experience_shift",
+      "marketplace_entry"
+    ],
+    "automatic_actions": [
+      "semantic_alignment_check",
+      "brand_coherence_evaluation",
+      "trust_signal_update",
+      "meaning_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-19-Economic-Settlement-Blanket",
+      "BkA-20-Reputation-Trust-Blanket",
+      "BkA-14-Evaluation-Cycle-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-16-Semantic-Alignment-Blanket",
+      "BkA-07-Trace-Constitution-Blanket",
+      "BkA-21-Sovereignty-Authority-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius mission and values become lived meaning, brand expression, and identity coherence.",
+    "design_notes": [
+      "This blanket does not create mission; it expresses it.",
+      "Brand is a semantic artifact, not a graphic layer.",
+      "All meaning must be trace-rooted.",
+      "This blanket protects semantic integrity."
+    ],
+    "observability_role": [
+      "brand_surface",
+      "meaning_surface",
+      "identity_surface",
+      "cultural_surface"
+    ]
+  }
+}

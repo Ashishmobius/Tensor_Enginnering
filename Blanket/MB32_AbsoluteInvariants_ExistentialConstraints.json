@@ -1,0 +1,167 @@
+{
+  "blanket_id": "bka-32",
+  "archetype_id": "BkA-32",
+  "semantic_name": "Absolute Invariants & Existential Constraints Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "epochs_to_invariants",
+    "from": ["BM.D*", "BM.P*", "BT.P*", "BEv.P*"],
+    "into": ["BM.D*", "BL.D*", "BT.P*"],
+    "plane_shift": "Θ -> ∀",
+    "trace_required": true,
+    "description": "Governs the ontological transition where trans-cycle knowledge is distilled into absolute invariants and existential constraints."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "∀",
+    "A": "Aletheia",
+    "C": "Invariant"
+  },
+
+  "mobius_plane": "∀",
+  "usage_type": "Trans-Existential",
+  "owner_agent": "Aletheia",
+
+  "dominant_canonical": "BM.D1",
+
+  "permeability_model": "axiomatic-sealed",
+  "lifespan": "eternal",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D7",
+      "BT.P3"
+    ],
+    "sensory_set": [
+      "BT.P3",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "active_set": [
+      "BM.D*",
+      "BL.D*",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.*",
+      "BR.*",
+      "BL.P*",
+      "BM.P*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D7",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "invariant_record": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "invariant_lock": true,
+    "non_amendable": true,
+    "cross_epoch_binding": true
+  },
+
+  "normative_surface": {
+    "existential_axioms": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BT.P3",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "description": "Only completed epochal records and trans-cycle lineage may puncture the invariant membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.D*",
+      "BL.D*",
+      "BT.P3"
+    ],
+    "description": "Invariant extraction produces existential constants, absolute prohibitions, and axiomatic boundaries."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "invariant_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "absolute_invariant_membrane",
+    "surprise_sensitive": false,
+    "axiom_lock": true,
+    "non_overrideable": true,
+    "puncture_conditions": [
+      "epochal_consolidation",
+      "trans_cycle_synthesis",
+      "existential_limit_detection"
+    ],
+    "automatic_actions": [
+      "invariant_extraction",
+      "axiom_binding",
+      "absolute_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "ALL_BLANKETS"
+    ],
+    "depends_on_blankets": [
+      "BkA-31-Epochal-Oversight-Blanket",
+      "BkA-29-Legacy-Post-Existence-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where all historical becoming is distilled into absolute constraints. It is the membrane of invariants, axioms, and existential limits.",
+    "design_notes": [
+      "Nothing below can override this layer.",
+      "These are not laws, but limits.",
+      "They bind all genesis.",
+      "They anchor all constitutions.",
+      "This is the bedrock of Mobius."
+    ],
+    "observability_role": [
+      "axiom_surface",
+      "invariant_surface",
+      "limit_surface",
+      "existential_surface"
+    ]
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "blanket_id": "bka-01",
+  "archetype_id": "BkA-01",
+  "semantic_name": "Execution Boundary Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "process_to_execution",
+    "from": ["BP.D*", "BP.P*"],
+    "into": ["BEv.P*", "BR.P*", "BT.P*"],
+    "plane_shift": "L->G",
+    "trace_required": true,
+    "description": "Governs the ontological transition where abstract process becomes physical execution and collapses into observable fact."
+  },
+
+  "bpac_signature": {
+    "B": "BP",
+    "P": "G",
+    "A": "PI",
+    "C": "Executional"
+  },
+
+  "mobius_plane": "G",
+  "usage_type": "Executional",
+  "owner_agent": "PI",
+
+  "dominant_canonical": "BP.P3",
+
+  "permeability_model": "strict",
+  "lifespan": "static",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BP.P3",
+      "BP.P1",
+      "BEv.P1"
+    ],
+    "sensory_set": [
+      "BEv.P1",
+      "BE.P2",
+      "BE.P4",
+      "BE.P5",
+      "BP.P1"
+    ],
+    "active_set": [
+      "BEv.P1",
+      "BR.P1",
+      "BR.P3",
+      "BT.P1",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "forbidden_set": [
+      "BL.*",
+      "BM.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D3",
+    "BL.D5",
+    "BL.P1",
+    "BL.P4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P1",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "emits": ["BT.P1", "BT.P6", "BT.P7"],
+    "replay_support": "BT.P4",
+    "violation_trace": "BT.P7"
+  },
+
+  "normative_surface": {
+    "process_law": [
+      "BP.D1",
+      "BP.D2",
+      "BP.D6",
+      "BP.D7"
+    ],
+    "event_law": [
+      "BEv.D2",
+      "BEv.D4",
+      "BEv.D5"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D6"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BEv.P1",
+      "BE.P2",
+      "BE.P4",
+      "BE.P5",
+      "BP.P1",
+      "BP.P3"
+    ],
+    "required_conditions": [
+      "BEv.D2",
+      "BP.D6",
+      "BL.P4"
+    ],
+    "description": "Only validated runtime triggers, configuration state, and operational invocations may puncture the execution transition membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BEv.P1",
+      "BR.P1",
+      "BR.P3",
+      "BT.P1",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "description": "Execution collapses into observable events, metrics, incidents, and immutable trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"],
+    "violation_events": ["BEv.P7"],
+    "exit_events": ["BEv.P1"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "ontological_execution_membrane",
+    "surprise_sensitive": true,
+    "safety_interlocks": ["BP.D6"],
+    "runtime_gates": ["BL.P4", "BP.P4"],
+    "puncture_conditions": [
+      "validated_trigger",
+      "gate_open",
+      "interlock_clear"
+    ],
+    "automatic_actions": [
+      "trace_emit",
+      "metric_sample",
+      "latency_measurement",
+      "incident_escalation"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-02-Workflow-Orchestration-Blanket",
+      "BkA-14-Outcome-Evaluation-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-03-Compliance-Control-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where abstract process becomes physical execution. It is the exclusive site of event puncture, surprise registration, and trace genesis.",
+    "design_notes": [
+      "This blanket exists because BP → execution is an ontological transition.",
+      "No meaning, law, or artifact objects may cross.",
+      "All execution must collapse into BT.",
+      "This is the first irreversible membrane."
+    ],
+    "observability_role": [
+      "trace_birthplace",
+      "metric_birthplace",
+      "incident_birthplace"
+    ]
+  }
+}

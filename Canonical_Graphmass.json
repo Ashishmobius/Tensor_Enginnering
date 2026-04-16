@@ -1,0 +1,527 @@
+{
+  "graph_mass": {
+    "graph_id": "MOBIUS_CANONICAL_AGGREGATED",
+    "V": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D3",
+      "BL.D4",
+      "BL.D5",
+      "BL.D6",
+      "BL.D7",
+      "BL.P1",
+      "BL.P2",
+      "BL.P3",
+      "BL.P4",
+      "BL.P5",
+      "BL.P6",
+      "BL.P7",
+      "BE.D1",
+      "BE.D2",
+      "BE.D3",
+      "BE.D4",
+      "BE.D5",
+      "BE.D6",
+      "BE.D7",
+      "BE.P1",
+      "BE.P2",
+      "BE.P3",
+      "BE.P4",
+      "BE.P5",
+      "BE.P6",
+      "BE.P7",
+      "BP.D1",
+      "BP.D2",
+      "BP.D3",
+      "BP.D4",
+      "BP.D5",
+      "BP.D6",
+      "BP.D7",
+      "BP.P1",
+      "BP.P2",
+      "BP.P3",
+      "BP.P4",
+      "BP.P5",
+      "BP.P6",
+      "BP.P7",
+      "BEv.D1",
+      "BEv.D2",
+      "BEv.D3",
+      "BEv.D4",
+      "BEv.D5",
+      "BEv.D6",
+      "BEv.D7",
+      "BEv.P1",
+      "BEv.P2",
+      "BEv.P3",
+      "BEv.P4",
+      "BEv.P5",
+      "BEv.P6",
+      "BEv.P7",
+      "BR.D1",
+      "BR.D2",
+      "BR.D3",
+      "BR.D4",
+      "BR.D5",
+      "BR.D6",
+      "BR.D7",
+      "BR.P1",
+      "BR.P2",
+      "BR.P3",
+      "BR.P4",
+      "BR.P5",
+      "BR.P6",
+      "BR.P7",
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6",
+      "BM.D7",
+      "BM.P1",
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BM.P5",
+      "BM.P6",
+      "BM.P7",
+      "BT.D1",
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5",
+      "BT.D6",
+      "BT.D7",
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P4",
+      "BT.P5",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "E_c": [
+      {
+        "src": "BL.P1",
+        "dst": "BM.D1",
+        "relation": "bmids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BM.D1",
+        "relation": "bmids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BL.P1",
+        "relation": "blids"
+      },
+      {
+        "src": "BE.D5",
+        "dst": "BP.D1",
+        "relation": "bpids"
+      },
+      {
+        "src": "BR.P1",
+        "dst": "BM.D1",
+        "relation": "bmids"
+      },
+      {
+        "src": "BR.P1",
+        "dst": "BE.D5",
+        "relation": "beids"
+      },
+      {
+        "src": "BT.D1",
+        "dst": "BR.P1",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.P1",
+        "dst": "BP.D1",
+        "relation": "bpids"
+      },
+      {
+        "src": "BR.P1",
+        "dst": "BE.P1",
+        "relation": "beids"
+      },
+      {
+        "src": "BM.P1",
+        "dst": "BP.D1",
+        "relation": "bpids"
+      },
+      {
+        "src": "BM.D3",
+        "dst": "BP.D1",
+        "relation": "bpids"
+      },
+      {
+        "src": "BM.P1",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D3",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.D5",
+        "relation": "beids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.P5",
+        "relation": "beids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.D2",
+        "relation": "beids"
+      },
+      {
+        "src": "BE.D5",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.P5",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.D2",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D4",
+        "dst": "BP.D1",
+        "relation": "bpids"
+      },
+      {
+        "src": "BM.D4",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.D5",
+        "relation": "channelids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.D2",
+        "relation": "channelids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.D1",
+        "relation": "beids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.D1",
+        "relation": "channelids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.P5",
+        "relation": "channelids"
+      },
+      {
+        "src": "BE.D1",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.P1",
+        "dst": "BR.D2",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D4",
+        "dst": "BR.D2",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D3",
+        "dst": "BR.D2",
+        "relation": "brids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.P2",
+        "relation": "beids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.P2",
+        "relation": "channelids"
+      },
+      {
+        "src": "BE.D1",
+        "dst": "BR.D2",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.D5",
+        "dst": "BR.D2",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.D2",
+        "dst": "BR.D2",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.P2",
+        "dst": "BR.D2",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.P2",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D5",
+        "dst": "BP.D1",
+        "relation": "bpids"
+      },
+      {
+        "src": "BM.D4",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D5",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D5",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D3",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.D5",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.D2",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.P5",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D2",
+        "dst": "BP.D1",
+        "relation": "bpids"
+      },
+      {
+        "src": "BM.D2",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D2",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.D1",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.P4",
+        "dst": "BP.D1",
+        "relation": "bpids"
+      },
+      {
+        "src": "BM.P4",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.D3",
+        "relation": "beids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.D3",
+        "relation": "channelids"
+      },
+      {
+        "src": "BE.D3",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.D3",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.P1",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.P5",
+        "dst": "BR.D2",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D1",
+        "dst": "BP.D1",
+        "relation": "bpids"
+      },
+      {
+        "src": "BM.D1",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BM.D1",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BE.D6",
+        "relation": "beids"
+      },
+      {
+        "src": "BE.D6",
+        "dst": "BR.D1",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.D6",
+        "dst": "BR.D7",
+        "relation": "brids"
+      },
+      {
+        "src": "BE.P2",
+        "dst": "BR.D7",
+        "relation": "brids"
+      }
+    ],
+    "H": [
+      {
+        "hyperedge_id": "SARAS",
+        "type": "Organ",
+        "members": [
+          "BE.D5",
+          "BEv.D1",
+          "BL.P1",
+          "BM.D1",
+          "BP.D1",
+          "BR.P1",
+          "BT.D1"
+        ]
+      },
+      {
+        "hyperedge_id": "LIBRA",
+        "type": "Organ",
+        "members": [
+          "BE.P1",
+          "BEv.D1",
+          "BL.P1",
+          "BM.D1",
+          "BP.D1",
+          "BR.P1",
+          "BT.D1"
+        ]
+      },
+      {
+        "hyperedge_id": "HERMES",
+        "type": "Organ",
+        "members": [
+          "BE.D1",
+          "BE.D2",
+          "BE.D3",
+          "BE.D5",
+          "BE.P2",
+          "BE.P5",
+          "BEv.D1",
+          "BEv.D2",
+          "BEv.P1",
+          "BM.D2",
+          "BM.D3",
+          "BM.D4",
+          "BM.D5",
+          "BM.P1",
+          "BM.P4",
+          "BP.D1",
+          "BR.D1",
+          "BR.D2",
+          "BR.D7"
+        ]
+      },
+      {
+        "hyperedge_id": "YOGI",
+        "type": "Organ",
+        "members": [
+          "BE.P1",
+          "BEv.D1",
+          "BL.P1",
+          "BM.D1",
+          "BP.D1",
+          "BR.P1",
+          "BT.D1"
+        ]
+      },
+      {
+        "hyperedge_id": "PROMETHEUS",
+        "type": "Organ",
+        "members": [
+          "BE.D2",
+          "BE.D5",
+          "BE.D6",
+          "BE.P2",
+          "BE.P5",
+          "BEv.D1",
+          "BEv.D2",
+          "BEv.P1",
+          "BM.D1",
+          "BM.D3",
+          "BM.D4",
+          "BM.P1",
+          "BP.D1",
+          "BR.D1",
+          "BR.D7"
+        ]
+      },
+      {
+        "hyperedge_id": "CHITRA",
+        "type": "Organ",
+        "members": [
+          "BE.P1",
+          "BEv.D1",
+          "BL.P1",
+          "BM.D1",
+          "BP.D1",
+          "BR.P1",
+          "BT.D1"
+        ]
+      }
+    ]
+  }
+}

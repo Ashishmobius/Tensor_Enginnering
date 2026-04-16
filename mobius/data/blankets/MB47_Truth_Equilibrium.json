@@ -1,0 +1,176 @@
+{
+  "blanket_id": "bka-47",
+  "archetype_id": "BkA-47",
+  "semantic_name": "Truth Equilibrium & Epistemic Homeostasis Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "epistemic_activity_to_civilizational_equilibrium",
+    "from": ["BR.P*", "BM.P*", "BEv.P*", "BP.P*", "BT.P*"],
+    "into": ["BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "Truth/Belief -> Stability",
+    "trace_required": true,
+    "description": "Governs the ontological transition where distributed truth processes and belief dynamics become measurable civilizational stability."
+  },
+
+  "bpac_signature": {
+    "B": "BR",
+    "P": "Stability",
+    "A": "SATYA",
+    "C": "Meta-Modulatory"
+  },
+
+  "mobius_plane": "Business-Results",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "SATYA",
+
+  "dominant_canonical": "BR.P1",
+
+  "permeability_model": "homeostatic-adaptive",
+  "lifespan": "continuous",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P5"
+    ],
+    "sensory_set": [
+      "BR.P3",
+      "BR.P4",
+      "BM.P7",
+      "BEv.P7",
+      "BP.P7",
+      "BT.P6"
+    ],
+    "active_set": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P5",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BL.*",
+      "BM.D*",
+      "BP.D*",
+      "BE.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BR.D1",
+    "BR.D4",
+    "BR.D5",
+    "BL.D5",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P2",
+    "decision_record": "BT.P3",
+    "observability": "BT.P6",
+    "forensics": "BT.P7",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "equilibrium_lineage_required": true,
+    "tamper_evident_required": true,
+    "resilience_audit_ready": true
+  },
+
+  "normative_surface": {
+    "measurement_law": [
+      "BR.D1",
+      "BR.D4",
+      "BR.D5"
+    ],
+    "governance_law": [
+      "BL.D5"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BR.P3",
+      "BR.P4",
+      "BM.P7",
+      "BEv.P7",
+      "BP.P7",
+      "BT.P6"
+    ],
+    "description": "Only epistemic incidents, cultural signals, failure patterns, and observability streams may puncture the equilibrium membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P5",
+      "BEv.P1",
+      "BT.P2",
+      "BT.P3"
+    ],
+    "description": "Epistemic homeostasis produces global stability metrics, resilience confidence, tuning levers, renewal events, and equilibrium snapshots."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P7"],
+    "renewal_events": ["BEv.P1"],
+    "collapse_warning_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "epistemic_homeostasis_membrane",
+    "surprise_sensitive": true,
+    "stability_monitoring": true,
+    "collapse_detection": true,
+    "puncture_conditions": [
+      "epistemic_crisis",
+      "runaway_conflict",
+      "cultural_instability",
+      "systemic_truth_drift"
+    ],
+    "automatic_actions": [
+      "stability_index_compute",
+      "renewal_trigger",
+      "optimization_surface_update",
+      "equilibrium_snapshot_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-43-Evolutionary-Law-Blanket",
+      "BkA-37-Executive-Oversight-Blanket",
+      "BkA-45-Truth-Modulation-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-45-Truth-Modulation-Blanket",
+      "BkA-46-Inference-Propagation-Blanket",
+      "BkA-40-Governance-Results-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius measures and maintains the long-term stability of its truth and belief systems.",
+    "design_notes": [
+      "This blanket does not decide truth; it sustains the truth system.",
+      "It governs resilience, not correctness.",
+      "It detects epistemic collapse before it becomes civilizational collapse.",
+      "This is Mobius’ epistemic homeostat."
+    ],
+    "observability_role": [
+      "stability_surface",
+      "resilience_surface",
+      "collapse_risk_surface",
+      "equilibrium_surface"
+    ]
+  }
+}

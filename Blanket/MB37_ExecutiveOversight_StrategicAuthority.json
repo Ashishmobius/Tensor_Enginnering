@@ -1,0 +1,187 @@
+{
+  "blanket_id": "bka-37",
+  "archetype_id": "BkA-37",
+  "semantic_name": "Executive Oversight & Strategic Authority Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "law_and_meaning_to_executive_authority",
+    "from": ["BL.D*", "BM.D*", "BR.P*", "BT.P*"],
+    "into": ["BE.D*", "BM.P*", "BL.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "L/M/$ -> E*",
+    "trace_required": true,
+    "description": "Governs the ontological transition where constitutional law, institutional meaning, and system results become executive authority and strategic acts."
+  },
+
+  "bpac_signature": {
+    "B": "BE",
+    "P": "E*",
+    "A": "OM",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "Business-Entities",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "OM",
+
+  "dominant_canonical": "BE.D3",
+
+  "permeability_model": "sovereign-executive",
+  "lifespan": "institutional",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BE.D3",
+      "BE.D4",
+      "BM.P3",
+      "BM.P4",
+      "BL.P4"
+    ],
+    "sensory_set": [
+      "BL.D1",
+      "BL.D2",
+      "BM.D1",
+      "BM.D3",
+      "BR.P1",
+      "BR.P3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BE.D*",
+      "BM.P3",
+      "BM.P4",
+      "BL.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.P7",
+      "BL.P1"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D2",
+    "BL.D5",
+    "BL.D7",
+    "BM.D1",
+    "BM.D3",
+    "BM.D7",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "authority_record": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "executive_lineage_required": true,
+    "non_repudiation_required": true,
+    "constitutional_audit_ready": true
+  },
+
+  "normative_surface": {
+    "executive_authority_law": [
+      "BL.D1",
+      "BL.D5",
+      "BL.D7"
+    ],
+    "strategic_meaning_law": [
+      "BM.D1",
+      "BM.D3",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BL.D*",
+      "BM.D*",
+      "BR.P1",
+      "BR.P3",
+      "BT.P5"
+    ],
+    "description": "Only constitutional law, institutional meaning, system results, and executive provenance may puncture the oversight membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BE.D*",
+      "BM.P3",
+      "BM.P4",
+      "BL.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Executive oversight produces authority assignments, strategic rationales, enforcement mandates, sovereign acts, and trace-bound executive records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "authorization_events": ["BEv.P1"],
+    "escalation_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "executive_oversight_membrane",
+    "surprise_sensitive": true,
+    "authority_validation": true,
+    "constitutional_binding": true,
+    "puncture_conditions": [
+      "strategic_realignment",
+      "systemic_risk_detected",
+      "constitutional_directive",
+      "executive_session"
+    ],
+    "automatic_actions": [
+      "authority_binding",
+      "mandate_emit",
+      "strategy_trace_bind",
+      "sovereign_event_emit"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-02-Workflow-Orchestration-Blanket",
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-19-Economic-Settlement-Blanket",
+      "BkA-21-Sovereignty-Authority-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-36-Constitutional-Law-Blanket",
+      "BkA-14-Evaluation-Cycle-Blanket",
+      "BkA-35-Financial-Trace-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius law, meaning, and system outcomes become executive authority and strategic action.",
+    "design_notes": [
+      "This blanket does not make law; it wields it.",
+      "This blanket does not execute; it authorizes.",
+      "All executive power is trace-bound.",
+      "This is Mobius’ decision apex."
+    ],
+    "observability_role": [
+      "executive_surface",
+      "strategy_surface",
+      "authority_surface",
+      "oversight_surface"
+    ]
+  }
+}

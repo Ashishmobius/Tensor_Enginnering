@@ -1,0 +1,186 @@
+{
+  "blanket_id": "bka-22",
+  "archetype_id": "BkA-22",
+  "semantic_name": "Constitutional Amendment Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "law_to_evolved_law",
+    "from": ["BL.D*", "BL.P*", "BT.P*", "BE.D*", "BM.P*"],
+    "into": ["BL.D*", "BL.P*", "BEv.P*", "BT.P*", "BM.P4"],
+    "plane_shift": "Σ -> Ω",
+    "trace_required": true,
+    "description": "Governs the ontological transition where institutional law and constitutional rules are amended, repealed, or ratified."
+  },
+
+  "bpac_signature": {
+    "B": "BL",
+    "P": "Ω",
+    "A": "Nomothetes",
+    "C": "Constitutional"
+  },
+
+  "mobius_plane": "Ω",
+  "usage_type": "Constitutional",
+  "owner_agent": "Nomothetes",
+
+  "dominant_canonical": "BL.D1",
+
+  "permeability_model": "jurisdictional-strict",
+  "lifespan": "perpetual",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D3",
+      "BL.P1",
+      "BL.P4",
+      "BL.P7"
+    ],
+    "sensory_set": [
+      "BL.P5",
+      "BL.P6",
+      "BT.P3",
+      "BT.P5",
+      "BM.P4",
+      "BE.D3"
+    ],
+    "active_set": [
+      "BL.D*",
+      "BL.P*",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P5",
+      "BR.*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D2",
+    "BL.D6",
+    "BL.D7",
+    "BT.D2",
+    "BT.D4",
+    "BM.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "precedent": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "legal_hold": "BT.D7"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "constitutional_lineage_required": true,
+    "precedent_preservation_required": true,
+    "non_repudiation_required": true
+  },
+
+  "normative_surface": {
+    "constitutional_law": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D6",
+      "BL.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4",
+      "BT.D7"
+    ],
+    "legitimacy_law": [
+      "BM.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BL.P5",
+      "BL.P6",
+      "BT.P3",
+      "BT.P5",
+      "BM.P4",
+      "BE.D3"
+    ],
+    "description": "Only institutional findings, remediation acts, constitutional trace, legitimacy rationales, and recognized authorities may puncture the amendment membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BL.D*",
+      "BL.P*",
+      "BEv.P1",
+      "BT.P3",
+      "BM.P4"
+    ],
+    "description": "Amendment produces revised law, ratification acts, repeal records, constitutional events, and trace-bound legitimacy artifacts."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "ratification_events": ["BEv.P1"],
+    "repeal_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "constitutional_amendment_membrane",
+    "surprise_sensitive": true,
+    "authority_binding": ["BL.D7"],
+    "ratification_required": true,
+    "precedent_preservation": true,
+    "puncture_conditions": [
+      "law_change_proposal",
+      "jurisdictional_shift",
+      "systemic_failure",
+      "constitutional_review",
+      "regulatory_update"
+    ],
+    "automatic_actions": [
+      "law_versioning",
+      "ratification_event_emit",
+      "precedent_binding",
+      "constitutional_trace_bind",
+      "amendment_publication"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-21-Sovereignty-Authority-Blanket",
+      "BkA-17-Evolution-Adaptation-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-21-Sovereignty-Authority-Blanket",
+      "BkA-20-Reputation-Trust-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where Mobius law evolves. It is the membrane of constitutional amendment and institutional self-governance.",
+    "design_notes": [
+      "This blanket changes the law itself.",
+      "No amendment exists without authority.",
+      "No repeal exists without trace.",
+      "Precedent is preserved, never overwritten.",
+      "This is the highest internal governance layer."
+    ],
+    "observability_role": [
+      "constitution_surface",
+      "amendment_surface",
+      "jurisdiction_surface",
+      "precedent_surface"
+    ]
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "blanket_id": "bka-43",
+  "archetype_id": "BkA-43",
+  "semantic_name": "Evolutionary Law & Constitutional Adaptation Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "civilizational_state_to_constitutional_evolution",
+    "from": ["BM.D*", "BR.P*", "BL.D*", "BT.P*", "BEv.P*"],
+    "into": ["BL.D*", "BL.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "State -> Law'",
+    "trace_required": true,
+    "description": "Governs the ontological transition where civilizational pressures, outcomes, and breakthroughs are transformed into ratified constitutional evolution."
+  },
+
+  "bpac_signature": {
+    "B": "BL",
+    "P": "Meta-L",
+    "A": "OM",
+    "C": "Meta-Governance"
+  },
+
+  "mobius_plane": "Business-Law",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "OM",
+
+  "dominant_canonical": "BL.D1",
+
+  "permeability_model": "adaptive-sovereign",
+  "lifespan": "evolutionary",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D5",
+      "BL.D7",
+      "BL.P6",
+      "BL.P7"
+    ],
+    "sensory_set": [
+      "BM.D1",
+      "BM.D3",
+      "BM.D5",
+      "BR.P3",
+      "BR.P7",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "active_set": [
+      "BL.D*",
+      "BL.P6",
+      "BL.P7",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D2",
+    "BL.D5",
+    "BL.D7",
+    "BL.P6",
+    "BL.P7",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "law_snapshot": "BT.P2",
+    "provenance": "BT.P5",
+    "archive": "BT.P1",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "evolution_lineage_required": true,
+    "non_repudiation_required": true,
+    "replayable_required": true
+  },
+
+  "normative_surface": {
+    "evolution_law": [
+      "BL.D1",
+      "BL.D5",
+      "BL.D7"
+    ],
+    "assurance_law": [
+      "BL.P7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.D*",
+      "BR.P*",
+      "BL.D*",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "description": "Only constitutional meaning, survival and impact signals, binding law, provenance, and ratified civilizational events may puncture the evolutionary membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BL.D*",
+      "BL.P6",
+      "BL.P7",
+      "BEv.P1",
+      "BT.P2",
+      "BT.P5"
+    ],
+    "description": "Evolutionary governance produces amended law, reform plans, assurance artifacts, ratification events, constitutional snapshots, and lineage bindings."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "ratification_events": ["BEv.P1"],
+    "renewal_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "constitutional_evolution_membrane",
+    "surprise_sensitive": true,
+    "ratification_enforced": true,
+    "lineage_validation": true,
+    "puncture_conditions": [
+      "existential_risk_detected",
+      "strategic_reform_cycle",
+      "constitutional_review",
+      "civilizational_breakthrough"
+    ],
+    "automatic_actions": [
+      "amendment_validation",
+      "law_snapshot_create",
+      "lineage_edge_create",
+      "ratification_event_emit"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-36-Constitutional-Law-Blanket",
+      "BkA-42-Legal-Provenance-Blanket",
+      "BkA-39-Policy-Propagation-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-40-Governance-Results-Blanket",
+      "BkA-41-Operational-Meaning-Blanket",
+      "BkA-42-Legal-Provenance-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius is permitted to evolve its own constitution.",
+    "design_notes": [
+      "This blanket governs how law may change.",
+      "All evolution is trace-bound and replayable.",
+      "No adaptation bypasses constitutional ratification.",
+      "This is Mobius’ evolutionary governor."
+    ],
+    "observability_role": [
+      "constitutional_evolution_surface",
+      "amendment_surface",
+      "lineage_surface",
+      "renewal_surface"
+    ]
+  }
+}

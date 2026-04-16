@@ -1,0 +1,190 @@
+{
+  "blanket_id": "bka-02",
+  "archetype_id": "BkA-02",
+  "semantic_name": "Workflow Orchestration Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "execution_to_process_topology",
+    "from": ["BEv.P*", "BP.P3"],
+    "into": ["BP.P1", "BP.P2", "BR.P*", "BT.P*"],
+    "plane_shift": "G->L",
+    "trace_required": true,
+    "description": "Governs the ontological transition where individual executions and events are bound into structured, stateful workflows."
+  },
+
+  "bpac_signature": {
+    "B": "BP",
+    "P": "L",
+    "A": "BoB",
+    "C": "Executional"
+  },
+
+  "mobius_plane": "L",
+  "usage_type": "Executional",
+  "owner_agent": "BoB",
+
+  "dominant_canonical": "BP.P1",
+
+  "permeability_model": "adaptive",
+  "lifespan": "dynamic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BP.P1",
+      "BP.P2",
+      "BP.P4",
+      "BP.P5",
+      "BP.P6",
+      "BP.P7"
+    ],
+    "sensory_set": [
+      "BEv.P1",
+      "BEv.P2",
+      "BP.P3",
+      "BT.P1"
+    ],
+    "active_set": [
+      "BP.P1",
+      "BEv.P1",
+      "BEv.P3",
+      "BR.P1",
+      "BR.P3",
+      "BT.P3",
+      "BT.P6"
+    ],
+    "forbidden_set": [
+      "BL.*",
+      "BM.*",
+      "BE.D*",
+      "BR.D*",
+      "BE.P5"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D3",
+    "BL.D5",
+    "BL.P2",
+    "BL.P4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "emits": ["BT.P3", "BT.P6"],
+    "replay_support": "BT.P4",
+    "lineage_binding": "BT.P5"
+  },
+
+  "normative_surface": {
+    "process_law": [
+      "BP.D1",
+      "BP.D2",
+      "BP.D3",
+      "BP.D4",
+      "BP.D5",
+      "BP.D7"
+    ],
+    "event_law": [
+      "BEv.D1",
+      "BEv.D2",
+      "BEv.D4",
+      "BEv.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BEv.P1",
+      "BEv.P2",
+      "BP.P3",
+      "BT.P1"
+    ],
+    "description": "Only emitted execution events, correlation bindings, and trace fragments may puncture the orchestration transition membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BP.P1",
+      "BR.P1",
+      "BR.P3",
+      "BR.P5",
+      "BEv.P1",
+      "BEv.P3",
+      "BT.P3",
+      "BT.P6"
+    ],
+    "description": "Orchestration collapses execution streams into workflow state, coordination metrics, exceptions, and decision trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"],
+    "latency_surface": ["BEv.P6"],
+    "exit_events": ["BEv.P1"],
+    "fault_events": ["BEv.P7"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "process_topology_membrane",
+    "surprise_sensitive": true,
+    "runtime_gates": ["BP.P4"],
+    "routing_controls": ["BP.D4"],
+    "exception_controls": ["BP.D5", "BP.P7"],
+    "human_in_loop": ["BP.P6"],
+    "puncture_conditions": [
+      "incoming_execution_event",
+      "workflow_step_completion",
+      "exception_triggered"
+    ],
+    "automatic_actions": [
+      "dependency_resolution",
+      "workflow_routing",
+      "queue_adjustment",
+      "trace_emit",
+      "metric_sample"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-01-Execution-Boundary",
+      "BkA-14-Outcome-Evaluation-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-03-Compliance-Control-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-09-Exception-Governance-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where execution streams become structured workflows. It governs ordering, dependency resolution, routing, exception choreography, and human/system coordination.",
+    "design_notes": [
+      "Execution blankets act; orchestration blankets coordinate.",
+      "No institutional or semantic objects may enter.",
+      "No artifacts are created here.",
+      "All orchestration decisions must emit trace."
+    ],
+    "observability_role": [
+      "workflow_state_surface",
+      "coordination_latency_surface",
+      "dependency_health_surface"
+    ]
+  }
+}

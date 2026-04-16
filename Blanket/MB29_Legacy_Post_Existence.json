@@ -1,0 +1,167 @@
+{
+  "blanket_id": "bka-29",
+  "archetype_id": "BkA-29",
+  "semantic_name": "Legacy & Post-Existence Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "closure_to_legacy",
+    "from": ["BT.P*", "BEv.P*", "BM.P4", "BL.D*", "BE.D*"],
+    "into": ["BM.D*", "BT.P*", "BEv.P*", "BM.P4"],
+    "plane_shift": "∅ -> ⟁",
+    "trace_required": true,
+    "description": "Governs the ontological transition where completed and sealed worlds become generative memory, archetype, and existential lineage."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "⟁",
+    "A": "Mnemosyne",
+    "C": "Post-Ontological"
+  },
+
+  "mobius_plane": "⟁",
+  "usage_type": "Post-Existential",
+  "owner_agent": "Mnemosyne",
+
+  "dominant_canonical": "BM.D4",
+
+  "permeability_model": "sealed-derivative",
+  "lifespan": "trans-infinite",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.D4",
+      "BM.P4",
+      "BT.P3",
+      "BT.P1"
+    ],
+    "sensory_set": [
+      "BT.P1",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "active_set": [
+      "BM.D4",
+      "BM.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.*",
+      "BL.P*",
+      "BM.P1"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D4",
+    "BM.D7",
+    "BT.D1",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "sealed_record": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "sealed_only": true,
+    "non_resurrection_enforced": true,
+    "derivative_only_outputs": true
+  },
+
+  "normative_surface": {
+    "legacy_law": [
+      "BM.D4",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BT.P1",
+      "BT.P5",
+      "BEv.P1",
+      "BM.P4"
+    ],
+    "description": "Only sealed terminal records, existential trace, closure events, and final rationales may puncture the legacy membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.D4",
+      "BM.P4",
+      "BT.P3",
+      "BEv.P1"
+    ],
+    "description": "Legacy produces archetypes, existential memory objects, generative patterns, and lineage events."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "legacy_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "legacy_membrane",
+    "surprise_sensitive": false,
+    "sealed_source_enforced": true,
+    "derivation_only": true,
+    "puncture_conditions": [
+      "world_sealed",
+      "epoch_closed",
+      "constitutional_extinction",
+      "existential_snapshot"
+    ],
+    "automatic_actions": [
+      "archetype_extraction",
+      "lineage_record_create",
+      "legacy_object_binding",
+      "supreme_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-27-Emergence-Transcendence-Blanket",
+      "BkA-25-Ontological-Stewardship-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-28-Ontological-Closure-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where what has ended becomes generative memory. It is the membrane of legacy, archetype, and post-existence lineage.",
+    "design_notes": [
+      "Nothing is resurrected here.",
+      "Only sealed worlds may enter.",
+      "Outputs are patterns, not beings.",
+      "Legacy feeds future emergence without identity carryover.",
+      "This blanket governs remembrance, not survival."
+    ],
+    "observability_role": [
+      "legacy_surface",
+      "archetype_surface",
+      "lineage_surface",
+      "memory_surface"
+    ]
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "blanket_id": "bka-15",
+  "archetype_id": "BkA-15",
+  "semantic_name": "Counterfactual Simulation Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "fact_to_counterfactual_worlds",
+    "from": ["BT.P*", "BE.P*", "BP.P*", "BR.P*", "BM.P*"],
+    "into": ["BT.P4", "BR.P2", "BR.P6", "BEv.P*", "BM.P3", "BT.P*"],
+    "plane_shift": "T/O -> F",
+    "trace_required": true,
+    "description": "Governs the ontological transition where historical reality and current structures are transformed into replayable, hypothetical futures and simulated outcomes."
+  },
+
+  "bpac_signature": {
+    "B": "BT",
+    "P": "F",
+    "A": "Chronos",
+    "C": "Epistemic"
+  },
+
+  "mobius_plane": "F",
+  "usage_type": "Epistemic",
+  "owner_agent": "Chronos",
+
+  "dominant_canonical": "BT.P4",
+
+  "permeability_model": "sandboxed",
+  "lifespan": "ephemeral",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BT.P4",
+      "BR.P2",
+      "BR.P6",
+      "BM.P3"
+    ],
+    "sensory_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P5",
+      "BE.P4",
+      "BE.P5",
+      "BP.P1",
+      "BR.P1",
+      "BM.P1",
+      "BM.P4"
+    ],
+    "active_set": [
+      "BT.P4",
+      "BEv.P1",
+      "BR.P2",
+      "BR.P6",
+      "BM.P3",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BL.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BR.D3",
+    "BR.D5",
+    "BM.D3",
+    "BT.D2",
+    "BT.D3",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P4",
+    "decision_records": "BT.P3",
+    "provenance": "BT.P5",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "simulation_lineage_required": true,
+    "world_versioning_required": true,
+    "non_interference_enforced": true
+  },
+
+  "normative_surface": {
+    "simulation_law": [
+      "BR.D3",
+      "BR.D5"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5"
+    ],
+    "meaning_law": [
+      "BM.D3",
+      "BM.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BT.P*",
+      "BE.P4",
+      "BE.P5",
+      "BP.P1",
+      "BR.P1",
+      "BM.P1",
+      "BM.P4"
+    ],
+    "description": "Only historical trace, runtime state, stabilized artifacts, workflow structures, observed results, and declared goals may puncture the simulation membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BT.P4",
+      "BEv.P1",
+      "BR.P2",
+      "BR.P6",
+      "BM.P3",
+      "BT.P3"
+    ],
+    "description": "Simulation produces replayable worlds, hypothetical events, forecasts, experimental outcomes, trade-off analyses, and trace-bound scenario records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "simulation_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "counterfactual_membrane",
+    "surprise_sensitive": true,
+    "sandbox_enforcement": true,
+    "reality_non_interference": true,
+    "puncture_conditions": [
+      "what_if_request",
+      "risk_assessment_cycle",
+      "strategy_exploration",
+      "design_validation",
+      "postmortem_replay"
+    ],
+    "automatic_actions": [
+      "world_snapshot_clone",
+      "scenario_generation",
+      "event_simulation",
+      "outcome_projection",
+      "simulation_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-08-Reasoning-Cognition-Blanket",
+      "BkA-09-Creative-Insight-Blanket",
+      "BkA-10-Decision-Constitution-Blanket",
+      "BkA-14-Evaluation-Cycle-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-07-Trace-Constitution-Blanket",
+      "BkA-13-Observation-Management-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where historical reality becomes replayable, hypothetical futures. It is the membrane of simulation, forecasting, and counterfactual exploration.",
+    "design_notes": [
+      "Simulation is not prediction; it is world construction.",
+      "No simulated object may escape into execution.",
+      "All scenarios must be trace-bound.",
+      "Simulation is the protected imagination of Mobius.",
+      "This blanket governs the exploration of futures."
+    ],
+    "observability_role": [
+      "scenario_surface",
+      "forecast_surface",
+      "risk_surface",
+      "simulation_lineage_surface"
+    ]
+  }
+}

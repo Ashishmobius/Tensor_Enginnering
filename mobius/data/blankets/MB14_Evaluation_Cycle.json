@@ -1,0 +1,193 @@
+{
+  "blanket_id": "bka-14",
+  "archetype_id": "BkA-14",
+  "semantic_name": "Evaluation Cycle Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "performance_to_evaluative_state",
+    "from": ["BR.P*", "BEv.P*", "BT.P*", "BP.P*"],
+    "into": ["BR.P*", "BL.P*", "BT.P*"],
+    "plane_shift": "H/O -> J",
+    "trace_required": true,
+    "description": "Governs the ontological transition where observed performance and historical facts are transformed into structured evaluation, judgment, and value assessment."
+  },
+
+  "bpac_signature": {
+    "B": "BR",
+    "P": "J",
+    "A": "Judex",
+    "C": "Evaluative"
+  },
+
+  "mobius_plane": "J",
+  "usage_type": "Epistemic",
+  "owner_agent": "Judex",
+
+  "dominant_canonical": "BR.P4",
+
+  "permeability_model": "selective-analytic",
+  "lifespan": "cyclic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BR.P4",
+      "BR.P6",
+      "BR.P7",
+      "BR.P2"
+    ],
+    "sensory_set": [
+      "BR.P1",
+      "BR.P3",
+      "BEv.P1",
+      "BEv.P6",
+      "BT.P1",
+      "BT.P6",
+      "BT.P7",
+      "BP.P1"
+    ],
+    "active_set": [
+      "BR.P4",
+      "BR.P6",
+      "BR.P7",
+      "BR.P2",
+      "BL.P5",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BM.*",
+      "BP.P3",
+      "BE.P5",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BR.D1",
+    "BR.D2",
+    "BR.D3",
+    "BR.D4",
+    "BR.D7",
+    "BL.D3",
+    "BL.D6"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "evidence": "BT.P1",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "evaluation_lineage_required": true,
+    "evidence_binding_required": true,
+    "replay_supported": true
+  },
+
+  "normative_surface": {
+    "evaluation_law": [
+      "BR.D1",
+      "BR.D2",
+      "BR.D3",
+      "BR.D4",
+      "BR.D7"
+    ],
+    "assurance_law": [
+      "BL.D3",
+      "BL.D6"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BR.P1",
+      "BR.P3",
+      "BEv.P*",
+      "BP.P1",
+      "BT.P1",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "description": "Only observed results, execution history, workflow evidence, and trace artifacts may puncture the evaluation membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BR.P4",
+      "BR.P6",
+      "BR.P7",
+      "BR.P2",
+      "BL.P5",
+      "BT.P3"
+    ],
+    "description": "Evaluation produces postmortem insights, experimental conclusions, realized value signals, confidence updates, institutional findings, and traceable judgments."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "evaluation_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "evaluative_membrane",
+    "surprise_sensitive": true,
+    "metric_binding": ["BR.D3"],
+    "threshold_binding": ["BR.D2"],
+    "assurance_controls": ["BL.D3", "BL.D6"],
+    "puncture_conditions": [
+      "evaluation_cycle_start",
+      "milestone_reached",
+      "incident_closed",
+      "experiment_completed",
+      "periodic_review"
+    ],
+    "automatic_actions": [
+      "scorecard_update",
+      "insight_extraction",
+      "impact_assessment",
+      "confidence_calibration",
+      "evaluation_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-08-Reasoning-Cognition-Blanket",
+      "BkA-10-Decision-Constitution-Blanket",
+      "BkA-11-Equilibrium-Stability-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-13-Observation-Management-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where observed reality becomes structured evaluation. It is the membrane of judgment, scoring, and value assessment.",
+    "design_notes": [
+      "Evaluation is not meaning-making.",
+      "Evaluation is not cognition.",
+      "Evaluation is not decision.",
+      "Evaluation binds facts to value frameworks.",
+      "This blanket defines how Mobius learns what works."
+    ],
+    "observability_role": [
+      "scorecard_surface",
+      "evaluation_surface",
+      "impact_surface",
+      "confidence_surface",
+      "learning_surface"
+    ]
+  }
+}

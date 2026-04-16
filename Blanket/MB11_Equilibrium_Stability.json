@@ -1,0 +1,194 @@
+{
+  "blanket_id": "bka-11",
+  "archetype_id": "BkA-11",
+  "semantic_name": "Equilibrium & Stability Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "reality_to_viability_state",
+    "from": ["BR.P*", "BEv.P*", "BL.P*", "BT.P*"],
+    "into": ["BR.P*", "BP.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "O/G/L -> V",
+    "trace_required": true,
+    "description": "Governs the ontological transition where operational and institutional facts are collapsed into systemic stability, resilience posture, and viability state."
+  },
+
+  "bpac_signature": {
+    "B": "BR",
+    "P": "V",
+    "A": "Libra",
+    "C": "Homeostatic"
+  },
+
+  "mobius_plane": "V",
+  "usage_type": "Homeostatic",
+  "owner_agent": "Libra",
+
+  "dominant_canonical": "BR.P1",
+
+  "permeability_model": "adaptive",
+  "lifespan": "dynamic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P3",
+      "BR.P4",
+      "BR.P5"
+    ],
+    "sensory_set": [
+      "BR.P1",
+      "BR.P3",
+      "BR.P4",
+      "BEv.P1",
+      "BEv.P6",
+      "BEv.P7",
+      "BT.P1",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "active_set": [
+      "BR.P1",
+      "BR.P3",
+      "BP.P5",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BE.P5",
+      "BM.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BR.D1",
+    "BR.D2",
+    "BR.D4",
+    "BR.D5",
+    "BL.D1",
+    "BL.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P7",
+    "observability": "BT.P6",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "forensic_ready": true,
+    "snapshot_required": true,
+    "continuity_required": true
+  },
+
+  "normative_surface": {
+    "stability_law": [
+      "BR.D1",
+      "BR.D2",
+      "BR.D4",
+      "BR.D5"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D6",
+      "BT.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BR.P*",
+      "BEv.P*",
+      "BL.P*",
+      "BT.P1",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "description": "Only operational results, incidents, enforcement actions, and trace artifacts may puncture the stability transition membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BR.P1",
+      "BR.P3",
+      "BP.P5",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P3",
+      "BT.P7"
+    ],
+    "description": "Equilibrium evaluation produces viability states, degradation assessments, stabilization intents, renewal signals, and forensic stability trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1", "BEv.P7"],
+    "stability_events": ["BEv.P1"],
+    "renewal_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "system_viability_membrane",
+    "surprise_sensitive": true,
+    "resilience_controls": ["BR.D4", "BR.D5"],
+    "risk_posture_binding": ["BR.D5"],
+    "puncture_conditions": [
+      "slo_breach",
+      "cascading_failure_detected",
+      "security_incident",
+      "systemic_drift",
+      "recovery_checkpoint"
+    ],
+    "automatic_actions": [
+      "viability_classification",
+      "stability_state_update",
+      "stabilization_intent_emit",
+      "renewal_signal_emit",
+      "forensic_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-02-Workflow-Orchestration",
+      "BkA-10-Decision-Constitution-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-01-Execution-Boundary",
+      "BkA-02-Workflow-Orchestration",
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-36-Constitutional-Governance-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where operational reality is evaluated as systemic viability. It is the membrane of equilibrium, resilience, degradation, and renewal.",
+    "design_notes": [
+      "Stability is not execution.",
+      "Stability governs when survival overrides optimization.",
+      "Every crisis state must be trace-bound.",
+      "This blanket defines when Mobius is allowed to protect itself.",
+      "This is the homeostatic layer of the system."
+    ],
+    "observability_role": [
+      "viability_surface",
+      "resilience_surface",
+      "degradation_surface",
+      "recovery_surface",
+      "forensics_surface"
+    ]
+  }
+}

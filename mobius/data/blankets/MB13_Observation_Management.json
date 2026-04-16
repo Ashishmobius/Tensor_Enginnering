@@ -1,0 +1,176 @@
+{
+  "blanket_id": "bka-13",
+  "archetype_id": "BkA-13",
+  "semantic_name": "Observation Management Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "facts_to_observational_state",
+    "from": ["BEv.P*", "BR.P*", "BT.P*", "BE.P*"],
+    "into": ["BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "T/O -> H",
+    "trace_required": true,
+    "description": "Governs the ontological transition where raw trace, events, and operational facts are organized into structured observability state: indicators, dashboards, and alerts."
+  },
+
+  "bpac_signature": {
+    "B": "BR",
+    "P": "H",
+    "A": "Speculum",
+    "C": "Observational"
+  },
+
+  "mobius_plane": "H",
+  "usage_type": "MetaModulatory",
+  "owner_agent": "Speculum",
+
+  "dominant_canonical": "BR.P1",
+
+  "permeability_model": "open-sensory",
+  "lifespan": "dynamic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BR.P1",
+      "BR.P3",
+      "BR.P4",
+      "BT.P6"
+    ],
+    "sensory_set": [
+      "BEv.P1",
+      "BEv.P6",
+      "BR.P1",
+      "BT.P1",
+      "BT.P6",
+      "BT.P7",
+      "BE.P4"
+    ],
+    "active_set": [
+      "BR.P1",
+      "BR.P3",
+      "BEv.P1",
+      "BT.P6",
+      "BT.P1"
+    ],
+    "forbidden_set": [
+      "BM.*",
+      "BP.P3",
+      "BL.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BR.D1",
+    "BR.D3",
+    "BT.D1",
+    "BT.D3",
+    "BT.D5"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P6",
+    "snapshots": "BT.P2",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "snapshot_required": true,
+    "observability_lineage_required": true,
+    "non_interpretive": true
+  },
+
+  "normative_surface": {
+    "measurement_law": [
+      "BR.D1",
+      "BR.D3"
+    ],
+    "trace_law": [
+      "BT.D1",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BEv.P*",
+      "BR.P*",
+      "BT.P*",
+      "BE.P4"
+    ],
+    "description": "Only events, observed metrics, trace artifacts, and runtime state snapshots may puncture the observation membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BR.P1",
+      "BR.P3",
+      "BT.P6",
+      "BT.P2",
+      "BEv.P1"
+    ],
+    "description": "Observation management produces dashboards, indicators, alerts, observability signals, and time-indexed snapshots."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "alert_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "observational_membrane",
+    "surprise_sensitive": true,
+    "measurement_binding": ["BR.D3"],
+    "privacy_controls": ["BT.D5"],
+    "puncture_conditions": [
+      "new_event",
+      "metric_update",
+      "trace_append",
+      "state_snapshot"
+    ],
+    "automatic_actions": [
+      "state_projection",
+      "dashboard_update",
+      "alert_emit",
+      "snapshot_capture",
+      "observability_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-11-Equilibrium-Stability-Blanket",
+      "BkA-08-Reasoning-Cognition-Blanket",
+      "BkA-10-Decision-Constitution-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-01-Execution-Boundary",
+      "BkA-02-Workflow-Orchestration",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where events and trace become structured system visibility. It is the sensory layer of Mobius.",
+    "design_notes": [
+      "Observation is not interpretation.",
+      "Observation is not stability judgment.",
+      "Observation is not governance.",
+      "This blanket provides the shared perceptual field of the system.",
+      "All higher cognition depends on this layer."
+    ],
+    "observability_role": [
+      "dashboard_surface",
+      "alert_surface",
+      "system_visibility_surface",
+      "snapshot_surface"
+    ]
+  }
+}

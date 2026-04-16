@@ -1,0 +1,190 @@
+{
+  "blanket_id": "bka-21",
+  "archetype_id": "BkA-21",
+  "semantic_name": "Sovereignty & Constitutional Authority Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "participants_to_constitutional_actors",
+    "from": ["BE.P*", "BR.P*", "BL.P*", "BT.P*"],
+    "into": ["BE.D*", "BL.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "R/$/F -> Σ",
+    "trace_required": true,
+    "description": "Governs the ontological transition where entities and reputation are transformed into recognized constitutional actors, authorities, and stewards."
+  },
+
+  "bpac_signature": {
+    "B": "BE",
+    "P": "Σ",
+    "A": "Auctor",
+    "C": "Sovereign"
+  },
+
+  "mobius_plane": "Σ",
+  "usage_type": "Constitutional",
+  "owner_agent": "Auctor",
+
+  "dominant_canonical": "BE.D3",
+
+  "permeability_model": "jurisdictional",
+  "lifespan": "persistent",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BE.D3",
+      "BE.D4",
+      "BL.P1",
+      "BL.P4",
+      "BL.P7"
+    ],
+    "sensory_set": [
+      "BE.P1",
+      "BE.P3",
+      "BR.P2",
+      "BL.P7",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BE.D3",
+      "BE.D4",
+      "BL.P1",
+      "BL.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BM.*",
+      "BR.D*",
+      "BR.P1"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D6",
+    "BL.D7",
+    "BE.D3",
+    "BE.D4",
+    "BE.D6",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "legal_hold": "BT.D7"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "constitutional_lineage_required": true,
+    "revocation_trace_required": true,
+    "non_repudiation_required": true
+  },
+
+  "normative_surface": {
+    "authority_law": [
+      "BL.D1",
+      "BL.D6",
+      "BL.D7"
+    ],
+    "identity_law": [
+      "BE.D3",
+      "BE.D4",
+      "BE.D6"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4",
+      "BT.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BE.P1",
+      "BE.P3",
+      "BR.P2",
+      "BL.P7",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "description": "Only validated entities, reputation signals, assurance artifacts, and constitutional trace may puncture the sovereignty membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BE.D3",
+      "BE.D4",
+      "BL.P1",
+      "BL.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Sovereignty produces recognized roles, stewardship assignments, authority acts, enforcement bindings, and traceable constitutional records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "authority_events": ["BEv.P1"],
+    "revocation_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "sovereignty_membrane",
+    "surprise_sensitive": true,
+    "jurisdiction_binding": ["BL.D7"],
+    "assurance_required": true,
+    "revocation_controls": true,
+    "puncture_conditions": [
+      "role_grant_request",
+      "authority_transfer",
+      "stewardship_change",
+      "jurisdiction_entry",
+      "constitutional_review"
+    ],
+    "automatic_actions": [
+      "role_recognition",
+      "stewardship_binding",
+      "authority_event_emit",
+      "revocation_propagation",
+      "constitutional_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-10-Decision-Constitution-Blanket",
+      "BkA-18-Federation-Interoperability-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-20-Reputation-Trust-Blanket",
+      "BkA-07-Trace-Constitution-Blanket",
+      "BkA-16-Semantic-Alignment-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where participants become constitutional actors. It is the membrane of sovereignty, authority, and institutional standing.",
+    "design_notes": [
+      "This blanket defines who can bind Mobius.",
+      "Authority is not reputation.",
+      "Sovereignty is not federation.",
+      "All constitutional power must be trace-rooted.",
+      "This is the seat of Holocracy governance."
+    ],
+    "observability_role": [
+      "authority_surface",
+      "role_surface",
+      "jurisdiction_surface",
+      "sovereignty_surface"
+    ]
+  }
+}

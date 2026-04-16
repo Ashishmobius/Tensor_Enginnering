@@ -1,0 +1,190 @@
+{
+  "blanket_id": "bka-17",
+  "archetype_id": "BkA-17",
+  "semantic_name": "Evolution & Adaptation Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "learning_to_structural_evolution",
+    "from": ["BR.P*", "BM.P*", "BT.P*"],
+    "into": ["BP.P*", "BE.D*", "BL.P*", "BR.P*", "BT.P*"],
+    "plane_shift": "J/F/S -> X",
+    "trace_required": true,
+    "description": "Governs the ontological transition where evaluation, insight, and simulation are transformed into proposed structural change of Mobius itself."
+  },
+
+  "bpac_signature": {
+    "B": "BP",
+    "P": "X",
+    "A": "Metanoia",
+    "C": "Evolutionary"
+  },
+
+  "mobius_plane": "X",
+  "usage_type": "Meta-structural",
+  "owner_agent": "Metanoia",
+
+  "dominant_canonical": "BP.P2",
+
+  "permeability_model": "versioned",
+  "lifespan": "persistent",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BP.P2",
+      "BE.D5",
+      "BL.P6",
+      "BR.P5"
+    ],
+    "sensory_set": [
+      "BR.P4",
+      "BR.P6",
+      "BR.P7",
+      "BM.P3",
+      "BM.P4",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BP.P2",
+      "BL.P6",
+      "BR.P5",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BE.P5",
+      "BL.P1",
+      "BT.P1"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BP.D1",
+    "BP.D2",
+    "BP.D5",
+    "BL.D1",
+    "BL.D6",
+    "BL.D7",
+    "BM.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P2",
+    "decision_records": "BT.P3",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "version_lineage_required": true,
+    "migration_trace_required": true,
+    "rollback_supported": true
+  },
+
+  "normative_surface": {
+    "process_law": [
+      "BP.D1",
+      "BP.D2",
+      "BP.D5"
+    ],
+    "institutional_law": [
+      "BL.D1",
+      "BL.D6",
+      "BL.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BR.P4",
+      "BR.P6",
+      "BR.P7",
+      "BM.P3",
+      "BM.P4",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "description": "Only evaluation insights, experimental outcomes, impact assessments, rationales, and trace artifacts may puncture the evolution membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BP.P2",
+      "BE.D5",
+      "BL.P6",
+      "BR.P5",
+      "BT.P2",
+      "BT.P3"
+    ],
+    "description": "Evolution produces new process definitions, ontology updates, institutional change acts, optimization levers, and versioned evolution trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "evolution_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "evolution_membrane",
+    "surprise_sensitive": true,
+    "version_controls": true,
+    "rollback_controls": true,
+    "compliance_precheck_required": true,
+    "puncture_conditions": [
+      "systemic_learning_cycle",
+      "persistent_underperformance",
+      "validated_simulation_result",
+      "semantic_drift_resolution",
+      "innovation_maturation"
+    ],
+    "automatic_actions": [
+      "structure_synthesis",
+      "process_redesign",
+      "ontology_update",
+      "change_act_generation",
+      "evolution_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-10-Decision-Constitution-Blanket",
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-02-Workflow-Orchestration-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-14-Evaluation-Cycle-Blanket",
+      "BkA-15-Counterfactual-Simulation-Blanket",
+      "BkA-16-Semantic-Alignment-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where learning and insight become structural change. It is the membrane of adaptation, evolution, and self-modification.",
+    "design_notes": [
+      "This blanket changes Mobius itself.",
+      "No structural change exists without lineage.",
+      "No evolution bypasses compliance.",
+      "All evolution must be reversible.",
+      "This is the meta-learning layer of Mobius."
+    ],
+    "observability_role": [
+      "evolution_surface",
+      "version_surface",
+      "adaptation_surface",
+      "ontology_change_surface"
+    ]
+  }
+}

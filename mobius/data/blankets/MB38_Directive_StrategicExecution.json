@@ -1,0 +1,187 @@
+{
+  "blanket_id": "bka-38",
+  "archetype_id": "BkA-38",
+  "semantic_name": "Directive & Strategic Execution Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "law_and_strategy_to_executable_process",
+    "from": ["BL.D*", "BL.P*", "BM.D*", "BM.P*", "BE.D*"],
+    "into": ["BP.D*", "BP.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "L/M -> P",
+    "trace_required": true,
+    "description": "Governs the ontological transition where constitutional law and strategic intent are translated into executable governance and operational processes."
+  },
+
+  "bpac_signature": {
+    "B": "BP",
+    "P": "P",
+    "A": "OAI",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "Business-Processes",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "OAI",
+
+  "dominant_canonical": "BP.D2",
+
+  "permeability_model": "directive",
+  "lifespan": "institutional",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BP.D1",
+      "BP.D2",
+      "BP.D4",
+      "BP.D5",
+      "BP.D6"
+    ],
+    "sensory_set": [
+      "BL.D1",
+      "BL.D2",
+      "BL.P4",
+      "BM.D1",
+      "BM.D3",
+      "BM.P3",
+      "BE.D3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BP.D*",
+      "BP.P2",
+      "BP.P3",
+      "BP.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BE.P*",
+      "BR.*",
+      "BL.P1",
+      "BM.P1"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BP.D1",
+    "BP.D2",
+    "BP.D3",
+    "BP.D4",
+    "BP.D5",
+    "BP.D6",
+    "BP.D7",
+    "BL.D5",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "directive_record": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "directive_lineage_required": true,
+    "constitutional_binding_required": true,
+    "audit_ready": true
+  },
+
+  "normative_surface": {
+    "process_law": [
+      "BP.D1",
+      "BP.D2",
+      "BP.D4",
+      "BP.D6",
+      "BP.D7"
+    ],
+    "governance_law": [
+      "BL.D5"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BL.D*",
+      "BL.P4",
+      "BM.D*",
+      "BM.P3",
+      "BE.D*",
+      "BT.P5"
+    ],
+    "description": "Only binding law, executive mandates, strategic meaning, recognized authority, and provenance may puncture the directive membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BP.D*",
+      "BP.P2",
+      "BP.P3",
+      "BP.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Directive execution produces formal process standards, governance workflows, activation triggers, and trace-bound directive records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "activation_events": ["BEv.P1"],
+    "violation_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "directive_execution_membrane",
+    "surprise_sensitive": true,
+    "authority_validation": true,
+    "policy_binding": true,
+    "puncture_conditions": [
+      "executive_directive",
+      "policy_change",
+      "strategic_realignment",
+      "governance_program_launch"
+    ],
+    "automatic_actions": [
+      "process_template_generation",
+      "control_path_binding",
+      "activation_event_emit",
+      "directive_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-02-Workflow-Orchestration-Blanket",
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-14-Evaluation-Cycle-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-37-Executive-Oversight-Blanket",
+      "BkA-36-Constitutional-Law-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius law and strategy become executable governance and operational processes.",
+    "design_notes": [
+      "This blanket translates will into workflow.",
+      "No execution happens here; only process creation.",
+      "All directives are trace-bound.",
+      "This blanket is the bridge between sovereignty and operations."
+    ],
+    "observability_role": [
+      "directive_surface",
+      "process_genesis_surface",
+      "governance_workflow_surface",
+      "activation_surface"
+    ]
+  }
+}

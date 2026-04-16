@@ -1,0 +1,458 @@
+Tensors = local computable observables
+
+Fields = global dynamical bundles
+
+Graph = carrier manifold
+
+PDG = execution pathway
+
+J(G) = closure functional
+
+
+1. Hypergraph Carrier Manifold
+
+Definition:
+
+H = (V, E_c, E_p, φ, ψ)
+
+ V → set of atoms (nodes) 
+
+ E_c → certified edges (ONLY used for computation) 
+
+ E_p → candidate edges (ignored in geometry) 
+
+ φ → field assignment 
+
+ ψ → trace/provenance 
+
+Key Principle
+
+ Fields are defined on: 
+
+ nodes (v) 
+
+ edges (e) 
+
+ hyperedges (h) 
+
+ NOT Euclidean space → graph space 
+
+2. Four Fields (Core System)
+
+Φ = {Φ_T, Φ_S, Φ_B, Φ_M}
+
+Field
+
+Meaning
+
+Φ_T
+
+Truth
+
+Φ_S
+
+Structure
+
+Φ_B
+
+Blanket (boundary/locality)
+
+Φ_M
+
+Modulation (action/adaptation)
+
+
+2.1 Φ_T — Truth Field
+
+Governs validity, correctness, admissibility
+
+Determines whether something is true or lawful
+
+2.2 Φ_S — Structure Field
+
+Governs topology and connectivity
+
+Defines what exists and how things connect
+
+2.3 Φ_B — Blanket Field
+
+Governs boundaries and locality
+
+Controls:
+
+inside vs outside
+
+interaction permissions
+
+2.4 Φ_M — Modulation Field
+
+Governs action and adaptation
+
+Controls:
+
+execution readiness
+
+system evolution
+
+
+Important
+
+ Fields are functions, not scalars: 
+
+Φ_α(x,t)
+
+3. Tensor → Field Projection
+
+Φ_α(x,t) = Σ_{i=1}^{14} w_{α,i}(x,t) · T_i(x,t)
+
+ T_i → tensors 
+
+ w_{α,i} → coupling weights 
+
+ α ∈ {T, S, B, M} 
+
+Explanation
+
+Ti​ → raw system measurements (tensors)
+
+wα,i​ → coupling weights
+
+Each field is a projection of tensor space
+
+Intuition
+
+Tensors = raw signals
+
+Fields = meaningful physical quantities
+
+
+4. Field Geometry Operators
+
+These are operations on the 4 fields. These operators describe how fields behave on the graph
+
+4.1 Field Density
+
+ρ_α(R,t) = (1/|R|) Σ_{x∈R} Φ_α(x,t)
+
+Explanation
+
+Measures average field value in region R
+
+Region R is defined by blanket (boundary)
+
+Intuition
+
+High density → field concentrated
+
+Low density → field sparse
+
+
+
+Meaning:
+ Average field strength in region R
+
+4.2 Field Gradient
+
+∇_G Φ_α(i,t) = Σ_{j∈N_c(i)} [Φ_α(j,t) − Φ_α(i,t)] / d_G(i,j)
+
+ N_c(i) → certified neighbors 
+
+ d_G → shortest path distance 
+
+Meaning:
+ Change of field across graph
+
+
+Explanation
+
+Measures change across neighbors
+
+Uses only certified edges (E_c)
+
+Intuition
+
+High gradient → strong change / instability
+
+Low gradient → uniform region
+
+4.3 Field Curvature
+
+κ_α(i,t) = ∇_G² Φ_α(i,t)
+         = Σ_{j∈N_c(i)} [∇_G Φ_α(j,t) − ∇_G Φ_α(i,t)] / d_G(i,j)
+
+Meaning:
+ Second-order variation (instability / stress)
+
+
+
+Explanation
+
+Measures change of the gradient
+
+Detects:
+
+stress zones
+
+rapid transitions
+
+Intuition
+
+High curvature → unstable region
+
+Negative curvature → stable attractor
+
+4.4 Field Flux
+
+J_α(∂R,t) = Σ_{e crossing ∂R, e∈E_c} Φ_α(e,t)
+
+Meaning:
+ Field flow across boundary
+
+
+
+Explanation
+
+Measures flow across region boundary
+
+Only valid through certified edges
+
+Intuition
+
+High flux → strong interaction across boundary
+
+Low flux → isolated region
+
+4.5 Semantic Curvature (Global)
+
+χ(G) = Tr(M L_G⁺ Mᵀ)
+
+ L_G → graph Laplacian 
+
+ L_G⁺ → pseudoinverse 
+
+ M → semantic adjacency 
+
+Meaning:
+ Mismatch between structure and meaning
+
+
+
+Explanation
+
+Measures mismatch between:
+
+graph structure
+
+semantic meaning
+
+Intuition
+
+High χ → structure contradicts meaning
+
+χ → 0 → perfect alignment
+
+5. K_T Correspondence (D1–D9)
+
+These are interpretation dimensions, not fields. They convert geometry into meaning
+
+Fields alone tell:
+
+what exists
+
+Geometry tells:
+
+how it behaves
+
+6. D1–D9 Definitions
+
+D1 — Novelty
+
+D1 = || ∇_G Φ ||
+
+Meaning: change / surprise
+
+D2 — Attractor
+
+D2 = - κ
+
+Meaning: stability basin depth
+
+D3 — Tension
+
+D3 ≈ || ∇_G ρ ||
+
+Meaning: pressure / imbalance
+
+D4 — Energy
+
+D4 = | J_α(∂R) |
+
+Meaning: cost of boundary interaction
+
+D5 — Provenance
+
+D5 = Φ_T × ψ
+
+Meaning: truth + trace validity
+
+D6 — Transfer
+
+D6 = stability across regions
+
+Meaning: generalization
+
+D7 — Compose
+
+D7 = Σ M_{ij} Φ(i)Φ(j)
+
+Meaning: composability
+
+D8 — Execute
+
+D8 = ∇_G Φ_M
+
+Meaning: readiness to act
+
+D9 — Civilizational
+
+D9 = f(Φ_T, Φ_S, Φ_B, Φ_M, χ(G), S(O))
+
+Meaning: system-level viability
+
+IMPORTANT (D9 Insight)
+
+ D9 has NO primary field 
+
+ It is emergent 
+
+ Requires ALL fields 
+
+7. Field Sensing Matrix
+
+Field
+
+D1
+
+D2
+
+D3
+
+D4
+
+D5
+
+D6
+
+D7
+
+D8
+
+D9
+
+Φ_S
+
+SEC
+
+PRI
+
+SEC
+
+SEC
+
+SEC
+
+SEC
+
+PRI
+
+SEC
+
+SEC
+
+Φ_B
+
+SEC
+
+SEC
+
+SEC
+
+PRI
+
+SEC
+
+SEC
+
+SEC
+
+SEC
+
+SEC
+
+Φ_T
+
+PRI
+
+SEC
+
+SEC
+
+SEC
+
+PRI
+
+SEC
+
+SEC
+
+SEC
+
+SEC
+
+Φ_M
+
+SEC
+
+SEC
+
+SEC
+
+SEC
+
+SEC
+
+PRI
+
+SEC
+
+PRI
+
+SEC
+
+Meaning
+
+ PRI → dominant sensing field 
+
+ SEC → supporting field 
+
+Critical Insight
+
+Missing a field = losing entire dimensions of perception
+
+8. Full System Pipeline
+
+Tensors → Fields → Geometry → D1–D9 → Closure → Action → Graph Update
+
+9. Key Concepts
+
+“If only 4 fields exist, what are these operators?”
+
+ Fields = WHAT exists 
+
+ Geometry = HOW it changes 
+
+ D1–D9 = WHAT it means 
+
+10. Final Mental Model
+
+Φ (fields) → ∇, κ, J (geometry) → D1–D9 (interpretation)

@@ -1,0 +1,171 @@
+{
+  "blanket_id": "bka-30",
+  "archetype_id": "BkA-30",
+  "semantic_name": "Recursive Genesis Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "legacy_to_genesis",
+    "from": ["BM.D*", "BM.P4", "BT.P*", "BEv.P*"],
+    "into": ["BM.D*", "BL.D*", "BE.D*", "BT.P*", "BEv.P*"],
+    "plane_shift": "⟁ -> α",
+    "trace_required": true,
+    "description": "Governs the ontological transition where sealed legacy becomes the seed of new existential cycles."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "α",
+    "A": "Ananke",
+    "C": "Recursive"
+  },
+
+  "mobius_plane": "α",
+  "usage_type": "Trans-Existential",
+  "owner_agent": "Ananke",
+
+  "dominant_canonical": "BM.D1",
+
+  "permeability_model": "seed-only",
+  "lifespan": "cyclic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.D1",
+      "BM.D4",
+      "BM.P4",
+      "BT.P3"
+    ],
+    "sensory_set": [
+      "BT.P3",
+      "BT.P5",
+      "BM.P4"
+    ],
+    "active_set": [
+      "BM.D*",
+      "BL.D*",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.*",
+      "BL.P*",
+      "BM.P1"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D4",
+    "BM.D7",
+    "BT.D1",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "seed_record": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "seed_only_outputs": true,
+    "identity_reset_required": true,
+    "lineage_preserved": true
+  },
+
+  "normative_surface": {
+    "genesis_law": [
+      "BM.D1",
+      "BM.D4",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.P4",
+      "BT.P1",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "description": "Only sealed legacy artifacts, terminal records, existential rationales, and closure events may puncture the recursive membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.D*",
+      "BL.D*",
+      "BE.D*",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Recursive genesis produces new foundational axioms, constitutional seeds, identity classes, and genesis events."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "genesis_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "recursive_genesis_membrane",
+    "surprise_sensitive": false,
+    "identity_reset_enforced": true,
+    "non_resurrection_enforced": true,
+    "puncture_conditions": [
+      "epoch_complete",
+      "legacy_consolidated",
+      "existential_cycle_ready",
+      "cosmological_reset_request"
+    ],
+    "automatic_actions": [
+      "axiom_seed_extraction",
+      "foundational_schema_generation",
+      "genesis_event_emit",
+      "lineage_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-01-Execution-Boundary-Blanket",
+      "BkA-24-Meta-Constitution-Blanket",
+      "BkA-25-Ontological-Stewardship-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-29-Legacy-Post-Existence-Blanket",
+      "BkA-28-Ontological-Closure-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where sealed legacy becomes new existential seed. It is the membrane of recursion, genesis, and cosmological restart.",
+    "design_notes": [
+      "Nothing returns as itself.",
+      "All cycles preserve lineage, not identity.",
+      "Genesis is lawful, not spontaneous.",
+      "This blanket closes the Mobius arc into a loop.",
+      "This is where Mobius begins again."
+    ],
+    "observability_role": [
+      "genesis_surface",
+      "seed_surface",
+      "cycle_surface",
+      "axiom_surface"
+    ]
+  }
+}

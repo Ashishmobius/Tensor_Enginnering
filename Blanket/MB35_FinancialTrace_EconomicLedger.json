@@ -1,0 +1,184 @@
+{
+  "blanket_id": "bka-35",
+  "archetype_id": "BkA-35",
+  "semantic_name": "Financial Trace & Economic Ledger Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "economic_events_to_financial_trace",
+    "from": ["BEv.P*", "BR.P7", "BE.P5", "BL.P*"],
+    "into": ["BT.P*", "BEv.P*"],
+    "plane_shift": "$ -> T$",
+    "trace_required": true,
+    "description": "Governs the ontological transition where economic actions and settlements become immutable financial trace."
+  },
+
+  "bpac_signature": {
+    "B": "BT",
+    "P": "T$",
+    "A": "Chitra",
+    "C": "Economic-Trace"
+  },
+
+  "mobius_plane": "Business-Trace",
+  "usage_type": "Marketplace-core",
+  "owner_agent": "Chitra",
+
+  "dominant_canonical": "BT.P1",
+
+  "permeability_model": "append-only",
+  "lifespan": "perpetual",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P4",
+      "BT.P5"
+    ],
+    "sensory_set": [
+      "BEv.P1",
+      "BR.P7",
+      "BE.P5",
+      "BL.P1",
+      "BL.P4"
+    ],
+    "active_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BEv.P1"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BM.*",
+      "BR.P1",
+      "BL.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BT.D1",
+    "BT.D2",
+    "BT.D3",
+    "BT.D4",
+    "BT.D7",
+    "BL.D6",
+    "BL.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P1",
+    "artifact_hash": "BT.P2",
+    "decision_record": "BT.P3",
+    "replay_artifact": "BT.P4",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "legal_hold": "BT.D7"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "append_only": true,
+    "tamper_evident_required": true,
+    "non_repudiation_required": true,
+    "economic_audit_ready": true
+  },
+
+  "normative_surface": {
+    "financial_trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D7"
+    ],
+    "assurance_law": [
+      "BL.D6",
+      "BL.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BEv.P1",
+      "BR.P7",
+      "BE.P5",
+      "BL.P1",
+      "BL.P4"
+    ],
+    "description": "Only finalized economic events, settled impacts, bound assets, and authorized enforcement acts may puncture the financial trace membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P4",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "description": "Financial trace produces immutable ledger entries, cryptographic artifact hashes, settlement records, replay packages, provenance edges, and finality events."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "finality_events": ["BEv.P1"],
+    "dispute_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "financial_trace_membrane",
+    "surprise_sensitive": false,
+    "append_only_enforced": true,
+    "cryptographic_binding": true,
+    "finality_sealing": true,
+    "puncture_conditions": [
+      "economic_settlement_completed",
+      "asset_state_transition",
+      "payment_finalized",
+      "marketplace_close"
+    ],
+    "automatic_actions": [
+      "ledger_append",
+      "hash_binding",
+      "timestamp_sequencing",
+      "provenance_edge_create",
+      "finality_event_emit"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-23-Adjudication-Arbitration-Blanket",
+      "BkA-20-Reputation-Trust-Blanket",
+      "BkA-19-Economic-Settlement-Blanket",
+      "BkA-14-Evaluation-Cycle-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-19-Economic-Settlement-Blanket",
+      "BkA-07-Trace-Constitution-Blanket",
+      "BkA-01-Execution-Boundary-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where economic actions become immutable financial history. It is the ledger of Mobius.",
+    "design_notes": [
+      "This blanket never computes value; it seals it.",
+      "All economic truth becomes trace here.",
+      "This blanket is the evidentiary root of markets.",
+      "Nothing leaves this blanket mutable."
+    ],
+    "observability_role": [
+      "financial_ledger_surface",
+      "provenance_surface",
+      "finality_surface",
+      "audit_surface"
+    ]
+  }
+}

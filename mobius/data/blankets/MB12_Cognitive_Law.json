@@ -1,0 +1,211 @@
+{
+  "blanket_id": "bka-12",
+  "archetype_id": "BkA-12",
+  "semantic_name": "Cognitive Law Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "free_cognition_to_norm_bounded_cognition",
+    "from": ["BM.P*", "BR.P*", "BP.P*", "BT.P*"],
+    "into": ["BL.P*", "BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "C/E -> O",
+    "trace_required": true,
+    "description": "Governs the ontological transition where cognition, creativity, and strategic intent are evaluated against ethical, cultural, and institutional norms."
+  },
+
+  "bpac_signature": {
+    "B": "BL",
+    "P": "O",
+    "A": "Nomos",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "O",
+  "usage_type": "Governance",
+  "owner_agent": "Nomos",
+
+  "dominant_canonical": "BL.D3",
+
+  "permeability_model": "constitutional",
+  "lifespan": "static",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BL.P4",
+      "BL.P5",
+      "BL.P6",
+      "BL.P7",
+      "BR.P4",
+      "BR.P5"
+    ],
+    "sensory_set": [
+      "BM.P1",
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BM.P6",
+      "BR.P2",
+      "BR.P6",
+      "BP.P2",
+      "BT.P1",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BL.P4",
+      "BL.P6",
+      "BL.P3",
+      "BEv.P1",
+      "BEv.P7",
+      "BR.P4",
+      "BT.P7"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BE.P5",
+      "BM.D*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D5",
+    "BM.D6",
+    "BM.D7",
+    "BL.D1",
+    "BL.D3",
+    "BL.D6",
+    "BL.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P7",
+    "evidence": "BT.P3",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "privacy": "BT.D5"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "ethical_witness_required": true,
+    "violation_lineage_required": true,
+    "sanction_trace_required": true
+  },
+
+  "normative_surface": {
+    "ethical_law": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6",
+      "BM.D7"
+    ],
+    "institutional_law": [
+      "BL.D1",
+      "BL.D3",
+      "BL.D6",
+      "BL.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5",
+      "BT.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.P*",
+      "BR.P2",
+      "BR.P6",
+      "BP.P2",
+      "BT.P1",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "description": "Only grounded meaning, cognitive projections, experimental results, strategic intents, and trace artifacts may puncture the cognitive law membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BL.P4",
+      "BL.P6",
+      "BL.P3",
+      "BEv.P1",
+      "BEv.P7",
+      "BR.P4",
+      "BT.P7"
+    ],
+    "description": "Cognitive law produces ethical gates, enforcement acts, sanctions, legitimacy signals, violation events, and forensic ethical trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "violation_events": ["BEv.P7"],
+    "authorization_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "ethical_constitution_membrane",
+    "surprise_sensitive": true,
+    "ethical_gates": ["BM.D2", "BM.D5"],
+    "cultural_norm_binding": ["BM.D6"],
+    "authority_binding": ["BL.D7"],
+    "puncture_conditions": [
+      "ethical_review_required",
+      "creative_violation_detected",
+      "cognitive_risk_threshold_crossed",
+      "strategic_red_line"
+    ],
+    "automatic_actions": [
+      "ethical_evaluation",
+      "cognitive_gate_enforcement",
+      "sanction_trigger",
+      "legitimacy_update",
+      "ethical_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-10-Decision-Constitution-Blanket",
+      "BkA-11-Equilibrium-Stability-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-08-Reasoning-Cognition-Blanket",
+      "BkA-09-Creative-Insight-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-36-Constitutional-Governance-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where cognition and creativity are constrained by ethical, cultural, and institutional law. It is the membrane of moral legitimacy and cognitive prohibition.",
+    "design_notes": [
+      "Not everything thinkable is allowable.",
+      "This blanket governs what Mobius may even consider.",
+      "Ethics precedes decision.",
+      "All cognitive violations must be forensically traceable.",
+      "This is the moral constitution of Mobius."
+    ],
+    "observability_role": [
+      "ethical_surface",
+      "legitimacy_surface",
+      "cognitive_violation_surface",
+      "sanction_surface"
+    ]
+  }
+}

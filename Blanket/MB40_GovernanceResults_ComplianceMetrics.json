@@ -1,0 +1,182 @@
+{
+  "blanket_id": "bka-40",
+  "archetype_id": "BkA-40",
+  "semantic_name": "Governance Results & Compliance Metrics Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "governance_execution_to_governance_results",
+    "from": ["BP.P*", "BL.P*", "BT.P*", "BEv.P*"],
+    "into": ["BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "Gov -> GovR",
+    "trace_required": true,
+    "description": "Governs the ontological transition where governance execution and audits become measurable compliance and regulatory results."
+  },
+
+  "bpac_signature": {
+    "B": "BR",
+    "P": "GovR",
+    "A": "RunDheer",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "Business-Results",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "RunDheer",
+
+  "dominant_canonical": "BR.P1",
+
+  "permeability_model": "measured",
+  "lifespan": "continuous",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P3",
+      "BR.P4"
+    ],
+    "sensory_set": [
+      "BP.P1",
+      "BP.P2",
+      "BL.P4",
+      "BL.P5",
+      "BT.P1",
+      "BT.P3",
+      "BEv.P1"
+    ],
+    "active_set": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P3",
+      "BR.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BL.D*",
+      "BM.*",
+      "BP.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BR.D1",
+    "BR.D2",
+    "BR.D3",
+    "BR.D4",
+    "BR.D7",
+    "BL.D5",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "audit_source": "BT.P1",
+    "forensics": "BT.P7",
+    "provenance": "BT.P5",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "audit_lineage_required": true,
+    "tamper_evident_required": true,
+    "regulatory_audit_ready": true
+  },
+
+  "normative_surface": {
+    "governance_measurement_law": [
+      "BR.D1",
+      "BR.D3"
+    ],
+    "compliance_law": [
+      "BR.D2",
+      "BR.D4",
+      "BR.D7",
+      "BL.D5"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BP.P*",
+      "BL.P4",
+      "BL.P5",
+      "BT.P1",
+      "BT.P3",
+      "BEv.P1"
+    ],
+    "description": "Only trace-bound governance executions, enforcement acts, audit findings, and completion or violation events may puncture the governance results membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P3",
+      "BR.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Governance measurement produces compliance metrics, confidence scores, violation reports, audit insights, governance result events, and trace-bound result records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "violation_events": ["BEv.P3"],
+    "report_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "governance_results_membrane",
+    "surprise_sensitive": true,
+    "metric_normalization": true,
+    "regulatory_weighting": true,
+    "puncture_conditions": [
+      "audit_completed",
+      "compliance_checkpoint",
+      "regulatory_review",
+      "violation_detected"
+    ],
+    "automatic_actions": [
+      "compliance_metric_compute",
+      "confidence_calibration",
+      "violation_emit",
+      "governance_result_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-37-Executive-Oversight-Blanket",
+      "BkA-23-Adjudication-Arbitration-Blanket",
+      "BkA-19-Economic-Settlement-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-39-Policy-Propagation-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where governance activity becomes measurable compliance and regulatory results.",
+    "design_notes": [
+      "This blanket does not enforce law; it measures it.",
+      "All compliance claims must be trace-rooted.",
+      "This blanket feeds executive oversight and adjudication.",
+      "This is Mobius’ regulatory scoreboard."
+    ],
+    "observability_role": [
+      "governance_metrics_surface",
+      "compliance_surface",
+      "audit_surface",
+      "violation_surface"
+    ]
+  }
+}

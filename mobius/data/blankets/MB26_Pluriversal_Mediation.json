@@ -1,0 +1,167 @@
+{
+  "blanket_id": "bka-26",
+  "archetype_id": "BkA-26",
+  "semantic_name": "Pluriversal Mediation Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "ontologies_to_pluriverse",
+    "from": ["BM.D*", "BL.D*", "BE.D*", "BT.P*"],
+    "into": ["BM.D*", "BT.P*", "BEv.P*"],
+    "plane_shift": "∞ -> Π",
+    "trace_required": true,
+    "description": "Governs the ontological transition where entire canonical universes are placed into a pluriversal relation without reduction or unification."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "Π",
+    "A": "Polis",
+    "C": "Pluriversal"
+  },
+
+  "mobius_plane": "Π",
+  "usage_type": "Trans-ontological",
+  "owner_agent": "Polis",
+
+  "dominant_canonical": "BM.D1",
+
+  "permeability_model": "non-reductive-bridging",
+  "lifespan": "trans-epochal",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.D*",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "sensory_set": [
+      "BM.D*",
+      "BT.P5",
+      "BEv.P7"
+    ],
+    "active_set": [
+      "BM.D*",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.*",
+      "BL.P*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D5",
+    "BM.D6",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "cross_ontology_lineage_required": true,
+    "non_reduction_required": true,
+    "bridge_trace_required": true
+  },
+
+  "normative_surface": {
+    "pluriversal_law": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.D*",
+      "BT.P5",
+      "BEv.P7"
+    ],
+    "description": "Only full ontological frames, existential trace, and cross-world events may puncture the pluriversal membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.D*",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Pluriversal mediation produces coexistence mappings, ontological bridge declarations, and trace-bound pluriversal relations."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P7"],
+    "pluriversal_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "pluriversal_membrane",
+    "surprise_sensitive": true,
+    "non_reduction_enforced": true,
+    "bridge_validation": true,
+    "puncture_conditions": [
+      "ontological_conflict",
+      "world_encounter",
+      "cosmology_interaction",
+      "existential_translation_request",
+      "supra_world_event"
+    ],
+    "automatic_actions": [
+      "bridge_schema_generation",
+      "non_reduction_validation",
+      "pluriversal_trace_bind",
+      "coexistence_record_create"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-25-Ontological-Stewardship-Blanket",
+      "BkA-24-Meta-Constitution-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-25-Ontological-Stewardship-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where canonical universes become coexisting realities. It is the membrane of pluriversal mediation and non-reductive coexistence.",
+    "design_notes": [
+      "This blanket prevents ontological collapse.",
+      "Translation is allowed; reduction is forbidden.",
+      "Worlds may relate without merging.",
+      "Trace is the only common substrate.",
+      "This is the boundary of many realities."
+    ],
+    "observability_role": [
+      "pluriverse_surface",
+      "world_bridge_surface",
+      "coexistence_surface",
+      "cosmology_surface"
+    ]
+  }
+}

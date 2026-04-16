@@ -1,0 +1,204 @@
+{
+  "blanket_id": "bka-05",
+  "archetype_id": "BkA-05",
+  "semantic_name": "Semantic Interface Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "artifact_and_result_to_meaning",
+    "from": ["BE.P5", "BR.P*", "BT.P*"],
+    "into": ["BM.P*"],
+    "plane_shift": "L -> E",
+    "trace_required": true,
+    "description": "Governs the ontological transition where stabilized artifacts, results, and trace are interpreted into business meaning, narratives, trust signals, and decision rationale."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "E",
+    "A": "Monet",
+    "C": "Cognitive"
+  },
+
+  "mobius_plane": "E",
+  "usage_type": "Cognitive",
+  "owner_agent": "Monet",
+
+  "dominant_canonical": "BM.P4",
+
+  "permeability_model": "selective",
+  "lifespan": "dynamic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.P1",
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BM.P5",
+      "BM.P6",
+      "BM.P7"
+    ],
+    "sensory_set": [
+      "BE.P5",
+      "BR.P1",
+      "BR.P3",
+      "BR.P4",
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BM.P1",
+      "BM.P3",
+      "BM.P4",
+      "BM.P5",
+      "BM.P6",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BL.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D5",
+    "BM.D7",
+    "BL.D3",
+    "BL.D5"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "privacy": "BT.D5"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "consumes": ["BT.P1", "BT.P2", "BT.P5"],
+    "emits": ["BT.P3"],
+    "evidence_binding": true,
+    "explainability_required": true
+  },
+
+  "normative_surface": {
+    "meaning_law": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5",
+      "BT.D6"
+    ],
+    "disclosure_law": [
+      "BL.D3",
+      "BL.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BE.P5",
+      "BR.P1",
+      "BR.P3",
+      "BR.P4",
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "description": "Only stabilized artifacts, measured results, incident outcomes, and trace artifacts may puncture the semantic transition membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.P1",
+      "BM.P3",
+      "BM.P4",
+      "BM.P5",
+      "BM.P6",
+      "BM.P7",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Semantic interpretation produces business cases, trade-off rationales, decision narratives, stakeholder feedback, adoption signals, and explainability artifacts."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "exit_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"],
+    "notification_policy": ["BEv.D3"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "meaning_interpretation_membrane",
+    "surprise_sensitive": false,
+    "explainability_controls": ["BM.D2", "BM.D5"],
+    "ethical_gates": ["BM.D2"],
+    "narrative_controls": ["BM.D3"],
+    "puncture_conditions": [
+      "artifact_published",
+      "result_evaluated",
+      "trace_available"
+    ],
+    "automatic_actions": [
+      "explanation_generation",
+      "decision_rationale_binding",
+      "stakeholder_projection",
+      "trust_signal_update",
+      "semantic_trace_emit"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-40-Governance-Result-Blanket",
+      "BkA-41-Experience-Analytics-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-04-Artifact-Boundary-Blanket",
+      "BkA-03-Compliance-Control-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-36-Constitutional-Interpretation-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where stabilized reality is interpreted into business meaning. It is the exclusive membrane for explanation, narrative formation, value framing, trust signaling, and human-facing cognition.",
+    "design_notes": [
+      "Semantic blankets do not create facts.",
+      "They bind facts into meaning.",
+      "All meaning must be trace-grounded.",
+      "No semantic output may exist without evidentiary lineage.",
+      "This is the human interface of Mobius."
+    ],
+    "observability_role": [
+      "explainability_surface",
+      "narrative_surface",
+      "trust_surface",
+      "adoption_surface"
+    ]
+  }
+}

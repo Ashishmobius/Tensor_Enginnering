@@ -1,0 +1,196 @@
+{
+  "blanket_id": "bka-19",
+  "archetype_id": "BkA-19",
+  "semantic_name": "Economic Settlement Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "service_to_economic_reality",
+    "from": ["BR.P*", "BL.D*", "BL.P*", "BE.P*", "BT.P*"],
+    "into": ["BR.P7", "BL.P6", "BE.P1", "BEv.P*", "BT.P*"],
+    "plane_shift": "M/F -> $",
+    "trace_required": true,
+    "description": "Governs the ontological transition where service delivery, contracts, and obligations are transformed into realized economic value and settlement."
+  },
+
+  "bpac_signature": {
+    "B": "BR",
+    "P": "$",
+    "A": "Nomisma",
+    "C": "Economic"
+  },
+
+  "mobius_plane": "$",
+  "usage_type": "Marketplace",
+  "owner_agent": "Nomisma",
+
+  "dominant_canonical": "BR.P7",
+
+  "permeability_model": "contractual-financial",
+  "lifespan": "persistent",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BR.P7",
+      "BL.P6",
+      "BE.P1",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "sensory_set": [
+      "BR.P1",
+      "BR.P3",
+      "BR.P7",
+      "BL.D4",
+      "BL.P7",
+      "BE.P1",
+      "BEv.P1",
+      "BT.P1"
+    ],
+    "active_set": [
+      "BR.P7",
+      "BL.P6",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BM.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D4",
+    "BL.D6",
+    "BL.D7",
+    "BR.D6",
+    "BR.D7",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P1",
+    "custody": "BT.D4",
+    "evidence": "BT.P3",
+    "retention": "BT.D1",
+    "privacy": "BT.D5"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "non_repudiation_required": true,
+    "custody_chain_required": true,
+    "audit_ready": true,
+    "dispute_ready": true
+  },
+
+  "normative_surface": {
+    "economic_law": [
+      "BR.D6",
+      "BR.D7"
+    ],
+    "contract_law": [
+      "BL.D1",
+      "BL.D4",
+      "BL.D6",
+      "BL.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4",
+      "BT.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BR.P1",
+      "BR.P3",
+      "BR.P7",
+      "BL.D4",
+      "BL.P7",
+      "BE.P1",
+      "BEv.P1",
+      "BT.P1"
+    ],
+    "description": "Only service results, contractual obligations, delivery events, and trace evidence may puncture the economic membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BR.P7",
+      "BL.P6",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "description": "Economic settlement produces realized value records, institutional settlement acts, payment/dispute events, and auditable financial trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "settlement_events": ["BEv.P1"],
+    "dispute_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "economic_constitution_membrane",
+    "surprise_sensitive": true,
+    "pricing_binding": ["BR.D6"],
+    "penalty_binding": ["BR.D6"],
+    "authority_binding": ["BL.D7"],
+    "puncture_conditions": [
+      "service_fulfilled",
+      "sla_breach",
+      "billing_cycle",
+      "value_realization",
+      "dispute_trigger"
+    ],
+    "automatic_actions": [
+      "obligation_resolution",
+      "value_realization",
+      "settlement_event_emit",
+      "economic_trace_bind",
+      "dispute_escalation"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-14-Evaluation-Cycle-Blanket",
+      "BkA-11-Equilibrium-Stability-Blanket",
+      "BkA-17-Evolution-Adaptation-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-06-Service-Delivery-Blanket",
+      "BkA-18-Federation-Interoperability-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where service delivery and contractual obligations become realized economic value. It is the membrane of settlement, billing, and marketplace reality.",
+    "design_notes": [
+      "Economics is not evaluation.",
+      "Economics makes obligations real.",
+      "Every economic act must be trace-custodied.",
+      "Every settlement is a legal object.",
+      "This blanket is the heart of Holocracy as a marketplace."
+    ],
+    "observability_role": [
+      "settlement_surface",
+      "billing_surface",
+      "value_surface",
+      "dispute_surface",
+      "audit_surface"
+    ]
+  }
+}

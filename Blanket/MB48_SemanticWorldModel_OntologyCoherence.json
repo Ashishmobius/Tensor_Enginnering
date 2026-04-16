@@ -1,0 +1,183 @@
+{
+  "blanket_id": "bka-48",
+  "archetype_id": "BkA-48",
+  "semantic_name": "Semantic World-Model & Ontology Coherence Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "meaning_structures_to_worldview_coherence",
+    "from": ["BM.D*", "BM.P*", "BEv.P*", "BT.P*"],
+    "into": ["BM.D*", "BM.P*", "BR.P*", "BT.P*", "BEv.P*"],
+    "plane_shift": "Meaning -> World-Model",
+    "trace_required": true,
+    "description": "Governs the ontological transition where semantic frameworks, ontologies, and logics are harmonized into a coherent civilizational worldview."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "Meta-Semantic",
+    "A": "SATYA",
+    "C": "Meta-Modulatory"
+  },
+
+  "mobius_plane": "Business-Meaning",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "SATYA",
+
+  "dominant_canonical": "BM.D5",
+
+  "permeability_model": "semantic-adaptive",
+  "lifespan": "evolutionary",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.D5",
+      "BM.P4",
+      "BM.P7",
+      "BR.P2",
+      "BT.P5"
+    ],
+    "sensory_set": [
+      "BM.D2",
+      "BM.D4",
+      "BM.D6",
+      "BM.P2",
+      "BM.P3",
+      "BM.P7",
+      "BEv.P1",
+      "BEv.P7"
+    ],
+    "active_set": [
+      "BM.D5",
+      "BM.P4",
+      "BM.P7",
+      "BR.P2",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BL.*",
+      "BP.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D2",
+    "BM.D4",
+    "BM.D5",
+    "BM.D6",
+    "BM.D7",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P5",
+    "decision_record": "BT.P3",
+    "observability": "BT.P6",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "ontology_lineage_required": true,
+    "tamper_evident_required": true,
+    "worldview_replayable": true
+  },
+
+  "normative_surface": {
+    "semantic_law": [
+      "BM.D2",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.D*",
+      "BM.P2",
+      "BM.P3",
+      "BM.P7",
+      "BEv.P1",
+      "BEv.P7"
+    ],
+    "description": "Only meaning frameworks, epistemic signals, cultural semantics, and paradigm-shifting events may puncture the semantic membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.D5",
+      "BM.P4",
+      "BM.P7",
+      "BR.P2",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P5"
+    ],
+    "description": "Semantic modulation produces updated epistemic stances, worldview interpretations, semantic drift signals, confidence surfaces, paradigm events, and ontology provenance bindings."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1", "BEv.P7"],
+    "realignment_events": ["BEv.P1"],
+    "paradigm_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "world_model_membrane",
+    "surprise_sensitive": true,
+    "ontology_conflict_detection": true,
+    "semantic_drift_monitoring": true,
+    "puncture_conditions": [
+      "ontology_conflict",
+      "paradigm_break",
+      "semantic_incoherence",
+      "cross-plane_meaning_drift"
+    ],
+    "automatic_actions": [
+      "worldview_alignment_compute",
+      "semantic_realignment_emit",
+      "ontology_patch_bind",
+      "semantic_trace_update"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-45-Truth-Modulation-Blanket",
+      "BkA-46-Inference-Propagation-Blanket",
+      "BkA-44-Cultural-Norms-Blanket",
+      "BkA-43-Evolutionary-Law-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-41-Operational-Meaning-Blanket",
+      "BkA-16-Semantic-Alignment-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius harmonizes ontologies, logics, and semantic frameworks into a coherent worldview.",
+    "design_notes": [
+      "This blanket governs what Mobius can mean.",
+      "It regulates ontologies, not events.",
+      "It detects paradigm fracture and semantic drift.",
+      "This is Mobius’ world-model governor."
+    ],
+    "observability_role": [
+      "worldview_surface",
+      "ontology_surface",
+      "semantic_coherence_surface",
+      "paradigm_surface"
+    ]
+  }
+}

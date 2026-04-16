@@ -1,0 +1,193 @@
+{
+  "blanket_id": "bka-20",
+  "archetype_id": "BkA-20",
+  "semantic_name": "Reputation & Trust Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "history_to_institutional_trust",
+    "from": ["BR.P*", "BL.P*", "BT.P*", "BE.P*"],
+    "into": ["BE.P3", "BR.P2", "BM.P7", "BL.P7", "BEv.P*", "BT.P*"],
+    "plane_shift": "J/$/F -> R",
+    "trace_required": true,
+    "description": "Governs the ontological transition where historical interactions, audits, and economic outcomes become institutional trust, credibility, and reputation."
+  },
+
+  "bpac_signature": {
+    "B": "BE",
+    "P": "R",
+    "A": "Auctoritas",
+    "C": "Reputational"
+  },
+
+  "mobius_plane": "R",
+  "usage_type": "Marketplace-meta",
+  "owner_agent": "Auctoritas",
+
+  "dominant_canonical": "BE.P3",
+
+  "permeability_model": "evidentiary",
+  "lifespan": "persistent",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BE.P3",
+      "BR.P2",
+      "BM.P7",
+      "BL.P7"
+    ],
+    "sensory_set": [
+      "BR.P4",
+      "BR.P7",
+      "BL.P5",
+      "BL.P6",
+      "BT.P1",
+      "BT.P5",
+      "BE.P1"
+    ],
+    "active_set": [
+      "BE.P3",
+      "BR.P2",
+      "BM.P7",
+      "BL.P7",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BM.D*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D6",
+    "BL.D7",
+    "BR.D7",
+    "BM.D6",
+    "BT.D2",
+    "BT.D4",
+    "BT.D5"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "privacy": "BT.D5"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "non_repudiation_required": true,
+    "reputation_lineage_required": true,
+    "tamper_evident_required": true
+  },
+
+  "normative_surface": {
+    "assurance_law": [
+      "BL.D6",
+      "BL.D7"
+    ],
+    "disclosure_law": [
+      "BL.D3",
+      "BL.D5"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4",
+      "BT.D5"
+    ],
+    "cultural_law": [
+      "BM.D6",
+      "BM.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BR.P4",
+      "BR.P7",
+      "BL.P5",
+      "BL.P6",
+      "BT.P1",
+      "BT.P5",
+      "BE.P1"
+    ],
+    "description": "Only validated outcomes, audit findings, institutional acts, and custody trace may puncture the reputation membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BE.P3",
+      "BR.P2",
+      "BM.P7",
+      "BL.P7",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Reputation produces capability and trust profiles, confidence signals, cultural trust indicators, assurance artifacts, and traceable standing records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "reputation_events": ["BEv.P1"],
+    "violation_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "reputation_membrane",
+    "surprise_sensitive": true,
+    "evidence_weighting": true,
+    "time_decay_models": true,
+    "custody_validation": true,
+    "puncture_conditions": [
+      "audit_closed",
+      "settlement_completed",
+      "long_term_pattern_detected",
+      "trust_signal_shift",
+      "institutional_review"
+    ],
+    "automatic_actions": [
+      "reputation_update",
+      "confidence_calibration",
+      "assurance_artifact_generation",
+      "trust_event_emit",
+      "reputation_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-18-Federation-Interoperability-Blanket",
+      "BkA-19-Economic-Settlement-Blanket",
+      "BkA-10-Decision-Constitution-Blanket",
+      "BkA-14-Evaluation-Cycle-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-07-Trace-Constitution-Blanket",
+      "BkA-14-Evaluation-Cycle-Blanket",
+      "BkA-19-Economic-Settlement-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where interaction history becomes institutional trust. It is the membrane of reputation, legitimacy, and long-term standing.",
+    "design_notes": [
+      "Reputation is not money.",
+      "Reputation is not performance.",
+      "Reputation is institutional memory.",
+      "Trust emerges from trace.",
+      "This blanket defines standing in Holocracy."
+    ],
+    "observability_role": [
+      "reputation_surface",
+      "trust_surface",
+      "assurance_surface",
+      "credibility_surface"
+    ]
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "blanket_id": "bka-18",
+  "archetype_id": "BkA-18",
+  "semantic_name": "Federation & Interoperability Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "system_to_federated_actor",
+    "from": ["BE.P*", "BP.P*", "BL.D*", "BL.P*", "BT.P*"],
+    "into": ["BE.P*", "BP.P*", "BEv.P*", "BL.P*", "BT.P*"],
+    "plane_shift": "X/O/M -> F",
+    "trace_required": true,
+    "description": "Governs the ontological transition where Mobius becomes a federated participant capable of interoperating with external systems, products, and organizations."
+  },
+
+  "bpac_signature": {
+    "B": "BE",
+    "P": "F",
+    "A": "Foedus",
+    "C": "Interoperability"
+  },
+
+  "mobius_plane": "F",
+  "usage_type": "Meta-structural",
+  "owner_agent": "Foedus",
+
+  "dominant_canonical": "BE.P1",
+
+  "permeability_model": "treaty",
+  "lifespan": "persistent",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BE.P1",
+      "BE.P3",
+      "BE.P6",
+      "BL.P1",
+      "BL.P4",
+      "BL.P7"
+    ],
+    "sensory_set": [
+      "BE.P1",
+      "BE.P6",
+      "BL.D4",
+      "BL.D6",
+      "BL.D7",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BE.P1",
+      "BP.P3",
+      "BEv.P1",
+      "BL.P4",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "forbidden_set": [
+      "BM.*",
+      "BE.D5",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D4",
+    "BL.D6",
+    "BL.D7",
+    "BE.D6",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P5",
+    "evidence": "BT.P1",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "privacy": "BT.D5"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "cross_domain_lineage_required": true,
+    "custody_bridge_required": true,
+    "non_repudiation_required": true
+  },
+
+  "normative_surface": {
+    "federation_law": [
+      "BL.D1",
+      "BL.D4",
+      "BL.D6",
+      "BL.D7"
+    ],
+    "identity_law": [
+      "BE.D6",
+      "BE.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4",
+      "BT.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BE.P1",
+      "BE.P3",
+      "BE.P6",
+      "BL.D4",
+      "BL.P1",
+      "BL.P7",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "description": "Only defined entities, credentials, contracts, enforcement states, and trace artifacts may puncture the federation membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BE.P1",
+      "BP.P3",
+      "BEv.P1",
+      "BL.P4",
+      "BT.P5"
+    ],
+    "description": "Federation produces interoperable identities, cross-boundary process bindings, protocol events, treaty enforcement acts, and provenance bridges."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "interop_events": ["BEv.P1"],
+    "violation_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "federation_membrane",
+    "surprise_sensitive": true,
+    "treaty_enforcement": true,
+    "identity_projection": true,
+    "custody_bridge_controls": true,
+    "puncture_conditions": [
+      "federation_request",
+      "product_combination",
+      "cross_system_workflow",
+      "external_audit",
+      "interoperability_upgrade"
+    ],
+    "automatic_actions": [
+      "federated_identity_bind",
+      "protocol_contract_check",
+      "interop_event_emit",
+      "custody_link_create",
+      "federation_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-06-Service-Delivery-Blanket",
+      "BkA-10-Decision-Constitution-Blanket",
+      "BkA-17-Evolution-Adaptation-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-07-Trace-Constitution-Blanket",
+      "BkA-16-Semantic-Alignment-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where Mobius becomes a federated participant. It is the membrane of interoperability, treaty, and cross-system identity.",
+    "design_notes": [
+      "Federation is not service exposure.",
+      "Federation is structural coupling.",
+      "Every cross-system interaction is contractual.",
+      "Every interop act must preserve trace custody.",
+      "This blanket governs how Mobius touches other worlds."
+    ],
+    "observability_role": [
+      "federation_surface",
+      "interop_surface",
+      "treaty_surface",
+      "custody_bridge_surface"
+    ]
+  }
+}

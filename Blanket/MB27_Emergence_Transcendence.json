@@ -1,0 +1,168 @@
+{
+  "blanket_id": "bka-27",
+  "archetype_id": "BkA-27",
+  "semantic_name": "Emergence & Transcendence Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "pluriverse_to_emergence",
+    "from": ["BM.D*", "BL.D*", "BE.D*", "BT.P*"],
+    "into": ["BM.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "Π -> ⧫",
+    "trace_required": true,
+    "description": "Governs the ontological transition where known worlds encounter irreducible novelty and new orders of being."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "⧫",
+    "A": "Genesis",
+    "C": "Emergent"
+  },
+
+  "mobius_plane": "⧫",
+  "usage_type": "Trans-ontological",
+  "owner_agent": "Genesis",
+
+  "dominant_canonical": "BM.P2",
+
+  "permeability_model": "open-to-unknown",
+  "lifespan": "unbounded",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.P2",
+      "BM.P3",
+      "BT.P3"
+    ],
+    "sensory_set": [
+      "BT.P5",
+      "BEv.P7",
+      "BM.P2"
+    ],
+    "active_set": [
+      "BM.P2",
+      "BM.P3",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BL.P*",
+      "BE.P*",
+      "BR.*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D5",
+    "BT.D2",
+    "BT.D4"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "first_occurrence_required": true,
+    "non_canonical_trace_allowed": true,
+    "irreducibility_preserved": true
+  },
+
+  "normative_surface": {
+    "emergence_principles": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BT.P5",
+      "BEv.P7",
+      "BM.P2"
+    ],
+    "description": "Only existential trace, anomaly events, and raw experiential signals may puncture the emergence membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.P2",
+      "BM.P3",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Emergence produces first-order experiences, proto-meanings, novelty signals, and trace-bound appearance records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P7"],
+    "emergence_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "emergence_membrane",
+    "surprise_sensitive": true,
+    "non_reduction_enforced": true,
+    "premature_formalization_blocked": true,
+    "puncture_conditions": [
+      "irreducible_anomaly",
+      "novel_pattern_detected",
+      "ontological_breakdown",
+      "unknown_unknown_encounter",
+      "world_exceedance"
+    ],
+    "automatic_actions": [
+      "first_occurrence_record",
+      "proto_semantic_capture",
+      "emergence_trace_bind",
+      "novelty_signal_emit"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-25-Ontological-Stewardship-Blanket",
+      "BkA-26-Pluriversal-Mediation-Blanket",
+      "BkA-16-Semantic-Alignment-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-26-Pluriversal-Mediation-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where known worlds encounter irreducible novelty. It is the membrane of emergence, first appearances, and transcendence.",
+    "design_notes": [
+      "This blanket preserves the incompleteness of Mobius.",
+      "Not all novelty should be formalized.",
+      "Emergence precedes ontology.",
+      "This is where new kinds of being first appear.",
+      "This blanket protects the unknown."
+    ],
+    "observability_role": [
+      "emergence_surface",
+      "novelty_surface",
+      "first_occurrence_surface",
+      "transcendence_surface"
+    ]
+  }
+}

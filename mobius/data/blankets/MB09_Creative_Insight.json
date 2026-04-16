@@ -1,0 +1,198 @@
+{
+  "blanket_id": "bka-09",
+  "archetype_id": "BkA-09",
+  "semantic_name": "Creative Insight Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "cognition_to_novel_semantics",
+    "from": ["BM.P*", "BR.P*", "BT.P*"],
+    "into": ["BM.P*", "BEv.P7", "BT.P*"],
+    "plane_shift": "C -> E",
+    "trace_required": true,
+    "description": "Governs the ontological transition where structured cognitive orientation is transformed into novel semantic constructs, visions, frames, and creative possibilities."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "E",
+    "A": "Eureka",
+    "C": "Epistemic"
+  },
+
+  "mobius_plane": "E",
+  "usage_type": "Epistemic",
+  "owner_agent": "Eureka",
+
+  "dominant_canonical": "BM.P2",
+
+  "permeability_model": "sandboxed",
+  "lifespan": "dynamic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.P1",
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BM.P5"
+    ],
+    "sensory_set": [
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BM.P6",
+      "BR.P2",
+      "BR.P6",
+      "BT.P1",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BM.P1",
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P5",
+      "BL.*",
+      "BR.D*",
+      "BE.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D5",
+    "BM.D6",
+    "BM.D7",
+    "BL.D3",
+    "BL.D5"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "novelty_marking": true,
+    "lineage_required": true,
+    "ethical_annotation_required": true
+  },
+
+  "normative_surface": {
+    "meaning_law": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5",
+      "BT.D6"
+    ],
+    "disclosure_law": [
+      "BL.D3",
+      "BL.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.P*",
+      "BR.P2",
+      "BR.P6",
+      "BT.P1",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "description": "Only grounded meaning, reflective cognitive artifacts, experimental results, and trace memory may puncture the creative transition membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.P1",
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "description": "Creative insight produces new visions, business cases, value frames, decision rationales, and novelty signals bound into trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "novelty_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "epistemic_innovation_membrane",
+    "surprise_sensitive": true,
+    "ethical_gates": ["BM.D2", "BM.D5"],
+    "novelty_controls": ["BM.D3"],
+    "rationale_binding": ["BM.P4"],
+    "puncture_conditions": [
+      "creative_cycle_trigger",
+      "anomaly_detected",
+      "strategic_reframe_request"
+    ],
+    "automatic_actions": [
+      "concept_generation",
+      "vision_synthesis",
+      "semantic_reframing",
+      "novelty_event_emit",
+      "creative_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-05-Semantic-Interface-Blanket",
+      "BkA-08-Reasoning-Cognition-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-08-Reasoning-Cognition-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-36-Constitutional-Interpretation-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where cognitive orientation gives rise to novel semantic constructs. It is the membrane of innovation, ideation, reframing, and conceptual emergence.",
+    "design_notes": [
+      "Creativity is not reasoning.",
+      "Creativity introduces new frames, not just new conclusions.",
+      "No creative output exists without ethical annotation.",
+      "No creative output exists without trace.",
+      "This blanket governs the birth of new meaning in Mobius."
+    ],
+    "observability_role": [
+      "innovation_surface",
+      "concept_surface",
+      "vision_surface",
+      "novelty_lineage_surface"
+    ]
+  }
+}

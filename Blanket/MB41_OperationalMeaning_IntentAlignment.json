@@ -1,0 +1,179 @@
+{
+  "blanket_id": "bka-41",
+  "archetype_id": "BkA-41",
+  "semantic_name": "Operational Meaning & Intent Alignment Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "declared_purpose_to_operational_meaning",
+    "from": ["BM.D*", "BM.P*", "BP.P*", "BEv.P*", "BT.P*"],
+    "into": ["BM.P*", "BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "M -> M'",
+    "trace_required": true,
+    "description": "Governs the ontological transition where declared purpose and values are continuously interpreted against real execution to determine lived intent."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "M'",
+    "A": "Maestro",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "Business-Meaning",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "Maestro",
+
+  "dominant_canonical": "BM.P4",
+
+  "permeability_model": "interpretive",
+  "lifespan": "continuous",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.P4",
+      "BM.P6",
+      "BM.P7",
+      "BR.P2"
+    ],
+    "sensory_set": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.P1",
+      "BM.P3",
+      "BP.P1",
+      "BEv.P1",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BM.P4",
+      "BM.P6",
+      "BM.P7",
+      "BR.P2",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BL.D*",
+      "BP.D*",
+      "BR.P7"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D5",
+    "BM.D7",
+    "BL.D5",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "observability": "BT.P6",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "interpretation_lineage_required": true,
+    "non_fabrication_required": true,
+    "cultural_audit_ready": true
+  },
+
+  "normative_surface": {
+    "meaning_law": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D5",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.D*",
+      "BM.P1",
+      "BM.P3",
+      "BP.P1",
+      "BEv.P1",
+      "BT.P5"
+    ],
+    "description": "Only declared meaning, decision rationales, real executions, execution events, and provenance may puncture the operational meaning membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.P4",
+      "BM.P6",
+      "BM.P7",
+      "BR.P2",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "description": "Operational meaning produces lived-intent interpretations, adoption signals, cultural risk indicators, alignment confidence, misalignment events, and trace-bound meaning records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "misalignment_events": ["BEv.P7"],
+    "alignment_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "operational_intent_membrane",
+    "surprise_sensitive": true,
+    "semantic_interpretation": true,
+    "intent_drift_detection": true,
+    "puncture_conditions": [
+      "new_execution_pattern",
+      "strategic_realignment",
+      "cultural_signal_detected",
+      "behavioral_anomaly"
+    ],
+    "automatic_actions": [
+      "intent_alignment_evaluation",
+      "cultural_signal_update",
+      "misalignment_event_emit",
+      "meaning_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-37-Executive-Oversight-Blanket",
+      "BkA-40-Governance-Results-Blanket",
+      "BkA-34-Meaning-Brand-Coherence-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-38-Directive-Strategic-Execution-Blanket",
+      "BkA-16-Semantic-Alignment-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius continuously interprets whether real behavior still expresses declared purpose.",
+    "design_notes": [
+      "This blanket does not define purpose; it interprets it.",
+      "It detects drift between intent and behavior.",
+      "It produces cultural and meaning signals, not laws.",
+      "This is Mobius’ self-reflection layer."
+    ],
+    "observability_role": [
+      "operational_meaning_surface",
+      "intent_surface",
+      "cultural_surface",
+      "drift_surface"
+    ]
+  }
+}

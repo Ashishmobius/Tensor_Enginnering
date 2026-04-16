@@ -1,0 +1,706 @@
+{
+  "graph_mass": {
+    "graph_id": "MOBIUS_SIGMA_98_GRAPH",
+    "description": "Pure canonical Mobius hypergraph mass.",
+    "definition": "G = (V, E, H, Sigma98)",
+    "sigma_98": {
+      "families": [
+        "BL",
+        "BE",
+        "BP",
+        "BEv",
+        "BR",
+        "BM",
+        "BT"
+      ],
+      "de_jure": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7"
+      ],
+      "practice": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7"
+      ],
+      "total": 98
+    },
+    "V": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D3",
+      "BL.D4",
+      "BL.D5",
+      "BL.D6",
+      "BL.D7",
+      "BL.P1",
+      "BL.P2",
+      "BL.P3",
+      "BL.P4",
+      "BL.P5",
+      "BL.P6",
+      "BL.P7",
+      "BE.D1",
+      "BE.D2",
+      "BE.D3",
+      "BE.D4",
+      "BE.D5",
+      "BE.D6",
+      "BE.D7",
+      "BE.P1",
+      "BE.P2",
+      "BE.P3",
+      "BE.P4",
+      "BE.P5",
+      "BE.P6",
+      "BE.P7",
+      "BP.D1",
+      "BP.D2",
+      "BP.D3",
+      "BP.D4",
+      "BP.D5",
+      "BP.D6",
+      "BP.D7",
+      "BP.P1",
+      "BP.P2",
+      "BP.P3",
+      "BP.P4",
+      "BP.P5",
+      "BP.P6",
+      "BP.P7",
+      "BEv.D1",
+      "BEv.D2",
+      "BEv.D3",
+      "BEv.D4",
+      "BEv.D5",
+      "BEv.D6",
+      "BEv.D7",
+      "BEv.P1",
+      "BEv.P2",
+      "BEv.P3",
+      "BEv.P4",
+      "BEv.P5",
+      "BEv.P6",
+      "BEv.P7",
+      "BR.D1",
+      "BR.D2",
+      "BR.D3",
+      "BR.D4",
+      "BR.D5",
+      "BR.D6",
+      "BR.D7",
+      "BR.P1",
+      "BR.P2",
+      "BR.P3",
+      "BR.P4",
+      "BR.P5",
+      "BR.P6",
+      "BR.P7",
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6",
+      "BM.D7",
+      "BM.P1",
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BM.P5",
+      "BM.P6",
+      "BM.P7",
+      "BT.D1",
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5",
+      "BT.D6",
+      "BT.D7",
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P4",
+      "BT.P5",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "E": [
+      {
+        "src": "BM.D1",
+        "dst": "BL.D1",
+        "relation": "governed_by"
+      },
+      {
+        "src": "BL.D1",
+        "dst": "BP.D1",
+        "relation": "constrains"
+      },
+      {
+        "src": "BP.D1",
+        "dst": "BEv.P1",
+        "relation": "triggers"
+      },
+      {
+        "src": "BEv.P1",
+        "dst": "BR.P1",
+        "relation": "produces"
+      },
+      {
+        "src": "BR.P1",
+        "dst": "BT.D1",
+        "relation": "recorded_in"
+      },
+      {
+        "src": "BE.P1",
+        "dst": "BP.D1",
+        "relation": "consumed_by"
+      },
+      {
+        "src": "BE.D1",
+        "dst": "BM.D1",
+        "relation": "interpreted_as"
+      },
+      {
+        "src": "BT.D1",
+        "dst": "BM.D1",
+        "relation": "informs"
+      },
+      {
+        "src": "BL.D2",
+        "dst": "BE.D1",
+        "relation": "regulates"
+      },
+      {
+        "src": "BP.D2",
+        "dst": "BR.D2",
+        "relation": "produces"
+      },
+      {
+        "src": "BL.P4",
+        "dst": "BP.P4",
+        "relation": "runtime_gate"
+      },
+      {
+        "src": "BP.P3",
+        "dst": "BEv.P1",
+        "relation": "execution_entry"
+      },
+      {
+        "src": "BEv.P1",
+        "dst": "BT.P1",
+        "relation": "trace_birth"
+      },
+      {
+        "src": "BEv.P1",
+        "dst": "BT.P6",
+        "relation": "metric_birth"
+      },
+      {
+        "src": "BEv.P7",
+        "dst": "BT.P7",
+        "relation": "violation_trace"
+      },
+      {
+        "src": "BEv.P2",
+        "dst": "BR.P2",
+        "relation": "candidate_produces"
+      },
+      {
+        "src": "BP.P3",
+        "dst": "BEv.P3",
+        "relation": "candidate_triggers"
+      },
+      {
+        "src": "BP.P4",
+        "dst": "BR.P3",
+        "relation": "candidate_emits"
+      },
+      {
+        "src": "BE.P4",
+        "dst": "BP.P3",
+        "relation": "candidate_configures"
+      }
+    ],
+    "H": [
+      {
+        "hyperedge_id": "H-001",
+        "type": "BPack",
+        "members": [
+          "BL.D1",
+          "BE.P1",
+          "BP.D1",
+          "BEv.P1",
+          "BR.P1",
+          "BM.D1",
+          "BT.D1"
+        ]
+      },
+      {
+        "hyperedge_id": "H-002",
+        "type": "TraceHyperedge",
+        "members": [
+          "BEv.P1",
+          "BR.P1",
+          "BT.D1"
+        ]
+      },
+      {
+        "hyperedge_id": "H-003",
+        "type": "GovernanceHyperedge",
+        "members": [
+          "BM.D1",
+          "BL.D1",
+          "BE.D1"
+        ]
+      },
+      {
+        "hyperedge_id": "H-004",
+        "type": "ExecutionHyperedge",
+        "members": [
+          "BP.P3",
+          "BP.P1",
+          "BEv.P1",
+          "BR.P1",
+          "BT.P1",
+          "BT.P6",
+          "BT.P7"
+        ]
+      },
+      {
+        "hyperedge_id": "H-005",
+        "type": "RuntimeGateHyperedge",
+        "members": [
+          "BL.P4",
+          "BP.P4",
+          "BP.D6",
+          "BEv.P1"
+        ]
+      }
+    ]
+  },
+  "blanket_instances": [
+    {
+      "blanket_id": "bka-18-inst-GR-H-001",
+      "archetype_id": "BkA-18",
+      "semantic_name": "Federation & Interoperability Blanket",
+      "status": "active",
+      "ontological_transition_profile": {
+        "transition_type": "system_to_federated_actor",
+        "from": [
+          "BE.P*",
+          "BP.P*",
+          "BL.D*",
+          "BL.P*",
+          "BT.P*"
+        ],
+        "into": [
+          "BE.P*",
+          "BP.P*",
+          "BEv.P*",
+          "BL.P*",
+          "BT.P*"
+        ],
+        "plane_shift": "X/O/M -> F",
+        "trace_required": true,
+        "description": "Governs the ontological transition where Mobius becomes a federated participant capable of interoperating with external systems, products, and organizations."
+      },
+      "bpac_signature": {
+        "B": "BE",
+        "P": "F",
+        "A": "Foedus",
+        "C": "Interoperability"
+      },
+      "mobius_plane": "F",
+      "usage_type": "Meta-structural",
+      "owner_agent": "Foedus",
+      "dominant_canonical": "BE.P1",
+      "permeability_model": "treaty",
+      "lifespan": "persistent",
+      "membrane_sets": {
+        "internal_set": [
+          "BE.P1",
+          "BE.P3",
+          "BE.P6",
+          "BL.P1",
+          "BL.P4",
+          "BL.P7"
+        ],
+        "sensory_set": [
+          "BE.P1",
+          "BE.P6",
+          "BL.D4",
+          "BL.D6",
+          "BL.D7",
+          "BT.P1",
+          "BT.P5"
+        ],
+        "active_set": [
+          "BE.P1",
+          "BP.P3",
+          "BEv.P1",
+          "BL.P4",
+          "BT.P1",
+          "BT.P5"
+        ],
+        "forbidden_set": [
+          "BM.*",
+          "BE.D5",
+          "BR.D*"
+        ]
+      },
+      "ruleset_ref": [
+        "BL.D1",
+        "BL.D4",
+        "BL.D6",
+        "BL.D7",
+        "BE.D6",
+        "BT.D2",
+        "BT.D4"
+      ],
+      "trace_pointer": {
+        "primary": "BT.P5",
+        "evidence": "BT.P1",
+        "custody": "BT.D4",
+        "retention": "BT.D1",
+        "privacy": "BT.D5"
+      },
+      "trace_policy": {
+        "mandatory": true,
+        "cross_domain_lineage_required": true,
+        "custody_bridge_required": true,
+        "non_repudiation_required": true
+      },
+      "normative_surface": {
+        "federation_law": [
+          "BL.D1",
+          "BL.D4",
+          "BL.D6",
+          "BL.D7"
+        ],
+        "identity_law": [
+          "BE.D6",
+          "BE.D7"
+        ],
+        "trace_law": [
+          "BT.D2",
+          "BT.D4",
+          "BT.D5"
+        ]
+      },
+      "input_constraints": {
+        "allowed_canonicals": [
+          "BE.P1",
+          "BE.P3",
+          "BE.P6",
+          "BL.D4",
+          "BL.P1",
+          "BL.P7",
+          "BT.P1",
+          "BT.P5"
+        ],
+        "description": "Only defined entities, credentials, contracts, enforcement states, and trace artifacts may puncture the federation membrane."
+      },
+      "output_behavior": {
+        "generates": [
+          "BE.P1",
+          "BP.P3",
+          "BEv.P1",
+          "BL.P4",
+          "BT.P5"
+        ],
+        "description": "Federation produces interoperable identities, cross-boundary process bindings, protocol events, treaty enforcement acts, and provenance bridges."
+      },
+      "event_interface": {
+        "entry_events": [
+          "BEv.P1"
+        ],
+        "interop_events": [
+          "BEv.P1"
+        ],
+        "violation_events": [
+          "BEv.P7"
+        ],
+        "correlation_binding": [
+          "BEv.P2"
+        ]
+      },
+      "boundary_mechanics": {
+        "boundary_role": "federation_membrane",
+        "surprise_sensitive": true,
+        "treaty_enforcement": true,
+        "identity_projection": true,
+        "custody_bridge_controls": true,
+        "puncture_conditions": [
+          "federation_request",
+          "product_combination",
+          "cross_system_workflow",
+          "external_audit",
+          "interoperability_upgrade"
+        ],
+        "automatic_actions": [
+          "federated_identity_bind",
+          "protocol_contract_check",
+          "interop_event_emit",
+          "custody_link_create",
+          "federation_trace_bind"
+        ]
+      },
+      "cross_blanket_links": {
+        "feeds_blankets": [
+          "BkA-06-Service-Delivery-Blanket",
+          "BkA-10-Decision-Constitution-Blanket",
+          "BkA-17-Evolution-Adaptation-Blanket"
+        ],
+        "depends_on_blankets": [
+          "BkA-03-Compliance-Control-Blanket",
+          "BkA-07-Trace-Constitution-Blanket",
+          "BkA-16-Semantic-Alignment-Blanket"
+        ]
+      },
+      "metadata": {
+        "description": "Defines the ontological transition where Mobius becomes a federated participant. It is the membrane of interoperability, treaty, and cross-system identity.",
+        "design_notes": [
+          "Federation is not service exposure.",
+          "Federation is structural coupling.",
+          "Every cross-system interaction is contractual.",
+          "Every interop act must preserve trace custody.",
+          "This blanket governs how Mobius touches other worlds."
+        ],
+        "observability_role": [
+          "federation_surface",
+          "interop_surface",
+          "treaty_surface",
+          "custody_bridge_surface"
+        ]
+      },
+      "attached_region_id": "GR-H-001",
+      "classification_confidence": 0.5117,
+      "classification_reasons": [
+        "overlap 2"
+      ]
+    },
+    {
+      "blanket_id": "bka-38-inst-GR-H-003",
+      "archetype_id": "BkA-38",
+      "semantic_name": "Directive & Strategic Execution Blanket",
+      "status": "active",
+      "ontological_transition_profile": {
+        "transition_type": "law_and_strategy_to_executable_process",
+        "from": [
+          "BL.D*",
+          "BL.P*",
+          "BM.D*",
+          "BM.P*",
+          "BE.D*"
+        ],
+        "into": [
+          "BP.D*",
+          "BP.P*",
+          "BEv.P*",
+          "BT.P*"
+        ],
+        "plane_shift": "L/M -> P",
+        "trace_required": true,
+        "description": "Governs the ontological transition where constitutional law and strategic intent are translated into executable governance and operational processes."
+      },
+      "bpac_signature": {
+        "B": "BP",
+        "P": "P",
+        "A": "OAI",
+        "C": "Governance"
+      },
+      "mobius_plane": "Business-Processes",
+      "usage_type": "Civilizational-core",
+      "owner_agent": "OAI",
+      "dominant_canonical": "BP.D2",
+      "permeability_model": "directive",
+      "lifespan": "institutional",
+      "membrane_sets": {
+        "internal_set": [
+          "BP.D1",
+          "BP.D2",
+          "BP.D4",
+          "BP.D5",
+          "BP.D6"
+        ],
+        "sensory_set": [
+          "BL.D1",
+          "BL.D2",
+          "BL.P4",
+          "BM.D1",
+          "BM.D3",
+          "BM.P3",
+          "BE.D3",
+          "BT.P5"
+        ],
+        "active_set": [
+          "BP.D*",
+          "BP.P2",
+          "BP.P3",
+          "BP.P4",
+          "BEv.P1",
+          "BT.P3"
+        ],
+        "forbidden_set": [
+          "BE.P*",
+          "BR.*",
+          "BL.P1",
+          "BM.P1"
+        ]
+      },
+      "ruleset_ref": [
+        "BP.D1",
+        "BP.D2",
+        "BP.D3",
+        "BP.D4",
+        "BP.D5",
+        "BP.D6",
+        "BP.D7",
+        "BL.D5",
+        "BT.D2"
+      ],
+      "trace_pointer": {
+        "primary": "BT.P3",
+        "directive_record": "BT.P1",
+        "provenance": "BT.P5",
+        "custody": "BT.D4",
+        "retention": "BT.D1"
+      },
+      "trace_policy": {
+        "mandatory": true,
+        "directive_lineage_required": true,
+        "constitutional_binding_required": true,
+        "audit_ready": true
+      },
+      "normative_surface": {
+        "process_law": [
+          "BP.D1",
+          "BP.D2",
+          "BP.D4",
+          "BP.D6",
+          "BP.D7"
+        ],
+        "governance_law": [
+          "BL.D5"
+        ],
+        "trace_law": [
+          "BT.D2"
+        ]
+      },
+      "input_constraints": {
+        "allowed_canonicals": [
+          "BL.D*",
+          "BL.P4",
+          "BM.D*",
+          "BM.P3",
+          "BE.D*",
+          "BT.P5"
+        ],
+        "description": "Only binding law, executive mandates, strategic meaning, recognized authority, and provenance may puncture the directive membrane."
+      },
+      "output_behavior": {
+        "generates": [
+          "BP.D*",
+          "BP.P2",
+          "BP.P3",
+          "BP.P4",
+          "BEv.P1",
+          "BT.P3"
+        ],
+        "description": "Directive execution produces formal process standards, governance workflows, activation triggers, and trace-bound directive records."
+      },
+      "event_interface": {
+        "entry_events": [
+          "BEv.P1"
+        ],
+        "activation_events": [
+          "BEv.P1"
+        ],
+        "violation_events": [
+          "BEv.P7"
+        ],
+        "correlation_binding": [
+          "BEv.P2"
+        ]
+      },
+      "boundary_mechanics": {
+        "boundary_role": "directive_execution_membrane",
+        "surprise_sensitive": true,
+        "authority_validation": true,
+        "policy_binding": true,
+        "puncture_conditions": [
+          "executive_directive",
+          "policy_change",
+          "strategic_realignment",
+          "governance_program_launch"
+        ],
+        "automatic_actions": [
+          "process_template_generation",
+          "control_path_binding",
+          "activation_event_emit",
+          "directive_trace_bind"
+        ]
+      },
+      "cross_blanket_links": {
+        "feeds_blankets": [
+          "BkA-02-Workflow-Orchestration-Blanket",
+          "BkA-03-Compliance-Control-Blanket",
+          "BkA-14-Evaluation-Cycle-Blanket"
+        ],
+        "depends_on_blankets": [
+          "BkA-37-Executive-Oversight-Blanket",
+          "BkA-36-Constitutional-Law-Blanket",
+          "BkA-07-Trace-Constitution-Blanket"
+        ]
+      },
+      "metadata": {
+        "description": "Defines the membrane where Mobius law and strategy become executable governance and operational processes.",
+        "design_notes": [
+          "This blanket translates will into workflow.",
+          "No execution happens here; only process creation.",
+          "All directives are trace-bound.",
+          "This blanket is the bridge between sovereignty and operations."
+        ],
+        "observability_role": [
+          "directive_surface",
+          "process_genesis_surface",
+          "governance_workflow_surface",
+          "activation_surface"
+        ]
+      },
+      "attached_region_id": "GR-H-003",
+      "classification_confidence": 0.5312,
+      "classification_reasons": [
+        "overlap 4"
+      ]
+    }
+  ],
+  "blanket_bindings": [
+    {
+      "binding_id": "bb-5f2b42",
+      "region_id": "GR-H-001",
+      "blanket_id": "bka-18-inst-GR-H-001",
+      "attached_at": "2026-04-06T10:00:57Z"
+    },
+    {
+      "binding_id": "bb-57c68c",
+      "region_id": "GR-H-003",
+      "blanket_id": "bka-38-inst-GR-H-003",
+      "attached_at": "2026-04-06T10:00:57Z"
+    }
+  ],
+  "metadata": {
+    "system": "unified_resolution",
+    "timestamp": "2026-04-06T10:00:57Z",
+    "total_regions": 2
+  }
+}

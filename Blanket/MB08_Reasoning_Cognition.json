@@ -1,0 +1,199 @@
+{
+  "blanket_id": "bka-08",
+  "archetype_id": "BkA-08",
+  "semantic_name": "Reasoning & Cognition Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "meaning_to_cognitive_orientation",
+    "from": ["BM.P*", "BR.P*", "BT.P*"],
+    "into": ["BP.P*", "BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "E -> C",
+    "trace_required": true,
+    "description": "Governs the ontological transition where interpreted reality is transformed into internal cognitive state: beliefs, hypotheses, strategies, expectations, and exploratory signals."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "C",
+    "A": "Noesis",
+    "C": "Cognitive"
+  },
+
+  "mobius_plane": "C",
+  "usage_type": "Cognitive",
+  "owner_agent": "Noesis",
+
+  "dominant_canonical": "BM.P4",
+
+  "permeability_model": "selective",
+  "lifespan": "dynamic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BM.P6",
+      "BR.P2",
+      "BR.P5"
+    ],
+    "sensory_set": [
+      "BM.P1",
+      "BM.P5",
+      "BM.P7",
+      "BR.P1",
+      "BR.P3",
+      "BR.P4",
+      "BT.P1",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BP.P2",
+      "BP.P5",
+      "BEv.P1",
+      "BR.P2",
+      "BR.P5",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BE.P5",
+      "BL.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D5",
+    "BM.D7",
+    "BL.D3",
+    "BL.D5"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "consumes": ["BT.P1", "BT.P5"],
+    "emits": ["BT.P3"],
+    "explainability_required": true,
+    "hypothesis_lineage_required": true
+  },
+
+  "normative_surface": {
+    "cognitive_law": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5",
+      "BT.D6"
+    ],
+    "disclosure_law": [
+      "BL.D3",
+      "BL.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.P*",
+      "BR.P*",
+      "BT.P1",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "description": "Only grounded meaning, observed results, and trace artifacts may puncture the cognition transition membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BP.P2",
+      "BP.P5",
+      "BEv.P1",
+      "BR.P2",
+      "BR.P5",
+      "BT.P3"
+    ],
+    "description": "Cognition produces hypotheses, candidate tasks, optimization levers, expectations, exploratory signals, and traceable reasoning artifacts."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "exit_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"],
+    "fault_events": ["BEv.P7"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "cognitive_orientation_membrane",
+    "surprise_sensitive": true,
+    "ethical_gates": ["BM.D2", "BM.D5"],
+    "bias_controls": ["BM.D4"],
+    "rationale_binding": ["BM.P4"],
+    "puncture_conditions": [
+      "new_meaning_projection",
+      "significant_result_change",
+      "novel_trace_pattern"
+    ],
+    "automatic_actions": [
+      "hypothesis_generation",
+      "strategy_synthesis",
+      "expectation_update",
+      "exploration_signal_emit",
+      "reasoning_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-02-Workflow-Orchestration",
+      "BkA-14-Outcome-Evaluation-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-05-Semantic-Interface-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-36-Constitutional-Interpretation-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where meaning and evidence become internal cognitive state. It is the membrane of reasoning, hypothesis formation, anticipation, and strategic orientation.",
+    "design_notes": [
+      "Cognition is not execution.",
+      "Cognition may only propose, not act.",
+      "All reasoning must be trace-grounded.",
+      "No hypothesis exists without lineage.",
+      "This blanket is Mobius’s interior mind."
+    ],
+    "observability_role": [
+      "belief_surface",
+      "hypothesis_surface",
+      "expectation_surface",
+      "reasoning_lineage_surface"
+    ]
+  }
+}

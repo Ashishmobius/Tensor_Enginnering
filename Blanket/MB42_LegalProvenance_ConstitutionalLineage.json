@@ -1,0 +1,177 @@
+{
+  "blanket_id": "bka-42",
+  "archetype_id": "BkA-42",
+  "semantic_name": "Legal Provenance & Constitutional Lineage Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "binding_law_to_legal_provenance",
+    "from": ["BL.D*", "BL.P*", "BEv.P*", "BT.P*"],
+    "into": ["BT.P1", "BT.P2", "BT.P4", "BT.P5"],
+    "plane_shift": "L -> T(L)",
+    "trace_required": true,
+    "description": "Governs the ontological transition where binding constitutional law and ratified amendments become immutable legal ancestry and provenance."
+  },
+
+  "bpac_signature": {
+    "B": "BT",
+    "P": "T(L)",
+    "A": "Chitra",
+    "C": "Governance"
+  },
+
+  "mobius_plane": "Business-Trace",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "Chitra",
+
+  "dominant_canonical": "BT.P5",
+
+  "permeability_model": "archival-closed",
+  "lifespan": "perpetual",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P4",
+      "BT.P5"
+    ],
+    "sensory_set": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D4",
+      "BL.D7",
+      "BL.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "active_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P4",
+      "BT.P5"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.*",
+      "BM.*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BT.D1",
+    "BT.D2",
+    "BT.D3",
+    "BT.D4",
+    "BT.D7",
+    "BL.D1",
+    "BL.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P5",
+    "law_ledger": "BT.P1",
+    "law_snapshot": "BT.P2",
+    "replay_artifact": "BT.P4",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "legal_hold": "BT.D7"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "constitutional_lineage_required": true,
+    "tamper_evident_required": true,
+    "non_repudiation_required": true,
+    "replayable_required": true
+  },
+
+  "normative_surface": {
+    "trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D7"
+    ],
+    "constitutional_law": [
+      "BL.D1",
+      "BL.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BL.D*",
+      "BL.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Only ratified law, constitutional amendments, authoritative enforcement instruments, and decision records may puncture the legal provenance membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P4",
+      "BT.P5"
+    ],
+    "description": "Legal provenance produces immutable law ledgers, cryptographic constitutional snapshots, replayable legal states, and constitutional provenance graphs."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "archive_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "constitutional_provenance_membrane",
+    "surprise_sensitive": false,
+    "archival_enforced": true,
+    "lineage_validation": true,
+    "puncture_conditions": [
+      "constitutional_ratification",
+      "amendment_approval",
+      "precedent_registration",
+      "regime_versioning"
+    ],
+    "automatic_actions": [
+      "law_snapshot_hash",
+      "lineage_edge_create",
+      "custody_record_update",
+      "constitutional_archive_update"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-23-Adjudication-Arbitration-Blanket",
+      "BkA-36-Constitutional-Law-Blanket",
+      "BkA-37-Executive-Oversight-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-36-Constitutional-Law-Blanket",
+      "BkA-39-Policy-Propagation-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius constitutional law becomes immutable legal ancestry and provenance.",
+    "design_notes": [
+      "This blanket does not define law; it preserves it.",
+      "This blanket does not enforce law; it witnesses it.",
+      "All legal legitimacy ultimately roots here.",
+      "This is the memory of law itself."
+    ],
+    "observability_role": [
+      "constitutional_archive_surface",
+      "legal_lineage_surface",
+      "provenance_surface",
+      "replay_surface"
+    ]
+  }
+}

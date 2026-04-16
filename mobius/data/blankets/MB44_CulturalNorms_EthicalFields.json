@@ -1,0 +1,175 @@
+{
+  "blanket_id": "bka-44",
+  "archetype_id": "BkA-44",
+  "semantic_name": "Cultural Norms & Ethical Field Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "ethical_meaning_to_social_legitimacy",
+    "from": ["BM.D*", "BM.P*", "BE.D*", "BE.P*", "BT.P*"],
+    "into": ["BM.P*", "BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "M -> Social",
+    "trace_required": true,
+    "description": "Governs the ontological transition where ethical principles and lived behavior form social legitimacy, trust, and cultural coherence."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "Social",
+    "A": "OAI",
+    "C": "Meta-Modulatory"
+  },
+
+  "mobius_plane": "Business-Meaning",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "OAI",
+
+  "dominant_canonical": "BM.D2",
+
+  "permeability_model": "cultural-adaptive",
+  "lifespan": "continuous",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.P6",
+      "BM.P7",
+      "BR.P2",
+      "BT.P5"
+    ],
+    "sensory_set": [
+      "BM.D2",
+      "BM.D4",
+      "BM.D6",
+      "BM.P5",
+      "BE.P1",
+      "BE.P4",
+      "BT.P6"
+    ],
+    "active_set": [
+      "BM.P7",
+      "BM.P6",
+      "BR.P2",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BL.D*",
+      "BP.*",
+      "BR.P7"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D2",
+    "BM.D4",
+    "BM.D6",
+    "BM.D7",
+    "BL.D5",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P5",
+    "cultural_record": "BT.P1",
+    "observability": "BT.P6",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "cultural_lineage_required": true,
+    "tamper_evident_required": true,
+    "social_audit_ready": true
+  },
+
+  "normative_surface": {
+    "ethical_law": [
+      "BM.D2",
+      "BM.D4",
+      "BM.D6",
+      "BM.D7"
+    ],
+    "governance_law": [
+      "BL.D5"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.D*",
+      "BM.P5",
+      "BE.P*",
+      "BT.P6"
+    ],
+    "description": "Only declared ethical meaning, cultural feedback, lived behavior, and observability signals may puncture the cultural membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.P6",
+      "BM.P7",
+      "BR.P2",
+      "BEv.P7",
+      "BT.P5"
+    ],
+    "description": "Cultural governance produces adoption signals, cultural trust indicators, legitimacy confidence, norm-violation events, and cultural provenance bindings."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "norm_violation_events": ["BEv.P7"],
+    "cultural_update_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "cultural_norm_membrane",
+    "surprise_sensitive": true,
+    "ethical_filtering": true,
+    "cultural_drift_detection": true,
+    "puncture_conditions": [
+      "new_behavior_pattern",
+      "ethical_signal",
+      "community_shift",
+      "trust_anomaly"
+    ],
+    "automatic_actions": [
+      "norm_alignment_evaluation",
+      "cultural_signal_update",
+      "legitimacy_recompute",
+      "cultural_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-41-Operational-Meaning-Blanket",
+      "BkA-37-Executive-Oversight-Blanket",
+      "BkA-43-Evolutionary-Law-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-34-Meaning-Brand-Coherence-Blanket",
+      "BkA-16-Semantic-Alignment-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius ethical meaning becomes lived social reality.",
+    "design_notes": [
+      "This blanket does not legislate ethics; it lives them.",
+      "It shapes who belongs and how trust forms.",
+      "It detects cultural drift and moral incoherence.",
+      "This is Mobius’ social field."
+    ],
+    "observability_role": [
+      "cultural_surface",
+      "trust_surface",
+      "ethical_surface",
+      "legitimacy_surface"
+    ]
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "blanket_id": "bka-23",
+  "archetype_id": "BkA-23",
+  "semantic_name": "Adjudication & Arbitration Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "conflict_to_adjudicated_outcome",
+    "from": ["BL.P*", "BEv.P*", "BT.P*", "BE.P*", "BR.P*"],
+    "into": ["BL.P*", "BR.P4", "BEv.P*", "BT.P*"],
+    "plane_shift": "Σ/Ω/$/R -> Δ",
+    "trace_required": true,
+    "description": "Governs the ontological transition where disputes, violations, and conflicting claims are transformed into formal judgments, rulings, and remedies."
+  },
+
+  "bpac_signature": {
+    "B": "BL",
+    "P": "Δ",
+    "A": "Dikastes",
+    "C": "Judicial"
+  },
+
+  "mobius_plane": "Δ",
+  "usage_type": "Constitutional",
+  "owner_agent": "Dikastes",
+
+  "dominant_canonical": "BL.P4",
+
+  "permeability_model": "evidentiary-strict",
+  "lifespan": "persistent",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BL.P4",
+      "BL.P6",
+      "BR.P4",
+      "BT.P3",
+      "BT.P1"
+    ],
+    "sensory_set": [
+      "BL.P5",
+      "BEv.P7",
+      "BT.P1",
+      "BT.P5",
+      "BR.P3",
+      "BE.P1"
+    ],
+    "active_set": [
+      "BL.P4",
+      "BL.P6",
+      "BR.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BM.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D2",
+    "BL.D7",
+    "BT.D2",
+    "BT.D3",
+    "BT.D4",
+    "BR.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "evidence": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "precedent": "BT.P1",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "evidence_chain_required": true,
+    "precedent_preservation_required": true,
+    "non_repudiation_required": true
+  },
+
+  "normative_surface": {
+    "adjudication_law": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4"
+    ],
+    "disclosure_law": [
+      "BL.D3",
+      "BL.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BL.P5",
+      "BEv.P7",
+      "BT.P1",
+      "BT.P5",
+      "BR.P3",
+      "BE.P1"
+    ],
+    "description": "Only formal findings, violations, custody-bound evidence, incident signals, and identified parties may puncture the adjudication membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BL.P4",
+      "BL.P6",
+      "BR.P4",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Adjudication produces rulings, enforcement mandates, remediation orders, formal judgments, and trace-bound case records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P7"],
+    "verdict_events": ["BEv.P1"],
+    "escalation_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "judicial_membrane",
+    "surprise_sensitive": true,
+    "evidence_validation": true,
+    "jurisdiction_binding": ["BL.D7"],
+    "precedent_binding": true,
+    "puncture_conditions": [
+      "formal_dispute_filed",
+      "compliance_violation",
+      "federation_conflict",
+      "economic_dispute",
+      "constitutional_challenge"
+    ],
+    "automatic_actions": [
+      "case_file_open",
+      "evidence_bundle_create",
+      "ruling_emit",
+      "remediation_bind",
+      "precedent_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-19-Economic-Settlement-Blanket",
+      "BkA-20-Reputation-Trust-Blanket",
+      "BkA-22-Constitutional-Amendment-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-21-Sovereignty-Authority-Blanket",
+      "BkA-07-Trace-Constitution-Blanket",
+      "BkA-18-Federation-Interoperability-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where conflict becomes formal adjudication. It is the membrane of arbitration, ruling, and constitutional dispute resolution.",
+    "design_notes": [
+      "Adjudication is not enforcement.",
+      "Adjudication is not amendment.",
+      "Evidence precedes power.",
+      "Precedent is preserved.",
+      "This blanket is the court of Holocracy."
+    ],
+    "observability_role": [
+      "case_surface",
+      "verdict_surface",
+      "precedent_surface",
+      "dispute_surface"
+    ]
+  }
+}

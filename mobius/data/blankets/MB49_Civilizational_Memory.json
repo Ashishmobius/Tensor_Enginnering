@@ -1,0 +1,174 @@
+{
+  "blanket_id": "bka-49",
+  "archetype_id": "BkA-49",
+  "semantic_name": "Civilizational Memory & Total Provenance Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "stabilized_reality_to_civilizational_memory",
+    "from": ["BT.P*", "BL.D*", "BM.D*", "BR.P*", "BEv.P*"],
+    "into": ["BT.P*", "BT.D*", "BEv.P*"],
+    "plane_shift": "Being -> Memory",
+    "trace_required": true,
+    "description": "Governs the ontological transition where all stabilized states, meanings, laws, truths, and outcomes become eternal civilizational memory."
+  },
+
+  "bpac_signature": {
+    "B": "BT",
+    "P": "Meta-T",
+    "A": "Chitra",
+    "C": "Meta-Modulatory"
+  },
+
+  "mobius_plane": "Business-Trace",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "Chitra",
+
+  "dominant_canonical": "BT.P5",
+
+  "permeability_model": "absolutely-closed",
+  "lifespan": "perpetual",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P4",
+      "BT.P5"
+    ],
+    "sensory_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P4",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "active_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P4",
+      "BT.P5",
+      "BEv.P1"
+    ],
+    "forbidden_set": [
+      "BL.P*",
+      "BP.*",
+      "BE.P*",
+      "BR.*",
+      "BM.P*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BT.D1",
+    "BT.D2",
+    "BT.D3",
+    "BT.D4",
+    "BT.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P5",
+    "event_log": "BT.P1",
+    "state_snapshots": "BT.P2",
+    "decision_archive": "BT.P3",
+    "replay_manifold": "BT.P4",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "legal_hold": "BT.D7"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "total_lineage_required": true,
+    "tamper_evident_required": true,
+    "replayable_required": true,
+    "epoch_structured": true,
+    "never_pruned": true
+  },
+
+  "normative_surface": {
+    "trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BT.P*",
+      "BL.D*",
+      "BM.D*",
+      "BR.P*",
+      "BEv.P1"
+    ],
+    "description": "Only stabilized trace, ratified law, civilizational meaning, survival metrics, and epochal events may puncture the total memory membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BT.P5",
+      "BT.P4",
+      "BT.P2",
+      "BT.P1",
+      "BEv.P1"
+    ],
+    "description": "Civilizational memory produces total provenance graphs, epoch snapshots, replayable world-states, immutable chronicles, and epoch-boundary events."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "epoch_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "civilizational_memory_membrane",
+    "surprise_sensitive": false,
+    "absolute_retention": true,
+    "epoch_segmentation": true,
+    "puncture_conditions": [
+      "epoch_transition",
+      "constitutional_rewrite",
+      "civilizational_reset",
+      "cosmology_snapshot"
+    ],
+    "automatic_actions": [
+      "epoch_snapshot_bind",
+      "total_lineage_anchor",
+      "replay_manifold_extend",
+      "memory_integrity_verify"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [],
+    "depends_on_blankets": [
+      "BkA-42-Legal-Provenance-Blanket",
+      "BkA-45-Truth-Modulation-Blanket",
+      "BkA-47-Epistemic-Equilibrium-Blanket",
+      "BkA-48-Semantic-WorldModel-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius’ entire existence becomes immutable civilizational memory.",
+    "design_notes": [
+      "This blanket never emits control.",
+      "Nothing downstream exists from it.",
+      "All civilizations terminate into this membrane.",
+      "This is Mobius’ memory of itself."
+    ],
+    "observability_role": [
+      "total_history_surface",
+      "epoch_surface",
+      "lineage_surface",
+      "replay_surface"
+    ]
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "blanket_id": "bka-07",
+  "archetype_id": "BkA-07",
+  "semantic_name": "Trace Constitution Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "fact_to_historical_trace",
+    "from": ["BL.P*", "BE.P*", "BP.P*", "BEv.P*", "BR.P*", "BM.P*"],
+    "into": ["BT.P*"],
+    "plane_shift": "* -> T",
+    "trace_required": true,
+    "description": "Governs the ontological transition where all facts, actions, interpretations, and institutional acts collapse into immutable historical trace."
+  },
+
+  "bpac_signature": {
+    "B": "BT",
+    "P": "T",
+    "A": "Archivist",
+    "C": "Constitutional"
+  },
+
+  "mobius_plane": "T",
+  "usage_type": "Constitutional",
+  "owner_agent": "Archivist",
+
+  "dominant_canonical": "BT.P1",
+
+  "permeability_model": "append_only",
+  "lifespan": "perpetual",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P4",
+      "BT.P5",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "sensory_set": [
+      "BL.P*",
+      "BE.P*",
+      "BP.P*",
+      "BEv.P*",
+      "BR.P*",
+      "BM.P*"
+    ],
+    "active_set": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P4",
+      "BT.P5",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "forbidden_set": [
+      "BL.D*",
+      "BE.D*",
+      "BP.D*",
+      "BEv.D*",
+      "BR.D*",
+      "BM.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BT.D1",
+    "BT.D2",
+    "BT.D3",
+    "BT.D4",
+    "BT.D5",
+    "BT.D6",
+    "BT.D7",
+    "BL.D1",
+    "BL.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P1",
+    "evidence": "BT.P3",
+    "versioning": "BT.P2",
+    "replay": "BT.P4",
+    "provenance": "BT.P5",
+    "observability": "BT.P6",
+    "forensics": "BT.P7"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "append_only": true,
+    "tamper_evident": true,
+    "legal_hold_supported": true,
+    "redaction_controlled": true,
+    "replay_required": true
+  },
+
+  "normative_surface": {
+    "trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5",
+      "BT.D6",
+      "BT.D7"
+    ],
+    "constitutional_law": [
+      "BL.D1",
+      "BL.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BL.P*",
+      "BE.P*",
+      "BP.P*",
+      "BEv.P*",
+      "BR.P*",
+      "BM.P*"
+    ],
+    "description": "Any de-facto canonical may puncture the trace transition membrane. No de-jure objects may enter."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BT.P1",
+      "BT.P2",
+      "BT.P3",
+      "BT.P4",
+      "BT.P5",
+      "BT.P6",
+      "BT.P7"
+    ],
+    "description": "Trace constitution produces immutable logs, decision records, provenance graphs, replay artifacts, observability signals, and forensic timelines."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"],
+    "violation_events": ["BEv.P7"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "historical_finalization_membrane",
+    "surprise_sensitive": true,
+    "append_only": true,
+    "tamper_controls": ["BT.D2", "BT.D4"],
+    "privacy_controls": ["BT.D5", "BT.D6"],
+    "puncture_conditions": [
+      "any_state_change",
+      "any_decision",
+      "any_event",
+      "any_artifact_creation",
+      "any_semantic_projection"
+    ],
+    "automatic_actions": [
+      "hash_and_seal",
+      "timestamp",
+      "chain_of_custody_update",
+      "provenance_linking",
+      "replay_snapshot",
+      "forensic_timeline_update"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [],
+    "depends_on_blankets": [
+      "BkA-01-Execution-Boundary",
+      "BkA-02-Workflow-Orchestration",
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-04-Artifact-Boundary-Blanket",
+      "BkA-05-Semantic-Interface-Blanket",
+      "BkA-06-Service-Delivery-Blanket"
+    ],
+    "terminal": true
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where all Mobius reality collapses into immutable historical trace. It is the constitutional memory of the system.",
+    "design_notes": [
+      "Nothing in Mobius exists unless it is traced.",
+      "Trace is not logging; it is ontological finalization.",
+      "All blankets must terminate here.",
+      "All governance depends on this layer.",
+      "This blanket is the global truth surface."
+    ],
+    "observability_role": [
+      "audit_surface",
+      "replay_surface",
+      "provenance_surface",
+      "forensics_surface",
+      "observability_surface"
+    ]
+  }
+}

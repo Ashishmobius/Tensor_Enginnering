@@ -1,0 +1,167 @@
+{
+  "blanket_id": "bka-28",
+  "archetype_id": "BkA-28",
+  "semantic_name": "Ontological Closure & Finality Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "being_to_completion",
+    "from": ["BM.D*", "BL.D*", "BE.D*", "BT.P*", "BEv.P*"],
+    "into": ["BT.P*", "BEv.P*", "BM.P4"],
+    "plane_shift": "⧫ -> ∅",
+    "trace_required": true,
+    "description": "Governs the ontological transition where worlds, systems, and emergent domains lawfully end, seal, or dissolve."
+  },
+
+  "bpac_signature": {
+    "B": "BT",
+    "P": "∅",
+    "A": "Thanatos",
+    "C": "Terminal"
+  },
+
+  "mobius_plane": "∅",
+  "usage_type": "Trans-ontological",
+  "owner_agent": "Thanatos",
+
+  "dominant_canonical": "BT.P3",
+
+  "permeability_model": "terminal",
+  "lifespan": "irreversible",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BT.P3",
+      "BT.P1",
+      "BM.P4"
+    ],
+    "sensory_set": [
+      "BEv.P7",
+      "BT.P5",
+      "BL.P6"
+    ],
+    "active_set": [
+      "BEv.P1",
+      "BT.P3",
+      "BM.P4"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.*",
+      "BL.P1",
+      "BL.P4"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BT.D1",
+    "BT.D2",
+    "BT.D4",
+    "BT.D7",
+    "BM.D1",
+    "BM.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "final_state": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "legal_hold": "BT.D7"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "terminal_snapshot_required": true,
+    "irreversibility_enforced": true,
+    "non_repudiation_required": true
+  },
+
+  "normative_surface": {
+    "closure_law": [
+      "BT.D1",
+      "BT.D7"
+    ],
+    "existential_law": [
+      "BM.D1",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BEv.P7",
+      "BT.P5",
+      "BL.P6"
+    ],
+    "description": "Only systemic closure events, existential trace, and constitutional sunset acts may puncture the finality membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BT.P1",
+      "BT.P3",
+      "BEv.P1",
+      "BM.P4"
+    ],
+    "description": "Closure produces terminal records, sealed traces, constitutional end events, and final rationales."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P7"],
+    "closure_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "finality_membrane",
+    "surprise_sensitive": true,
+    "irreversibility_enforced": true,
+    "closure_validation": true,
+    "puncture_conditions": [
+      "world_retirement",
+      "constitutional_sunset",
+      "systemic_extinction",
+      "ontological_sealing",
+      "existential_completion"
+    ],
+    "automatic_actions": [
+      "terminal_snapshot",
+      "trace_sealing",
+      "closure_event_emit",
+      "irreversibility_lock"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [],
+    "depends_on_blankets": [
+      "BkA-27-Emergence-Transcendence-Blanket",
+      "BkA-25-Ontological-Stewardship-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where being lawfully ends. It is the membrane of completion, termination, and existential closure.",
+    "design_notes": [
+      "Not all endings are failures.",
+      "Closure is a constitutional act.",
+      "Nothing passes this blanket.",
+      "All endings are trace-preserved.",
+      "This is the ontological horizon of Mobius."
+    ],
+    "observability_role": [
+      "closure_surface",
+      "terminal_surface",
+      "sunset_surface",
+      "existential_surface"
+    ]
+  }
+}

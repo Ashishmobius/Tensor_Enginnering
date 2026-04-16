@@ -1,0 +1,182 @@
+{
+  "blanket_id": "bka-24",
+  "archetype_id": "BkA-24",
+  "semantic_name": "Meta-Constitution & Closure Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "constitution_to_meta_constitution",
+    "from": ["BL.D*", "BL.P*", "BE.D*", "BT.P*", "BM.D*", "BR.D*"],
+    "into": ["BL.D*", "BT.P*", "BEv.P*", "BM.P4"],
+    "plane_shift": "Ω -> ⊤",
+    "trace_required": true,
+    "description": "Governs the ontological transition where the Mobius constitution itself becomes an object of governance."
+  },
+
+  "bpac_signature": {
+    "B": "BL",
+    "P": "⊤",
+    "A": "Archē",
+    "C": "Meta-Constitutional"
+  },
+
+  "mobius_plane": "⊤",
+  "usage_type": "Meta-Constitutional",
+  "owner_agent": "Archē",
+
+  "dominant_canonical": "BL.D1",
+
+  "permeability_model": "axiomatic",
+  "lifespan": "perpetual",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BL.D1",
+      "BL.D2",
+      "BL.D3",
+      "BT.P3",
+      "BT.P5",
+      "BM.P4"
+    ],
+    "sensory_set": [
+      "BT.P3",
+      "BT.P5",
+      "BL.P5",
+      "BL.P6",
+      "BEv.P7"
+    ],
+    "active_set": [
+      "BL.D*",
+      "BEv.P1",
+      "BT.P3",
+      "BM.P4"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P*",
+      "BR.P*",
+      "BM.P1",
+      "BM.P2"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D6",
+    "BL.D7",
+    "BT.D2",
+    "BT.D4",
+    "BM.D1",
+    "BM.D7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "precedent": "BT.P1",
+    "provenance": "BT.P5",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "legal_hold": "BT.D7"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "meta_lineage_required": true,
+    "constitutional_epoch_tracking": true,
+    "non_repudiation_required": true
+  },
+
+  "normative_surface": {
+    "meta_law": [
+      "BL.D1",
+      "BL.D6",
+      "BL.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D4",
+      "BT.D7"
+    ],
+    "legitimacy_law": [
+      "BM.D1",
+      "BM.D7"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BL.P5",
+      "BL.P6",
+      "BT.P3",
+      "BT.P5",
+      "BEv.P7"
+    ],
+    "description": "Only constitutional findings, amendment acts, systemic violations, and supreme trace may puncture the meta-constitutional membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BL.D*",
+      "BEv.P1",
+      "BT.P3",
+      "BM.P4"
+    ],
+    "description": "Meta-constitution produces new constitutional epochs, blanket registries, supreme rulings, and foundational rationales."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P7"],
+    "epoch_events": ["BEv.P1"],
+    "closure_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "meta_constitutional_membrane",
+    "surprise_sensitive": true,
+    "axiom_preservation": true,
+    "epoch_controls": true,
+    "puncture_conditions": [
+      "constitutional_paradox",
+      "systemic_failure",
+      "supra_jurisdictional_merge",
+      "fork_request",
+      "constitutional_reset"
+    ],
+    "automatic_actions": [
+      "epoch_creation",
+      "blanket_registry_version",
+      "axiom_binding",
+      "supreme_trace_bind",
+      "constitutional_closure"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "ALL_BLANKETS"
+    ],
+    "depends_on_blankets": [
+      "BkA-22-Constitutional-Amendment-Blanket",
+      "BkA-23-Adjudication-Arbitration-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where the Mobius constitution itself becomes governable. It is the membrane of closure, axiom control, and constitutional transcendence.",
+    "design_notes": [
+      "This blanket governs blankets.",
+      "This blanket defines Mobius’ boundaries.",
+      "No blanket supersedes this layer.",
+      "All constitutional epochs are trace-bound.",
+      "This is the ultimate closure of Mobius."
+    ],
+    "observability_role": [
+      "constitution_surface",
+      "epoch_surface",
+      "axiom_surface",
+      "blanket_registry_surface"
+    ]
+  }
+}

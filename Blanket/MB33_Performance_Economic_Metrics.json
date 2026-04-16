@@ -1,0 +1,180 @@
+{
+  "blanket_id": "bka-33",
+  "archetype_id": "BkA-33",
+  "semantic_name": "Performance & Economic Metrics Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "outcomes_to_business_results",
+    "from": ["BP.P*", "BEv.P*", "BT.P*"],
+    "into": ["BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "E -> $",
+    "trace_required": true,
+    "description": "Governs the ontological transition where execution outcomes become standardized business performance and economic metrics."
+  },
+
+  "bpac_signature": {
+    "B": "BR",
+    "P": "$",
+    "A": "Holacracy",
+    "C": "Economic"
+  },
+
+  "mobius_plane": "Business-Results",
+  "usage_type": "Marketplace-core",
+  "owner_agent": "Holacracy",
+
+  "dominant_canonical": "BR.P1",
+
+  "permeability_model": "measured",
+  "lifespan": "continuous",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P3",
+      "BR.P7"
+    ],
+    "sensory_set": [
+      "BP.P1",
+      "BP.P3",
+      "BEv.P1",
+      "BEv.P6",
+      "BT.P1",
+      "BT.P6"
+    ],
+    "active_set": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P3",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BL.D*",
+      "BE.D*",
+      "BM.*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BR.D1",
+    "BR.D2",
+    "BR.D3",
+    "BR.D4",
+    "BR.D7",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "source": "BT.P1",
+    "observability": "BT.P6",
+    "provenance": "BT.P5",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "metric_lineage_required": true,
+    "tamper_evident_required": true,
+    "economic_audit_ready": true
+  },
+
+  "normative_surface": {
+    "measurement_law": [
+      "BR.D1",
+      "BR.D3"
+    ],
+    "economic_law": [
+      "BR.D2",
+      "BR.D4",
+      "BR.D7"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BP.P1",
+      "BP.P3",
+      "BEv.P1",
+      "BEv.P6",
+      "BT.P1",
+      "BT.P6"
+    ],
+    "description": "Only trace-bound executions, service invocations, completion events, and observability signals may puncture the metrics membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BR.P1",
+      "BR.P2",
+      "BR.P3",
+      "BR.P7",
+      "BEv.P1",
+      "BT.P3"
+    ],
+    "description": "Performance measurement produces standardized metrics, confidence bounds, incident signals, economic impact facts, and trace-bound result records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "metric_events": ["BEv.P1"],
+    "alert_events": ["BEv.P3"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "performance_metric_membrane",
+    "surprise_sensitive": true,
+    "metric_normalization": true,
+    "economic_weighting": true,
+    "puncture_conditions": [
+      "execution_completed",
+      "workflow_checkpoint",
+      "service_latency_breach",
+      "batch_evaluation_cycle",
+      "economic_accounting_tick"
+    ],
+    "automatic_actions": [
+      "metric_calculation",
+      "confidence_calibration",
+      "alert_emit",
+      "economic_impact_update",
+      "metric_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-14-Evaluation-Cycle-Blanket",
+      "BkA-19-Economic-Settlement-Blanket",
+      "BkA-20-Reputation-Trust-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-01-Execution-Boundary-Blanket",
+      "BkA-07-Trace-Constitution-Blanket",
+      "BkA-04-Artifact-Boundary-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where execution outcomes are transformed into standardized business performance and economic metrics.",
+    "design_notes": [
+      "This blanket does not create value; it measures it.",
+      "All metrics must be trace-rooted.",
+      "This blanket feeds evaluation, economics, and reputation.",
+      "Performance here is descriptive, not normative."
+    ],
+    "observability_role": [
+      "performance_surface",
+      "economic_metric_surface",
+      "throughput_surface",
+      "efficiency_surface"
+    ]
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "blanket_id": "bka-16",
+  "archetype_id": "BkA-16",
+  "semantic_name": "Semantic Alignment Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "plural_meaning_to_coherent_semantic_field",
+    "from": ["BM.P*", "BR.P*", "BT.P*"],
+    "into": ["BM.P*", "BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "E/C/J -> S",
+    "trace_required": true,
+    "description": "Governs the ontological transition where multiple meanings, rationales, and narratives are reconciled into a coherent semantic field."
+  },
+
+  "bpac_signature": {
+    "B": "BM",
+    "P": "S",
+    "A": "Harmonia",
+    "C": "Epistemic"
+  },
+
+  "mobius_plane": "S",
+  "usage_type": "Epistemic",
+  "owner_agent": "Harmonia",
+
+  "dominant_canonical": "BM.P4",
+
+  "permeability_model": "selective-coherence",
+  "lifespan": "dynamic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BM.P1",
+      "BM.P3",
+      "BM.P4",
+      "BM.P5",
+      "BM.P6",
+      "BR.P4"
+    ],
+    "sensory_set": [
+      "BM.P1",
+      "BM.P2",
+      "BM.P3",
+      "BM.P4",
+      "BM.P5",
+      "BM.P7",
+      "BR.P4",
+      "BR.P7",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "active_set": [
+      "BM.P3",
+      "BM.P4",
+      "BM.P5",
+      "BR.P4",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "forbidden_set": [
+      "BP.*",
+      "BE.P5",
+      "BL.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BM.D1",
+    "BM.D2",
+    "BM.D3",
+    "BM.D4",
+    "BM.D5",
+    "BM.D6",
+    "BM.D7",
+    "BL.D3",
+    "BL.D5"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P3",
+    "provenance": "BT.P5",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "semantic_lineage_required": true,
+    "contradiction_trace_required": true,
+    "alignment_decision_trace_required": true
+  },
+
+  "normative_surface": {
+    "meaning_law": [
+      "BM.D1",
+      "BM.D2",
+      "BM.D3",
+      "BM.D4",
+      "BM.D5",
+      "BM.D6",
+      "BM.D7"
+    ],
+    "trace_law": [
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5"
+    ],
+    "disclosure_law": [
+      "BL.D3",
+      "BL.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.P*",
+      "BR.P4",
+      "BR.P7",
+      "BT.P3",
+      "BT.P5"
+    ],
+    "description": "Only meaning artifacts, evaluation insights, impact signals, and semantic trace may puncture the alignment membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BM.P3",
+      "BM.P4",
+      "BM.P5",
+      "BR.P4",
+      "BEv.P1",
+      "BEv.P7",
+      "BT.P3"
+    ],
+    "description": "Semantic alignment produces reconciled narratives, resolved rationales, stakeholder coherence signals, misalignment events, and traceable alignment records."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "misalignment_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "semantic_coherence_membrane",
+    "surprise_sensitive": true,
+    "ethical_binding": ["BM.D2", "BM.D5"],
+    "value_consistency_binding": ["BM.D4"],
+    "identity_binding": ["BM.D6"],
+    "puncture_conditions": [
+      "semantic_conflict_detected",
+      "narrative_drift",
+      "cross_domain_incoherence",
+      "trust_signal_drop",
+      "worldview_update"
+    ],
+    "automatic_actions": [
+      "frame_reconciliation",
+      "rationale_alignment",
+      "semantic_normalization",
+      "misalignment_event_emit",
+      "alignment_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-08-Reasoning-Cognition-Blanket",
+      "BkA-10-Decision-Constitution-Blanket",
+      "BkA-12-Cognitive-Law-Blanket",
+      "BkA-14-Evaluation-Cycle-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-05-Semantic-Interface-Blanket",
+      "BkA-09-Creative-Insight-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where multiple meanings and narratives are reconciled into a coherent semantic field. It is the membrane of worldview alignment and cross-domain sensemaking.",
+    "design_notes": [
+      "Alignment is not ethics.",
+      "Alignment is not cognition.",
+      "Alignment is coherence maintenance.",
+      "Contradictions must be first-class events.",
+      "This blanket preserves the intelligibility of Mobius."
+    ],
+    "observability_role": [
+      "coherence_surface",
+      "misalignment_surface",
+      "narrative_consistency_surface",
+      "trust_surface"
+    ]
+  }
+}

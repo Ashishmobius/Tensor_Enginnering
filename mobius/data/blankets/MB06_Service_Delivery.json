@@ -1,0 +1,201 @@
+{
+  "blanket_id": "bka-06",
+  "archetype_id": "BkA-06",
+  "semantic_name": "Service Delivery Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "capability_to_service_relation",
+    "from": ["BE.P*", "BP.P*", "BR.P*", "BL.P*", "BT.P*"],
+    "into": ["BE.P*", "BR.P*", "BEv.P*", "BT.P*"],
+    "plane_shift": "O/L -> M",
+    "trace_required": true,
+    "description": "Governs the ontological transition where internal, compliant capabilities are exposed as externally consumable services with obligations, delivery events, and market-facing trace."
+  },
+
+  "bpac_signature": {
+    "B": "BR",
+    "P": "M",
+    "A": "Holocracy",
+    "C": "Economic"
+  },
+
+  "mobius_plane": "M",
+  "usage_type": "Economic",
+  "owner_agent": "Holocracy",
+
+  "dominant_canonical": "BR.P1",
+
+  "permeability_model": "contractual",
+  "lifespan": "dynamic",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BE.P1",
+      "BE.P3",
+      "BE.P5",
+      "BP.P1",
+      "BR.P1",
+      "BR.P5",
+      "BL.P1",
+      "BL.P7"
+    ],
+    "sensory_set": [
+      "BE.P7",
+      "BEv.P1",
+      "BT.P1",
+      "BT.P3",
+      "BR.P3"
+    ],
+    "active_set": [
+      "BE.P1",
+      "BEv.P1",
+      "BR.P1",
+      "BR.P3",
+      "BR.P7",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "forbidden_set": [
+      "BP.P3",
+      "BM.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D1",
+    "BL.D4",
+    "BL.D6",
+    "BL.D7",
+    "BL.P1",
+    "BL.P4",
+    "BL.P7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P1",
+    "decision_records": "BT.P3",
+    "custody": "BT.D4",
+    "retention": "BT.D1",
+    "privacy": "BT.D5"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "emits": ["BT.P1", "BT.P3", "BT.P5"],
+    "evidence_standard": "BT.D2",
+    "dispute_ready": true
+  },
+
+  "normative_surface": {
+    "contract_law": [
+      "BL.D4",
+      "BL.D1",
+      "BL.D7"
+    ],
+    "service_law": [
+      "BR.D1",
+      "BR.D2",
+      "BR.D4",
+      "BR.D7"
+    ],
+    "trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D5"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BE.P5",
+      "BP.P1",
+      "BR.P1",
+      "BR.P3",
+      "BL.P7",
+      "BT.P1",
+      "BT.P3"
+    ],
+    "description": "Only compliant artifacts, approved workflows, validated results, contractual states, and trace artifacts may puncture the service transition membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BE.P1",
+      "BEv.P1",
+      "BR.P1",
+      "BR.P3",
+      "BR.P7",
+      "BT.P1",
+      "BT.P5"
+    ],
+    "description": "Service delivery produces service instances, fulfillment events, SLA metrics, customer impact signals, and legally admissible service trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "exit_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"],
+    "escalation_events": ["BEv.P7"],
+    "notification_policy": ["BEv.D3"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "market_service_membrane",
+    "surprise_sensitive": true,
+    "contract_gates": ["BL.D4", "BL.P1"],
+    "sla_controls": ["BR.D2", "BR.D4"],
+    "entitlement_checks": ["BE.P7"],
+    "puncture_conditions": [
+      "service_request",
+      "delivery_checkpoint",
+      "sla_evaluation",
+      "dispute_trigger"
+    ],
+    "automatic_actions": [
+      "service_instance_binding",
+      "delivery_event_emission",
+      "sla_measurement",
+      "service_trace_emit",
+      "customer_signal_update"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-07-Economic-Settlement-Blanket",
+      "BkA-41-Experience-Analytics-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-01-Execution-Boundary",
+      "BkA-02-Workflow-Orchestration",
+      "BkA-03-Compliance-Control-Blanket",
+      "BkA-04-Artifact-Boundary-Blanket",
+      "BkA-05-Semantic-Interface-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-40-Governance-Result-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where internal, compliant capabilities are exposed as market services. It is the membrane of fulfillment, obligation, entitlement, and delivery trace.",
+    "design_notes": [
+      "Service blankets expose, not execute.",
+      "Every service interaction is contractual.",
+      "Every delivery must be traceable.",
+      "SLA is not a metric; it is a legal object.",
+      "This is where Mobius becomes an economic actor."
+    ],
+    "observability_role": [
+      "service_health_surface",
+      "sla_surface",
+      "fulfillment_surface",
+      "dispute_surface"
+    ]
+  }
+}

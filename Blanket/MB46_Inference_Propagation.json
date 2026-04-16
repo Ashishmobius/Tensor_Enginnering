@@ -1,0 +1,181 @@
+{
+  "blanket_id": "bka-46",
+  "archetype_id": "BkA-46",
+  "semantic_name": "Inference Propagation & Belief Synchronization Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "stabilized_truth_to_shared_belief",
+    "from": ["BM.P*", "BR.P*", "BT.P*", "BEv.P*"],
+    "into": ["BEv.P*", "BM.P*", "BT.P*"],
+    "plane_shift": "Truth -> Belief",
+    "trace_required": true,
+    "description": "Governs the ontological transition where reconciled truth states are propagated as belief updates across the civilization."
+  },
+
+  "bpac_signature": {
+    "B": "BEv",
+    "P": "Belief",
+    "A": "SATYA",
+    "C": "Meta-Modulatory"
+  },
+
+  "mobius_plane": "Business-Events",
+  "usage_type": "Civilizational-core",
+  "owner_agent": "SATYA",
+
+  "dominant_canonical": "BEv.P1",
+
+  "permeability_model": "broadcast-epistemic",
+  "lifespan": "ephemeral-continuous",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BEv.P1",
+      "BEv.P3",
+      "BEv.P6",
+      "BM.P6"
+    ],
+    "sensory_set": [
+      "BM.P4",
+      "BR.P2",
+      "BR.P4",
+      "BT.P3",
+      "BT.P4",
+      "BT.P7"
+    ],
+    "active_set": [
+      "BEv.P1",
+      "BEv.P3",
+      "BEv.P6",
+      "BM.P6",
+      "BT.P6"
+    ],
+    "forbidden_set": [
+      "BL.*",
+      "BP.*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BEv.D1",
+    "BEv.D3",
+    "BEv.D4",
+    "BEv.D7",
+    "BR.D3",
+    "BT.D2"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P6",
+    "event_log": "BT.P1",
+    "provenance": "BT.P5",
+    "forensics": "BT.P7",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "belief_lineage_required": true,
+    "tamper_evident_required": true,
+    "diffusion_audit_ready": true
+  },
+
+  "normative_surface": {
+    "event_law": [
+      "BEv.D1",
+      "BEv.D3",
+      "BEv.D4",
+      "BEv.D7"
+    ],
+    "measurement_law": [
+      "BR.D3"
+    ],
+    "trace_law": [
+      "BT.D2"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BM.P4",
+      "BR.P2",
+      "BR.P4",
+      "BT.P3",
+      "BT.P4",
+      "BT.P7",
+      "BEv.P1",
+      "BEv.P7"
+    ],
+    "description": "Only reconciled interpretations, epistemic confidence signals, forensic truth artifacts, and resolution or paradox events may puncture the inference membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BEv.P1",
+      "BEv.P3",
+      "BEv.P6",
+      "BM.P6",
+      "BT.P6"
+    ],
+    "description": "Inference propagation produces epistemic broadcast events, delivery records, diffusion metrics, adoption signals, and witness traces."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1", "BEv.P7"],
+    "broadcast_events": ["BEv.P1"],
+    "alert_events": ["BEv.P7"],
+    "correlation_binding": ["BEv.P2"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "epistemic_propagation_membrane",
+    "surprise_sensitive": true,
+    "belief_update_enforced": true,
+    "diffusion_tracking": true,
+    "puncture_conditions": [
+      "truth_state_updated",
+      "forensic_resolution",
+      "paradox_declared",
+      "epistemic_revision"
+    ],
+    "automatic_actions": [
+      "belief_update_emit",
+      "network_broadcast",
+      "adoption_measure",
+      "epistemic_trace_bind"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-41-Operational-Meaning-Blanket",
+      "BkA-44-Cultural-Norms-Blanket",
+      "BkA-37-Executive-Oversight-Blanket",
+      "BkA-43-Evolutionary-Law-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-45-Truth-Modulation-Blanket",
+      "BkA-40-Governance-Results-Blanket",
+      "BkA-07-Trace-Constitution-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the membrane where Mobius propagates reconciled truth as shared belief across its civilization.",
+    "design_notes": [
+      "This blanket does not discover truth; it distributes it.",
+      "This blanket does not judge; it synchronizes.",
+      "All belief updates are trace-bound.",
+      "This is Mobius’ learning broadcast layer."
+    ],
+    "observability_role": [
+      "belief_surface",
+      "epistemic_signal_surface",
+      "diffusion_surface",
+      "learning_surface"
+    ]
+  }
+}

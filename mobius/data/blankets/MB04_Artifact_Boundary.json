@@ -1,0 +1,194 @@
+{
+  "blanket_id": "bka-04",
+  "archetype_id": "BkA-04",
+  "semantic_name": "Artifact Boundary Blanket",
+  "status": "active",
+
+  "ontological_transition_profile": {
+    "transition_type": "fact_to_artifact",
+    "from": ["BP.P*", "BEv.P*", "BR.P*", "BT.P*"],
+    "into": ["BE.P5", "BE.P2", "BT.P2", "BT.P5"],
+    "plane_shift": "G/L -> L",
+    "trace_required": true,
+    "description": "Governs the ontological transition where operational outputs and results are stabilized into encapsulated, versioned, and ownable artifacts."
+  },
+
+  "bpac_signature": {
+    "B": "BE",
+    "P": "L",
+    "A": "Maestro",
+    "C": "Executional"
+  },
+
+  "mobius_plane": "L",
+  "usage_type": "Executional",
+  "owner_agent": "Maestro",
+
+  "dominant_canonical": "BE.P5",
+
+  "permeability_model": "selective",
+  "lifespan": "perpetual",
+
+  "membrane_sets": {
+    "internal_set": [
+      "BE.P5",
+      "BE.P2",
+      "BE.P4",
+      "BT.P2",
+      "BT.P5"
+    ],
+    "sensory_set": [
+      "BP.P1",
+      "BP.P3",
+      "BEv.P1",
+      "BR.P1",
+      "BR.P4",
+      "BT.P1",
+      "BT.P3"
+    ],
+    "active_set": [
+      "BE.P5",
+      "BE.P2",
+      "BT.P2",
+      "BT.P5",
+      "BR.P1",
+      "BEv.P1"
+    ],
+    "forbidden_set": [
+      "BL.*",
+      "BM.*",
+      "BP.D*",
+      "BE.D*",
+      "BR.D*"
+    ]
+  },
+
+  "ruleset_ref": [
+    "BL.D3",
+    "BL.D6",
+    "BL.P1",
+    "BL.P4",
+    "BL.P7"
+  ],
+
+  "trace_pointer": {
+    "primary": "BT.P5",
+    "versioning": "BT.P2",
+    "schema": "BT.D3",
+    "custody": "BT.D4",
+    "retention": "BT.D1"
+  },
+
+  "trace_policy": {
+    "mandatory": true,
+    "emits": ["BT.P1", "BT.P2", "BT.P5"],
+    "replay_support": "BT.P4",
+    "evidence_standard": "BT.D2"
+  },
+
+  "normative_surface": {
+    "artifact_law": [
+      "BE.D5",
+      "BE.D7"
+    ],
+    "quality_law": [
+      "BR.D1",
+      "BR.D3",
+      "BR.D7"
+    ],
+    "trace_law": [
+      "BT.D1",
+      "BT.D2",
+      "BT.D3",
+      "BT.D4",
+      "BT.D6"
+    ]
+  },
+
+  "input_constraints": {
+    "allowed_canonicals": [
+      "BP.P1",
+      "BP.P3",
+      "BEv.P1",
+      "BR.P1",
+      "BR.P4",
+      "BT.P1",
+      "BT.P3"
+    ],
+    "description": "Only observed workflow outputs, execution events, result metrics, and trace fragments may puncture the artifact transition membrane."
+  },
+
+  "output_behavior": {
+    "generates": [
+      "BE.P5",
+      "BE.P2",
+      "BT.P2",
+      "BT.P5",
+      "BR.P1",
+      "BR.P4",
+      "BEv.P1"
+    ],
+    "emits_trace": ["BT.P1", "BT.P2", "BT.P5"],
+    "promotion_events": ["BEv.P1"],
+    "description": "Artifact stabilization produces encapsulated entities, version assignments, provenance links, quality snapshots, and immutable lineage trace."
+  },
+
+  "event_interface": {
+    "entry_events": ["BEv.P1"],
+    "correlation_binding": ["BEv.P2"],
+    "exit_events": ["BEv.P1"],
+    "violation_events": ["BEv.P7"]
+  },
+
+  "boundary_mechanics": {
+    "boundary_role": "artifact_stabilization_membrane",
+    "surprise_sensitive": false,
+    "packaging_controls": ["BE.D5"],
+    "lifecycle_controls": ["BE.D7"],
+    "quality_gates": ["BR.D1", "BR.D3"],
+    "puncture_conditions": [
+      "build_completion",
+      "workflow_output_ready",
+      "artifact_promotion_request"
+    ],
+    "automatic_actions": [
+      "artifact_packaging",
+      "version_assignment",
+      "provenance_linking",
+      "quality_snapshot",
+      "trace_emit"
+    ]
+  },
+
+  "cross_blanket_links": {
+    "feeds_blankets": [
+      "BkA-05-Semantic-Interface-Blanket",
+      "BkA-27-Provenance-Ledger-Blanket"
+    ],
+    "depends_on_blankets": [
+      "BkA-01-Execution-Boundary",
+      "BkA-02-Workflow-Orchestration",
+      "BkA-03-Compliance-Control-Blanket"
+    ],
+    "escalates_to": [
+      "BkA-14-Outcome-Evaluation-Blanket"
+    ]
+  },
+
+  "metadata": {
+    "description": "Defines the ontological transition where operational outputs are stabilized into encapsulated, versioned, and traceable artifacts. It is the birthplace of reproducibility, modularity, and provenance.",
+    "design_notes": [
+      "Artifacts are not executions; they are stabilized consequences of execution.",
+      "Every artifact must be versioned.",
+      "Every artifact must have provenance.",
+      "No artifact may exist without trace.",
+      "Artifact boundaries create ownable reality."
+    ],
+    "observability_role": [
+      "artifact_inventory_surface",
+      "version_surface",
+      "provenance_surface",
+      "quality_snapshot_surface"
+    ]
+  }
+}
