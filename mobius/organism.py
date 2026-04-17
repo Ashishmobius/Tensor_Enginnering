@@ -10,43 +10,76 @@ class OrganismState:
     O(t) = <G(t), Phi(t), psi(t), Theta(t)>
     """
     G: Any                          # The Graph/Structure (HypergraphCarrier)
-    Phi: Dict[str, Any]             # Scalar fields (T, S, B, M)
+    Phi: Dict[str, Any]             # Scalar fields (T, S, B, M) or node mapping
     psi: Any                        # Trace/Ledger (ChitraLedger)
     Theta: Any                      # Tensors/Parameters (TensorSystem)
 
+@dataclass
+class PhysicsParameters:
+    """Physics coefficients for SPDE-type field evolution."""
+    D: float = 0.1        # Diffusivity (Laplacian coefficient)
+    v: float = 0.05       # Advection velocity (Gradient coefficient)
+    R: float = 0.01       # Reaction/Generation rate
+    Xi: float = 0.005     # Noise intensity (Stochasticity)
+
 class FieldOperator:
     """
-    Field Evolution Operator (Section 14.4).
-    dPhi/dt = f_X(G, Phi, psi, Theta) + Noise
+    Field Evolution Operator (Section 14.4 & 11).
+    Implements SPDE-type evolution: 
+    dPhi/dt = D*Laplacian(Phi) + v*Gradient(Phi) + R*Reaction(Phi, Theta) + Noise
     """
-    def __init__(self, operators: Dict[str, Callable], noise: Callable):
+    def __init__(self, 
+                 physics: Dict[str, PhysicsParameters], 
+                 reaction_ops: Dict[str, Callable],
+                 noise_op: Callable):
         """
-        operators: {
-            "T": f_T,
-            "S": f_S,
-            "B": f_B,
-            "M": f_M
-        }
-        Each f_X: (G, Phi, psi, Theta) -> dPhi_X
+        physics: Map of FieldFamily -> PhysicsParameters
+        reaction_ops: { "T": f_T, ... } where f_X returns dPhi_reaction
+        noise_op: (key, state) -> noise_value
         """
-        self.ops = operators
-        self.noise = noise
+        self.physics = physics
+        self.ops = reaction_ops
+        self.noise = noise_op
 
-    def evolve(self, state: OrganismState, dt: float):
+    def evolve(self, state: OrganismState, dt: float, geometry: Optional[Any] = None):
+        """
+        Calculates dPhi including spatial terms if geometry is provided.
+        """
         dPhi = {}
 
         for k in ["T", "S", "B", "M"]:
-            # Ensure the operator exists for the key
+            param = self.physics.get(k, PhysicsParameters())
+            
+            # 1. Reaction term (standard ODE part)
+            reaction = 0.0
             if k in self.ops:
-                dPhi[k] = self.ops[k](
-                    state.G,
-                    state.Phi,
-                    state.psi,
-                    state.Theta
-                ) + self.noise(k, state)
-            else:
-                dPhi[k] = 0.0
+                reaction = self.ops[k](state.G, state.Phi, state.psi, state.Theta)
+            
+            # 2. Spatial terms (PDE part)
+            diffusion = 0.0
+            advection = 0.0
+            if geometry is not None:
+                # Map key to field index in geometry
+                idx = {"T": 0, "S": 1, "B": 2, "M": 3}.get(k, 0)
+                
+                # In a full node-level implementation, we'd iterate over nodes.
+                # For this systemic operator, we use representative geometry values.
+                # (e.g., semantic_curvature or average node laplacian)
+                nodes = list(state.G.V.keys()) if hasattr(state.G, 'V') else []
+                if nodes:
+                    # Sum signals across nodes for systemic evolution
+                    laplacian = np.mean([geometry.laplacian(n, idx) for n in nodes])
+                    gradient = np.mean([geometry.gradient(n, idx) for n in nodes])
+                    
+                    diffusion = param.D * laplacian
+                    advection = param.v * gradient
 
+            # 3. Stochastic term (Noise)
+            noise = param.Xi * self.noise(k, state)
+
+            dPhi[k] = (reaction + diffusion + advection) + noise
+
+        # Apply update
         for k in dPhi:
             state.Phi[k] += dt * dPhi[k]
 
@@ -153,16 +186,15 @@ class MobiusOrganism:
         self.closure = closure
         self.trace_op = trace_operator
 
-    def step(self, state: OrganismState, dt: float):
+    def step(self, state: OrganismState, dt: float, geometry: Optional[Any] = None):
         """
         Executes one full integration step.
         """
         # 1. Project fields (Theta -> Phi)
-        # Assuming projector.project returns the updated state or modifies it
         state = self.projector.project(state)
 
-        # 2. Field evolution
-        state = self.field_op.evolve(state, dt)
+        # 2. Field evolution (SPDE-type)
+        state = self.field_op.evolve(state, dt, geometry)
 
         # 3. Generate candidate graphs
         candidates = self.mutation_op.mutate(state)

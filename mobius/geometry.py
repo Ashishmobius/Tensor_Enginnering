@@ -1,7 +1,7 @@
 """
 Layer 5: Canonical and Operational Field Geometry.
 ================================================
-Handles node-level differential operators: Gradients, Curvature, Flux.
+Handles node-level differential operators: Gradients, Laplacian, Curvature, Flux.
 """
 from __future__ import annotations
 import numpy as np
@@ -37,7 +37,16 @@ class FieldGeometry:
         return total / len(region_nodes)
 
     def gradient(self, node_id: str, field_idx: int) -> float:
-        """∇Φ_i = ∑_{j∈N_c(i)} [Φ_α(j,t) - Φ_α(i,t)] / d_G(i,j)"""
+        """∇Φ_i: Returns the maximum difference between neighbors and node."""
+        neighbors = self.hg.get_neighbors(node_id)
+        if not neighbors: return 0.0
+        
+        phi_i = self.field_at_node(node_id, field_idx)
+        grads = [self.field_at_node(j, field_idx) - phi_i for j in neighbors]
+        return float(np.max(grads)) if grads else 0.0
+
+    def laplacian(self, node_id: str, field_idx: int) -> float:
+        """ΔΦ_i = ∑_{j∈N_c(i)} [Φ_α(j,t) - Φ_α(i,t)] / d_G(i,j)"""
         neighbors = self.hg.get_neighbors(node_id)
         if not neighbors: return 0.0
         
