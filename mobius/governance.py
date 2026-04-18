@@ -39,6 +39,12 @@ class GovernanceGovernor:
         return divergent
 
     def monitor_stability(self, stab_vec) -> bool:
-        """Stage 12 Monitoring."""
-        # Simple floor on purposefulness (D9)
-        return stab_vec.d9_purposeful > 0.5
+        """Stage 12 Monitoring — checks if system is globally stable."""
+        # stab_vec is SystemStability (s_G, s_T, s_B, s_M, s_psi)
+        if hasattr(stab_vec, 'is_globally_stable'):
+            return stab_vec.is_globally_stable()
+        # Fallback: treat as perceptual dims if d9_purposeful present
+        if hasattr(stab_vec, 'd9_purposeful'):
+            return stab_vec.d9_purposeful > 0.5
+        return True
+

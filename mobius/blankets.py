@@ -45,28 +45,24 @@ class BlanketResolver:
 
     def resolve_region(self, region_nodes: List[str], carrier: HypergraphCarrier) -> Optional[BlanketArchetype]:
         """Stage 3: Ranks and selects the best blanket for a region."""
-        # Simplified scoring logic based on dominant_canonical overlap
         best_match = None
         max_score = -1
-        
+
         region_tags = set()
         for nid in region_nodes:
-            node = carrier.nodes.get(nid)
+            node = carrier.V.get(nid)  # Fixed: carrier.V not carrier.nodes
             if node:
-                # Use sub_canonical ID as the tag for matching
                 region_tags.add(node.sub_canonical)
-        
+
         for arch in self.archetypes:
             score = 0
             if arch.dominant_canonical in region_tags:
-                score += 10 # High weight for dominant match
-            
-            # Intersection with allowed canonicals
+                score += 10
             overlap = len(set(arch.allowed_canonicals) & region_tags)
             score += overlap
-            
             if score > max_score:
                 max_score = score
                 best_match = arch
-        
+
         return best_match
+

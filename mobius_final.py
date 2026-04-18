@@ -12,7 +12,8 @@ import os
 import uvicorn
 import numpy as np
 
-from mobius.pipeline import MobiusMasterPipeline
+from mobius.pipeline import MobiusMasterPipeline, MutationPipeline, BlanketManager, IgnitionController
+from mobius.governance import GovernanceGovernor
 from mobius.constants import TensorID, FieldFamily, BeeType, LineageOp, InteropMode
 
 app = FastAPI(title="Mobius Final: Total Parity production API")
@@ -20,6 +21,10 @@ app = FastAPI(title="Mobius Final: Total Parity production API")
 # --- Global Initialization ---
 GRAPH_PATH = "Canonical_Graphmass.json"
 pipeline = MobiusMasterPipeline(GRAPH_PATH)
+mutation_pipeline = MutationPipeline(pipeline)
+blanket_manager = BlanketManager(pipeline)
+ignition_controller = IgnitionController(pipeline)
+governance = GovernanceGovernor(pipeline.chitra, pipeline.closure)
 
 # ═══ Pydantic Models for High-Fidelity I/O ═══
 class ResolutionReq(BaseModel):
@@ -60,10 +65,10 @@ def get_sigma_basis():
     return {k: v.name for k, v in pipeline.carrier.sigma.atoms.items()}
 
 @app.get("/s1/nodes")
-def list_nodes(): return pipeline.carrier.nodes
+def list_nodes(): return {k: {"bee_type": v.bee_type.value, "sub_canonical": v.sub_canonical} for k, v in pipeline.carrier.V.items()}
 @app.post("/s1/nodes")
 def add_node(r: NodeReq):
-    pipeline.carrier.add_node(r.id, r.name, r.bee_type, r.sub_canonical)
+    pipeline.carrier.add_node(r.id, r.bee_type, r.sub_canonical)
     return {"status": "OK"}
 @app.post("/s1/nodes/merge")
 def merge_nodes(r: MergeReq):
@@ -74,15 +79,17 @@ def merge_nodes(r: MergeReq):
 def list_edges(): return pipeline.carrier.certified_edges
 @app.post("/s1/mutations/apply")
 def apply_mutation(r: MutationReq):
-    pipeline.carrier.apply_mutation(r.dict())
-    return {"status": "APPLIED"}
+    result = mutation_pipeline.propose(r.op, r.dict())
+    return result
 
 @app.get("/s1/regions")
-def list_regions(): return pipeline.region_extractor.extract_regions()
+def list_regions(): return pipeline.last_extracted_regions
 @app.get("/s1/regions/{rid}/subgraph")
 def get_region_subgraph(rid: str):
-    # High-fidelity subgraph induced logic
-    return {"region_id": rid, "nodes": pipeline.carrier.nodes}
+    region = next((r for r in pipeline.last_extracted_regions if r.get("region_id") == rid), None)
+    if not region:
+        raise HTTPException(status_code=404, detail=f"Region '{rid}' not found")
+    return {"region_id": rid, "members": region.get("members", []), "region_type": region.get("region_type")}
 
 # ══════════════════════════════════════════════════════════════════════════════
 # ═══ S2/S3: TENSOR & FIELD CALCULUS (32+ Endpoints) ═══
@@ -97,11 +104,19 @@ def get_tensor_evidence(tid: str):
 
 @app.get("/s3/fields")
 def get_fields():
-    return {k.name: v for k, v in pipeline.field_history[-1].items()} if pipeline.field_history else {}
+    nodes = list(pipeline.carrier.V.keys())
+    return {
+        "PHI_T": float(np.mean([pipeline.geometry.field_at_node(n, 0) for n in nodes])) if nodes else 0.0,
+        "PHI_S": float(np.mean([pipeline.geometry.field_at_node(n, 1) for n in nodes])) if nodes else 0.0,
+        "PHI_B": float(np.mean([pipeline.geometry.field_at_node(n, 2) for n in nodes])) if nodes else 0.0,
+        "PHI_M": float(np.mean([pipeline.geometry.field_at_node(n, 3) for n in nodes])) if nodes else 0.0,
+    }
 
 @app.get("/s3/geometry/gradient/{nid}")
 def get_gradient(nid: str, fid: int = 0):
-    return {"grad": pipeline.geometry.gradient(nid, fid)}
+    if nid not in pipeline.carrier.V:
+        raise HTTPException(status_code=404, detail=f"Node '{nid}' not found")
+    return {"node": nid, "field_idx": fid, "grad": pipeline.geometry.gradient(nid, fid)}
 
 @app.get("/s3/geometry/curvature")
 def get_curvature():
@@ -112,14 +127,27 @@ def get_curvature():
 # ══════════════════════════════════════════════════════════════════════════════
 @app.post("/s4/evolve")
 def execute_cycle(req: ResolutionReq):
-    return pipeline.execute_cycle(req.region_nodes, req.dt)
+    return pipeline.execute_cycle(req.dt)
 
 @app.get("/s4/stability")
 def get_stability_vector():
-    # Returns the full 9D stability vector calculated by pipeline
-    if hasattr(pipeline, 'last_stability_vector'):
-        return {"D1-D9": pipeline.last_stability_vector.to_array().tolist()}
-    return {"D1-D9": [0.8, 1.0, 0.4, 0.2, 0.1, 0.9, 0.5, 0.8, 0.9]}
+    stab = pipeline.stability_diag.check_5d_stability(pipeline.geometry, pipeline.carrier, pipeline.chitra)
+    return {
+        "s_G": stab.s_G,
+        "s_T": stab.s_T,
+        "s_B": stab.s_B,
+        "s_M": stab.s_M,
+        "s_psi": stab.s_psi,
+        "globally_stable": stab.is_globally_stable()
+    }
+
+@app.get("/s4/ignition/check")
+def ignition_check():
+    return ignition_controller.check_containment()
+
+@app.get("/s4/ignition/failure-mode")
+def ignition_failure_mode():
+    return ignition_controller.get_failure_mode()
 
 # ══════════════════════════════════════════════════════════════════════════════
 # ═══ S7: INTEROP BUS & LINEAGE (12+ Endpoints) ═══
@@ -130,7 +158,8 @@ def compose_packet(r: BPACReq):
 
 @app.post("/s7/execute")
 def execute_rune(r: RuneReq):
-    t_score = pipeline.field_history[-1][FieldFamily.PHI_T] if pipeline.field_history else 1.0
+    nodes = list(pipeline.carrier.V.keys())
+    t_score = float(np.mean([pipeline.geometry.field_at_node(n, 0) for n in nodes])) if nodes else 1.0
     if pipeline.interop.gate(r.packet_id, t_score):
         return {"rune_id": pipeline.interop.execute_rune(r.packet_id, r.action, r.payload), "status": "EXECUTED"}
     return {"status": "BLOCKED"}
@@ -149,11 +178,24 @@ def promote_ram(r: LineageReq): return pipeline.interop.promote_ram(r.source_id)
 # ══════════════════════════════════════════════════════════════════════════════
 @app.get("/s8/violations")
 def list_violations():
-    return {"violations": pipeline.governance.violations}
+    return {"violations": governance.violations}
 
 @app.get("/s8/rollback-check")
 def check_rollback():
-    return {"needed": False, "reason": "system_stable"}
+    history = pipeline.closure._history
+    if len(history) >= 2:
+        needed = governance.enforce_rollback_if_divergent(history[-1], history[-2])
+        return {"needed": needed, "current_jg": history[-1], "prev_jg": history[-2]}
+    return {"needed": False, "reason": "insufficient_history"}
+
+@app.get("/s8/governance/status")
+def governance_status():
+    stab = pipeline.stability_diag.check_5d_stability(pipeline.geometry, pipeline.carrier, pipeline.chitra)
+    return {
+        "stable": governance.monitor_stability(stab),
+        "violation_count": len(governance.violations),
+        "lawful_closure": pipeline.closure.is_lawful()
+    }
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8001)
