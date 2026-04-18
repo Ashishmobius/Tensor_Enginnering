@@ -59,8 +59,10 @@ class CanonicalTensor:
             TensorID.P6_TEMPERAMENT: self._compute_temperament,
             TensorID.P7_GRAPH: self._compute_graph,
             TensorID.S1_RESILIENCE: self._compute_resilience,
+            TensorID.S2_RUNE: self._compute_rune,
             TensorID.S3_IGNITION: self._compute_ignition,
             TensorID.S4_SAI: self._compute_sai,
+            TensorID.S5_MONET_VINCI: self._compute_monet_vinci,
             TensorID.S6_OPERATIONAL: self._compute_operational,
             TensorID.S7_ECONOMIC: self._compute_economic,
         }
@@ -132,8 +134,24 @@ class CanonicalTensor:
         return np.array([lam_new, pi_new, chi_new, kap_new])
         
     def _compute_perception(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
-        # P2A Projection logic placeholder (observer frames)
-        return self.state.copy()
+        """P2A PERCEPTION — Composite sub-field projection (Ch.21 Appendix F).
+        4 sub-tensors: Observer Frame, Sensor/Channel, Temporal Sampling, Observer-System Coupling.
+        Each sub-tensor has an energy mode; the composite is their weighted projection.
+        P2A does NOT learn — it projects from P2 NOISE and observer signals."""
+        # Sub-field energies from signals or derived from NOISE state
+        frame_distortion = signals.get("frame_distortion", 0.0)
+        sensor_degradation = signals.get("sensor_degradation", 0.0)
+        temporal_aliasing = signals.get("temporal_aliasing", 0.0)
+        reflexive_coupling = signals.get("reflexive_coupling", 0.0)
+
+        # Composite projection: weighted average of sub-field energies
+        # Per spec: projection synthesis, no kernel optimization
+        new_state = self.state.copy()
+        new_state[0] = np.clip(self.state[0] * 0.9 + 0.1 * frame_distortion, 0, 1)
+        new_state[1] = np.clip(self.state[1] * 0.9 + 0.1 * sensor_degradation, 0, 1)
+        new_state[2] = np.clip(self.state[2] * 0.9 + 0.1 * temporal_aliasing, 0, 1)
+        new_state[3] = np.clip(self.state[3] * 0.9 + 0.1 * reflexive_coupling, 0, 1)
+        return new_state
         
     def _compute_noise(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
         # P2 NOISE - σ_x_new = clip(σ_x_prev + α_x · σ_x_incoming · dt − β · σ_x_prev · dt)
@@ -170,16 +188,46 @@ class CanonicalTensor:
         return np.array([mu_new, sigma_var_new, rho_new, delta_new, kappa_k, eta, tau, gamma, zeta])
 
     def _compute_world(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
-        # P4 WORLD - Declarative merge (simulated as magnitude vector)
+        """P4 WORLD — Declarative merge, governance-gated (Ch.4).
+        Per Mobius.pdf: 'World updates are declarative merges authorized by
+        governance, not learned.' No numeric optimization kernel.
+        Merges only happen when explicit regime changes arrive via signals."""
+        changes = signals.get("regime_changes", None)
+        if changes is not None and isinstance(changes, (list, np.ndarray)):
+            # Declarative merge: overwrite dimensions that have explicit changes
+            new_state = self.state.copy()
+            for i, val in enumerate(changes):
+                if i < len(new_state) and val is not None:
+                    new_state[i] = float(val)
+            return new_state
         return self.state.copy()
 
     def _compute_survival(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
-        # P5 SURVIVAL - RAV = clip(viability · (1 − burden))
+        """P5 SURVIVAL — Decision tree with RAV = clip(viability · (1 − burden)) (Ch.7).
+        5D: [viability, runway, adaptability, burden, externality].
+        Per Tensor.txt: Uses C4/C5 Econ/Game, P1/P4 as gates."""
         viability, runway, adaptability, burden, externality = self.state
         rav = np.clip(viability * (1 - burden), 0, 1)
-        
-        # Decision logic mapping to numeric state updates
-        return self.state.copy()
+
+        # Decision tree per spec:
+        # Branch 1: If adaptability < min_adaptability → reduce viability
+        min_adapt = self._read_param("min_adaptability", 0.3)
+        max_burden = self._read_param("max_burden", 0.8)
+
+        new_viability = viability
+        new_runway = runway
+        if adaptability < min_adapt:
+            new_viability = np.clip(viability - 0.01 * dt, 0, 1)
+        if burden > max_burden:
+            new_viability = np.clip(new_viability - 0.02 * dt, 0, 1)
+        # Runway decays over time unless replenished
+        runway_input = signals.get("runway_input", 0.0)
+        new_runway = np.clip(runway - 0.001 * dt + runway_input, 0, 1)
+        # Externality pressure from signals
+        ext_pressure = signals.get("externality_pressure", 0.0)
+        new_externality = np.clip(externality + ext_pressure * dt, 0, 1)
+
+        return np.array([new_viability, new_runway, adaptability, burden, new_externality])
 
     def _compute_temperament(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
         # P6 TEMPERAMENT - 0.9 · x_prev + 0.1 · clip(x_prev + 0.02 · pressure_x)
@@ -200,16 +248,146 @@ class CanonicalTensor:
         return self.state * damping + x_raw * (1 - damping)
 
     def _compute_resilience(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
-        # S1 RESILIENCE - Phase automaton (Simplified)
-        return self.state.copy()
+        """S1 RESILIENCE — 5-Phase automaton (Ch.9).
+        Phases: [0]STABLE → [1]STRESSED → [2]DEGRADED → [3]RECOVERING → [4]RESTORED.
+        Transitions based on P2 NOISE pressure and P5/P6 state.
+        5D: [phase, damping_capacity, recovery_progress, stability_margin, shock_memory]."""
+        phase, damping_cap, recovery, stability, shock_mem = self.state
+        damping_step = self._read_param("damping_step", 0.05)
+        recovery_step = self._read_param("recovery_step", 0.04)
+        stability_target = self._read_param("stability_target", 0.8)
+
+        shock = signals.get("shock_magnitude", 0.0)
+        # Shock memory decays but accumulates new shocks
+        new_shock_mem = np.clip(shock_mem * 0.95 + shock, 0, 1)
+
+        # Phase automaton transitions
+        new_phase = phase
+        if phase == 0:  # STABLE
+            if shock > 0.3:
+                new_phase = 1  # → STRESSED
+        elif phase == 1:  # STRESSED
+            if shock > 0.6:
+                new_phase = 2  # → DEGRADED
+            elif shock < 0.1 and stability > stability_target:
+                new_phase = 0  # → STABLE
+        elif phase == 2:  # DEGRADED
+            new_phase = 3  # → RECOVERING (auto-transition)
+        elif phase == 3:  # RECOVERING
+            recovery = np.clip(recovery + recovery_step * dt, 0, 1)
+            if recovery >= 0.95:
+                new_phase = 4  # → RESTORED
+        elif phase == 4:  # RESTORED
+            new_phase = 0  # → STABLE
+
+        # Damping capacity adjusts
+        new_damping = np.clip(damping_cap - damping_step * shock + recovery_step * (1 - shock), 0, 1)
+        new_stability = np.clip(stability * 0.95 + 0.05 * (1 - new_shock_mem), 0, 1)
+
+        return np.array([new_phase, new_damping, recovery, new_stability, new_shock_mem])
+
+    def _compute_rune(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
+        """S2 RUNE — CSPN 6-stage compilation machine (Ch.8).
+        Stages: [0]IDLE → [1]COMPILED → [2]AUTHORIZED → [3]BOUND → [4]EXECUTING → [5]COMMITTED.
+        Per Mobius.pdf: 'RUNE evolves through compilation stages, not learning.'
+        5D: [stage, intent_validity, binding_coverage, execution_readiness, legality_score]."""
+        stage, intent_v, binding_cov, exec_ready, legality = self.state
+
+        # Stage machine transitions (CSPN-valid, no skipping)
+        new_stage = stage
+        if stage == 0:  # IDLE
+            intent = signals.get("intent_valid", False)
+            if intent:
+                new_stage = 1
+                intent_v = 1.0
+        elif stage == 1:  # COMPILED
+            auth = signals.get("authorized", False)
+            satya_ok = signals.get("satya_gate", True)
+            world_ok = signals.get("world_gate", True)
+            if auth and satya_ok and world_ok:
+                new_stage = 2
+                legality = 1.0
+        elif stage == 2:  # AUTHORIZED
+            bound = signals.get("bindings_complete", False)
+            if bound:
+                new_stage = 3
+                binding_cov = signals.get("binding_coverage", 1.0)
+        elif stage == 3:  # BOUND
+            graph_ok = signals.get("graph_gate", True)
+            if graph_ok and binding_cov >= 0.8:
+                new_stage = 4
+                exec_ready = 1.0
+        elif stage == 4:  # EXECUTING
+            done = signals.get("execution_complete", False)
+            if done:
+                new_stage = 5
+        elif stage == 5:  # COMMITTED
+            # Reset to IDLE after commit
+            new_stage = 0
+            intent_v = 0.0
+            binding_cov = 0.0
+            exec_ready = 0.0
+            legality = 0.0
+
+        return np.array([new_stage, intent_v, binding_cov, exec_ready, legality])
 
     def _compute_ignition(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
-        # S3 IGNITION - Decision logic (min across readability axes)
-        axes = signals.get("axes", np.ones(7))
-        confidence = np.min(axes)
-        return np.full(self.spec.dimensionality, confidence)
+        """S3 IGNITION — Multi-axis threshold (Ch.11).
+        7D: [legal, epistemic, noise, structural, survival, posture, executable].
+        confidence = min(all axes). Per spec: min_epistemic/noise/structural/survival/posture."""
+        axes = signals.get("axes", self.state)
+        if not isinstance(axes, np.ndarray):
+            axes = np.array(axes)
+        # Ensure 7D
+        if len(axes) < 7:
+            axes = np.pad(axes, (0, 7 - len(axes)), constant_values=1.0)
+        confidence = np.min(axes[:7])
+        # Update each axis with EMA from signals
+        new_state = self.state.copy()
+        for i in range(min(7, len(axes))):
+            new_state[i] = np.clip(self.state[i] * 0.8 + 0.2 * axes[i], 0, 1)
+        return new_state
 
     def _compute_sai(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
+        """S4 SAI — Self-Awareness Index, decision tree with 5 thresholds (Ch.12).
+        5D: [symbolic_depth, opacity, governance_alignment, reflexive_accuracy, meta_coherence].
+        Per Tensor.txt: thresholds from P3/P2/P6/P5/P1/P7."""
+        symbolic, opacity, governance, reflexive, meta = self.state
+        min_symbolic = self._read_param("min_symbolic", 0.3)
+        max_opacity = self._read_param("max_opacity", 0.7)
+        min_governance = self._read_param("min_governance", 0.5)
+
+        # Decision tree:
+        # 1. Symbolic depth influenced by KNOWLEDGE (P3)
+        knowledge_signal = signals.get("knowledge_rho", 0.5)
+        new_symbolic = np.clip(symbolic * 0.9 + 0.1 * knowledge_signal, 0, 1)
+
+        # 2. Opacity influenced by NOISE (P2) — high noise = high opacity
+        noise_signal = signals.get("noise_level", 0.5)
+        new_opacity = np.clip(opacity * 0.9 + 0.1 * noise_signal, 0, 1)
+
+        # 3. Governance alignment from TEMPERAMENT (P6)
+        temperament_signal = signals.get("temperament_alignment", 0.5)
+        new_governance = np.clip(governance * 0.9 + 0.1 * temperament_signal, 0, 1)
+
+        # 4. Reflexive accuracy = f(symbolic, opacity)
+        new_reflexive = np.clip(new_symbolic * (1 - new_opacity), 0, 1)
+
+        # 5. Meta-coherence = overall SAI health
+        new_meta = np.clip(np.mean([new_symbolic, 1 - new_opacity, new_governance, new_reflexive]), 0, 1)
+
+        return np.array([new_symbolic, new_opacity, new_governance, new_reflexive, new_meta])
+
+    def _compute_monet_vinci(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
+        """S5 MONET-VINCI — Projection only, read-only (Ch.13).
+        Per Mobius.pdf Ch.16: 'All Tensors → MONET-VINCI: Project, All phases, read-only.'
+        'MONET-VINCI → any tensor: FORBIDDEN (projection is read-only).'
+        This tensor does NOT write to any other tensor. It synthesizes a human-readable
+        projection from all other tensor states passed as signals."""
+        # Read-only projection synthesis: receives all tensor norms as signals
+        projections = signals.get("tensor_projections", self.state)
+        if isinstance(projections, np.ndarray) and len(projections) >= 5:
+            return projections[:5]
         return self.state.copy()
 
     def _compute_operational(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:

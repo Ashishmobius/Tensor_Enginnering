@@ -15,6 +15,7 @@ from mobius.constants import TensorID, FieldFamily, DEFAULT_DT
 from mobius.graph import HypergraphCarrier
 from mobius.tensors import TensorSystem
 from mobius.geometry import FieldGeometry
+from mobius.morphisms import MorphismRegistry
 from mobius.closureloop import StabilityDiagnostician, ClosureLoop
 from mobius.verification import ChitraLedger
 from mobius.regions import extract_regions
@@ -23,39 +24,13 @@ from mobius.interop import InteropBus
 logger = logging.getLogger(__name__)
 
 class PlatformDependencyGraph:
-    """Endogenous Morphism Traversal Surface."""
+    """Endogenous Morphism Traversal Surface, powered by standard Registry."""
     def __init__(self):
-        self.morphisms: List[Dict[str, Any]] = [
-            # Canonical structural action capabilities (Chapter 14.5)
-            {"id": "M_EXPLORE", "desc": "Expand boundary", "required_m": 0.4, "required_s": 0.5, "action": "ADD_EDGE"},
-            {"id": "M_CONVERGE", "desc": "Collapse redundant path", "required_t": 0.7, "required_s": 0.3, "action": "MERGE_NODE"},
-            {"id": "M_STABILIZE", "desc": "Reinforce existing blanket", "required_b": 0.6, "required_s": 0.8, "action": "STRENGTHEN_EDGE"},
-            {"id": "M_IGNITE", "desc": "Trigger systemic activation", "required_t": 0.8, "required_m": 0.8, "action": "IGNITION_START"},
-            {"id": "M_ADAPT", "desc": "Mutate local region", "required_s": 0.4, "required_m": 0.6, "action": "REMAP_NODE"}
-        ]
+        self.registry = MorphismRegistry()
 
     def get_active_morphisms(self, carrier: HypergraphCarrier, geometry: FieldGeometry) -> List[Dict[str, Any]]:
-        """Gating mechanism identifying active PDG edges based on 4-field state."""
-        active = []
-        nodes = list(carrier.V.keys())
-        if not nodes: return []
-        
-        # Calculate systemic averages proxying the "organism-level" gating
-        avg_t = np.mean([geometry.field_at_node(n, FieldFamily.PHI_T.value) for n in nodes])
-        avg_s = np.mean([geometry.field_at_node(n, FieldFamily.PHI_S.value) for n in nodes])
-        avg_m = np.mean([geometry.field_at_node(n, FieldFamily.PHI_M.value) for n in nodes])
-        # avg_b = np.mean([geometry.field_at_node(n, FieldFamily.PHI_B.value) for n in nodes])
-
-        for m in self.morphisms:
-            # Gating mechanism (Section 11)
-            if m.get("required_s", 0) > avg_s: continue
-            if m.get("required_t", 0) > avg_t: continue
-            if m.get("required_m", 0) > avg_m: continue
-            if m.get("required_b", 0) > (np.mean([geometry.field_at_node(n, FieldFamily.PHI_B.value) for n in nodes]) if nodes else 0): continue
-            
-            active.append(m)
-        return active
-
+        """Proxy out to the formal registry gating mechanism."""
+        return self.registry.get_active_morphisms(carrier, geometry)
 
 class MobiusMasterPipeline:
     def __init__(self, graph_mass_path: str, blanket_dir: str = None, organ_graph_dir: str = None):
