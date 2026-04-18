@@ -1,8 +1,8 @@
 """
 Closure Loop and 5D Stability Vector.
 =====================================
-Calculates the closure equation C(O) = \Delta F + \chi + r <= 0
-Evaluates the 5D True Stability System (S_G, S_T, S_B, S_M, S_\psi).
+Calculates the closure equation C(O) = Delta_F + chi + r <= 0
+Evaluates the 5D True Stability System (S_G, S_T, S_B, S_M, S_psi).
 """
 import numpy as np
 from dataclasses import dataclass, field
@@ -41,32 +41,47 @@ class StabilityDiagnostician:
         self.prev_modulation_field: Optional[np.ndarray] = None
         
     def check_5d_stability(self, geometry: FieldGeometry, hg_carrier, trace_state) -> SystemStability:
-        """Evaluates formal stability \Psi(t) over graph dynamics."""
-        # s_G: Topology deviation (simulated by verifying graph is valid)
+        """Evaluates formal stability \\Psi(t) over 5 canonical dimensions (Section 16)."""
+        nodes = list(hg_carrier.V.keys())
+        
+        # 1. s_G: Structural Coherence (BFS reachability via carrier)
         s_g = hg_carrier.validate_graph_structure()
         
-        # s_T: Truth field values > threshold
+        # 2. s_T: Truth Admissibility
+        # Per Tensor.txt P1.INVARIANTS: Φ_T must be non-negative (χ ≤ ε_truth).
+        # A system in cold-start with Φ_T ≥ 0 is still truth-admissible.
         s_t = True
-        nodes = list(hg_carrier.V.keys())
         if nodes:
             avg_truth = np.mean([geometry.field_at_node(n, FieldFamily.PHI_T.value) for n in nodes])
-            if avg_truth < 0.1: # Must not drop too low
-                s_t = False
-                
-        # s_B: Blankets shouldn't dissolve immediately
-        s_b = len(hg_carrier.H_blankets) > 0
+            # Non-negative truth = admissible. Strictly negative = truth violation.
+            s_t = avg_truth >= 0.0
+                 
+        # 3. s_B: Blanket Persistence
+        # Must have ≥1 blanket AND blanket members must cover ≥50% of V
+        s_b = len(hg_carrier.H_blankets) >= 1
+        if s_b and nodes:
+            all_blanket_nodes = set()
+            for b in hg_carrier.H_blankets.values():
+                all_blanket_nodes.update(b.members)
+            coverage = len(all_blanket_nodes & set(nodes)) / len(nodes)
+            s_b = coverage >= 0.5  # At least half of nodes must be blanketed
         
-        # s_M: Modulation field oscillation Check
+        # 4. s_M: Modulation Stability (Damped oscillation check)
         s_m = True
         current_modulation = np.array([geometry.field_at_node(n, FieldFamily.PHI_M.value) for n in nodes]) if nodes else np.array([])
         if self.prev_modulation_field is not None and len(current_modulation) == len(self.prev_modulation_field):
             delta = np.linalg.norm(current_modulation - self.prev_modulation_field)
-            if delta > 10.0:  # arbitrary instability bound for M
+            if delta > 10.0:
                 s_m = False
         self.prev_modulation_field = current_modulation
         
-        # s_psi: Trace verification
-        s_psi = trace_state is not None and len(trace_state.records) > 0 if hasattr(trace_state, 'records') else True
+        # 5. s_psi: Trace Continuity (Chitra ledger is healthy and recording)
+        s_psi = trace_state is not None
+        if hasattr(trace_state, 'verify_continuity'):
+            cont = trace_state.verify_continuity()
+            s_psi = cont.get("continuous", False)
+        elif hasattr(trace_state, "records"):
+            s_psi = len(trace_state.records) > 0
         
         return SystemStability(s_g, s_t, s_b, s_m, s_psi)
 

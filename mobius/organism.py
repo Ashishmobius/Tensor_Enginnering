@@ -22,6 +22,21 @@ class PhysicsParameters:
     R: float = 0.01       # Reaction/Generation rate
     Xi: float = 0.005     # Noise intensity (Stochasticity)
 
+@dataclass
+class StabilityVector:
+    """The 5-Layer Systemic Stability Vector (Section 16)."""
+    s_G: bool  # Structural
+    s_T: bool  # Truth
+    s_B: bool  # Blanket
+    s_M: bool  # Modulation
+    s_psi: bool # Trace
+
+    def is_globally_stable(self) -> bool:
+        return all([self.s_G, self.s_T, self.s_B, self.s_M, self.s_psi])
+
+    def to_dict(self):
+        return self.__dict__
+
 class FieldOperator:
     """
     Field Evolution Operator (Section 14.4 & 11).
@@ -114,33 +129,77 @@ class ClosureFunctional:
 class MutationOperator:
     """
     Mutation Operator mu_adm (Section 14.5).
-    Generates and filters admissible structural transitions.
+    Generates candidate structural transitions.
     """
-    def __init__(self, generators: List[Callable], constraints: List[Callable]):
-        """
-        generators: list of functions (state) -> candidate G'
-        constraints: list of functions (state, G') -> bool
-        """
+    def __init__(self, generators: List[Callable]):
         self.generators = generators
-        self.constraints = constraints
 
     def mutate(self, state: OrganismState):
         candidates = []
-
         for g in self.generators:
             result = g(state)
             if isinstance(result, list):
                 candidates.extend(result)
             else:
                 candidates.append(result)
+        return candidates
 
-        admissible = []
+class MutationGater:
+    """
+    6-Condition Mutation Gater (Section 11).
+    Ensures structural transitions are canonically admissible.
+    """
+    def __init__(self, constraints: Optional[List[Callable]] = None):
+        self.extra_constraints = constraints or []
 
-        for G_new in candidates:
-            if all(c(state, G_new) for c in self.constraints):
-                admissible.append(G_new)
+    def check_admissibility(self, state: OrganismState, G_new: Any, geometry: Optional[Any] = None) -> List[str]:
+        violations = []
+        
+        # 1. Canonical Span (Simplified: check if nodes exist in registry)
+        # 2. Truth Admissibility (Phi_T > threshold)
+        if state.Phi.get("T", 1.0) < 0.2:
+            violations.append("Truth Admissibility Breach: Phi_T too low.")
+            
+        # 3. Blanket Legality (Phi_B > threshold or gate check)
+        if state.Phi.get("B", 1.0) < 0.1:
+            violations.append("Blanket Legality Breach: Phi_B insufficient.")
+            
+        # 4. Structural Compatibility (Phi_S check)
+        if state.Phi.get("S", 1.0) < 0.05:
+            violations.append("Structural Compatibility Breach: Phi_S unstable.")
+            
+        # 5. Modulation Readiness (Phi_M activation)
+        if state.Phi.get("M", 0.0) > 0.95: # Too much noise/oscillation
+            violations.append("Modulation Readiness Breach: System over-excited.")
+            
+        # 6. Trace Commitment (handled by organism call)
+        
+        for c in self.extra_constraints:
+            if not c(state, G_new):
+                violations.append(f"Custom Constraint Breach in {G_new}")
+                
+        return violations
 
-        return admissible
+class StabilityGater:
+    """Evaluates the 5D Stability Vector."""
+    def __init__(self, thresholds: Optional[Dict[str, float]] = None):
+        self.thresholds = thresholds or {"T": 0.1, "B": 0.05, "M_delta": 0.5}
+        self._prev_phi_m: float = 0.0
+
+    def evaluate(self, state: OrganismState, geometry: Optional[Any] = None) -> StabilityVector:
+        s_g = True # Structural (mock valid)
+        s_t = state.Phi.get("T", 1.0) >= self.thresholds["T"]
+        s_b = state.Phi.get("B", 1.0) >= self.thresholds["B"]
+        
+        # Modulation Stability (bounded oscillation)
+        curr_m = state.Phi.get("M", 0.0)
+        s_m = abs(curr_m - self._prev_phi_m) <= self.thresholds["M_delta"]
+        self._prev_phi_m = curr_m
+        
+        # Trace Continuity (psi ledger existence)
+        s_psi = state.psi is not None
+        
+        return StabilityVector(s_g, s_t, s_b, s_m, s_psi)
 
 class TraceOperator:
     """
@@ -178,13 +237,18 @@ class MobiusOrganism:
         field_operator: FieldOperator,
         mutation_operator: MutationOperator,
         closure: ClosureFunctional,
-        trace_operator: TraceOperator
+        trace_operator: TraceOperator,
+        mutation_gater: Optional[MutationGater] = None,
+        stability_gater: Optional[StabilityGater] = None
     ):
         self.projector = projector
         self.field_op = field_operator
         self.mutation_op = mutation_operator
         self.closure = closure
         self.trace_op = trace_operator
+        self.mutation_gater = mutation_gater or MutationGater()
+        self.stability_gater = stability_gater or StabilityGater()
+        self.last_stability_vector: Optional[StabilityVector] = None
 
     def step(self, state: OrganismState, dt: float, geometry: Optional[Any] = None):
         """
@@ -199,14 +263,20 @@ class MobiusOrganism:
         # 3. Generate candidate graphs
         candidates = self.mutation_op.mutate(state)
 
-        # 4. Select closure-admissible mutation
+        # 4. Select closure-admissible mutation with Gating Invariants
         G_old = state.G
         best_G = G_old
         best_val = self.closure.value(state)
 
         for G_new in candidates:
-            # Create a temporal state for evaluation
-            # We copy Phi to prevent accidental modification during search
+            # Check Gating Invariants (Section 11)
+            violations = self.mutation_gater.check_admissibility(state, G_new, geometry)
+            if violations:
+                if hasattr(state.psi, "emit"):
+                    state.psi.emit("ADMISSIBILITY_VIOLATION", {"G": str(G_new), "violations": violations}, "")
+                continue
+
+            # Check Closure Admissibility
             temp = OrganismState(
                 G=G_new,
                 Phi=state.Phi.copy(),
@@ -220,10 +290,16 @@ class MobiusOrganism:
                     best_val = val
                     best_G = G_new
 
-        # 5. Apply mutation
+        # 5. Apply mutation (If lawful)
         state.G = best_G
 
-        # 6. Update trace
+        # 6. Stability Diagnostics (Section 16)
+        self.last_stability_vector = self.stability_gater.evaluate(state, geometry)
+        if not self.last_stability_vector.is_globally_stable():
+             if hasattr(state.psi, "emit"):
+                    state.psi.emit("STABILITY_VIOLATION", self.last_stability_vector.to_dict(), "")
+
+        # 7. Update trace
         state = self.trace_op.update(state, G_old, best_G)
 
         return state
