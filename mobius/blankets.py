@@ -1,11 +1,11 @@
-"""Stage 3: Blanket Resolution and Lattice Anchoring."""
+"""Stage 3: Blanket Resolution, Lattice Anchoring, and Tensor-Pressure Generation."""
 from __future__ import annotations
-import uuid
 import json
 import os
 from pathlib import Path
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional
+import numpy as np
 from mobius.graph import HypergraphCarrier
 
 @dataclass
@@ -30,6 +30,42 @@ class BlanketArchetype:
                 )
         except Exception:
             return None
+
+class BlanketTensorCoupling:
+    """B_coupling in R^(7x14): derives blanket pressure from tensor state.
+    Canonical law (§1.3): Blankets are generated from tensor pressure through
+    B_coupling — NOT asserted or hard-coded.
+    Primary generators:
+      BP  (Praxis)      ← S6 OPERATIONAL PRIMARY
+      BEv (Activation)  ← S3 IGNITION PRIMARY
+      BE/BR (Viability) ← P5 SURVIVAL PRIMARY
+    Tensor column order: P1=0,P2=1,P3=2,P4=3,P5=4,P6=5,P7=6,
+                         S1=7,S2=8,S3=9,S4=10,S5=11,S6=12,S7=13"""
+
+    BLANKET_TYPE_ORDER: List[str] = ["BL", "BE", "BP", "BEv", "BR", "BM", "BT"]
+
+    # fmt: off
+    B_COUPLING: np.ndarray = np.array([
+        # P1   P2   P3   P4   P5   P6   P7   S1   S2   S3   S4   S5   S6   S7
+        [0.4, 0.0, 0.4, 0.0, 0.0, 0.0, 0.4, 0.0, 1.0, 0.0, 0.4, 0.0, 0.0, 0.0],  # BL: S2 PRIMARY
+        [0.4, 0.0, 0.0, 0.4, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4],  # BE: P5 PRIMARY
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],  # BP: S6 PRIMARY
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],  # BEv: S3 PRIMARY
+        [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4],  # BR: P5 PRIMARY
+        [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0],  # BM: P6+S4 PRIMARY
+        [0.4, 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],  # BT: P1+P3 SECONDARY
+    ], dtype=float)
+    # fmt: on
+
+    @classmethod
+    def compute_blanket_pressures(cls, tensor_norms: np.ndarray) -> Dict[str, float]:
+        """Given Θ(t) norms (14-vector), compute pressure on each blanket type.
+        Returns {BeeType: pressure} driving blanket generation per §1.3."""
+        norms = tensor_norms[:14] if len(tensor_norms) >= 14 else np.pad(
+            tensor_norms, (0, 14 - len(tensor_norms)))
+        pressures = cls.B_COUPLING @ norms
+        return {btype: float(p) for btype, p in zip(cls.BLANKET_TYPE_ORDER, pressures)}
+
 
 class BlanketResolver:
     def __init__(self, archetypes: List[BlanketArchetype]):

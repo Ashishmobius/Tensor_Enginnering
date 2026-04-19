@@ -15,47 +15,49 @@ class FieldSystem:
         self.coupling_matrix = self._build_matrix()
 
     def _build_matrix(self) -> np.ndarray:
-        """Dynamically build the C matrix from TENSOR_REGISTRY definition."""
-        C = np.zeros((4, len(TENSOR_REGISTRY)))
-        
-
-        # In a real implementation, we would pull couplings from specs.
-        # Here we use canonical couplings from Tensor.txt:
-        # P1 -> T, P2 -> M, P3 -> T, P4 -> S/B, P5 -> B, P6 -> M, P7 -> S
-        couplings = {
-            TensorID.P1_SATYA: (FieldFamily.PHI_T, 1.0),
-            TensorID.P2_NOISE: (FieldFamily.PHI_M, 1.0),
-            TensorID.P3_KNOWLEDGE: (FieldFamily.PHI_T, 0.8),
-            TensorID.P4_WORLD: (FieldFamily.PHI_S, 0.6),
-            TensorID.P5_SURVIVAL: (FieldFamily.PHI_B, 1.0),
-            TensorID.P6_TEMPERAMENT: (FieldFamily.PHI_M, 0.7),
-            TensorID.P7_GRAPH: (FieldFamily.PHI_S, 1.0),
-        }
-
-        # Iterate through registry to find column indices
+        """Canonical C in R^(4 x |TENSOR_REGISTRY|). Fixed non-zero structure from PO-4 RESOLVED.
+        PRIMARY=1.0, SECONDARY=0.4. Structure is immutable — derived from K-Object algebra."""
         tid_to_col = {tid: i for i, tid in enumerate(TENSOR_REGISTRY.keys())}
-        
-        for tid, (ff, weight) in couplings.items():
-            if tid in tid_to_col:
-                col = tid_to_col[tid]
-                row = ff.value
+        C = np.zeros((4, len(TENSOR_REGISTRY)))
+
+        entries = [
+            # (TensorID,                  row, weight)  row: 0=T, 1=S, 2=B, 3=M
+            (TensorID.P1_SATYA,           0,   1.0),   # PRIMARY  Phi_T
+            (TensorID.P1_SATYA,           2,   0.4),   # SECONDARY Phi_B
+            (TensorID.P2_NOISE,           0,   0.4),   # SECONDARY Phi_T
+            (TensorID.P2_NOISE,           3,   1.0),   # PRIMARY  Phi_M
+            (TensorID.P3_KNOWLEDGE,       0,   1.0),   # PRIMARY  Phi_T
+            (TensorID.P4_WORLD,           1,   0.4),   # SECONDARY Phi_S
+            (TensorID.P4_WORLD,           2,   0.4),   # SECONDARY Phi_B
+            (TensorID.P5_SURVIVAL,        2,   1.0),   # PRIMARY  Phi_B
+            (TensorID.P6_TEMPERAMENT,     3,   1.0),   # PRIMARY  Phi_M
+            (TensorID.P7_GRAPH,           1,   1.0),   # PRIMARY  Phi_S
+            (TensorID.P7_GRAPH,           2,   0.4),   # SECONDARY Phi_B
+            (TensorID.S1_RESILIENCE,      3,   0.4),   # SECONDARY Phi_M
+            (TensorID.S2_RUNE,            0,   1.0),   # PRIMARY  Phi_T
+            (TensorID.S2_RUNE,            1,   0.4),   # SECONDARY Phi_S
+            (TensorID.S3_IGNITION,        2,   1.0),   # PRIMARY  Phi_B
+            (TensorID.S3_IGNITION,        3,   0.4),   # SECONDARY Phi_M
+            (TensorID.S4_SAI,             0,   1.0),   # PRIMARY  Phi_T
+            (TensorID.S4_SAI,             3,   0.4),   # SECONDARY Phi_M
+            (TensorID.S5_MONET_VINCI,     1,   0.4),   # SECONDARY Phi_S
+            (TensorID.S6_OPERATIONAL,     2,   0.4),   # SECONDARY Phi_B
+            (TensorID.S6_OPERATIONAL,     3,   1.0),   # PRIMARY  Phi_M  (anti-pattern corrected)
+            (TensorID.S7_ECONOMIC,        2,   0.4),   # SECONDARY Phi_B
+            (TensorID.S7_ECONOMIC,        3,   0.4),   # SECONDARY Phi_M
+        ]
+        for tid, row, weight in entries:
+            col = tid_to_col.get(tid)
+            if col is not None:
                 C[row, col] = weight
         return C
 
     def project(self, tensor_system) -> Dict[FieldFamily, float]:
-        """Stage 6: Field Projection calculation."""
-        # scalar_theta = norm(tensor_i)
-        thetas = []
-        for tid in TENSOR_REGISTRY.keys():
-            if tid in tensor_system.registry:
-                thetas.append(np.linalg.norm(tensor_system.registry[tid].state))
-            else:
-                thetas.append(0.0)
-        
-        phi_vec = self.coupling_matrix @ np.array(thetas)
+        """Stage 6: Field Projection — delegates to TensorSystem.project_fields() (single C·Θ source of truth)."""
+        phi_vec = tensor_system.project_fields()
         return {
-            FieldFamily.PHI_T: phi_vec[0],
-            FieldFamily.PHI_S: phi_vec[1],
-            FieldFamily.PHI_B: phi_vec[2],
-            FieldFamily.PHI_M: phi_vec[3]
+            FieldFamily.PHI_T: float(phi_vec[0]),
+            FieldFamily.PHI_S: float(phi_vec[1]),
+            FieldFamily.PHI_B: float(phi_vec[2]),
+            FieldFamily.PHI_M: float(phi_vec[3])
         }

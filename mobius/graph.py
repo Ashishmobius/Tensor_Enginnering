@@ -261,6 +261,18 @@ class HypergraphCarrier:
             elif edge.dst == node_id: neighbors.append(edge.src)
         return neighbors
 
+    def get_certified_neighbors(self, node_id: str) -> List[str]:
+        """N_c(i): atoms connected via E_c (certified) only.
+        Candidate edges E_p are explicitly excluded per Field Geometry §4.2:
+        'Only certified edges contribute to the gradient.'"""
+        neighbors = []
+        for edge in self.E_c:
+            if edge.src == node_id:
+                neighbors.append(edge.dst)
+            elif edge.dst == node_id:
+                neighbors.append(edge.src)
+        return neighbors
+
     def get_bee_params(self, node_id: str, default_if_missing: float = 0.0) -> Dict[str, Any]:
         """Provides dynamic parameter fetch simulating GOVERNS/CONSUMES traversal."""
         if node_id in self.V:

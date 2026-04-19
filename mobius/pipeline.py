@@ -12,6 +12,7 @@ import logging
 from typing import List, Dict, Any, Optional
 
 from mobius.constants import TensorID, FieldFamily, DEFAULT_DT
+from mobius.blankets import BlanketTensorCoupling
 from mobius.graph import HypergraphCarrier
 from mobius.tensors import TensorSystem
 from mobius.geometry import FieldGeometry
@@ -156,17 +157,65 @@ class MobiusMasterPipeline:
               "E": [{"src": e.src, "dst": e.dst} for e in self.carrier.E_c]}
         self.last_extracted_regions = extract_regions(gm)
 
+    def _build_tensor_signals_from_geometry(self) -> Dict:
+        """Dynamic update path: field geometry operators → tensor state signals.
+        Tensor Origin Contract (§0.2): tensor state must be updated each cycle
+        from field geometry (density, gradient, curvature, flux) over hypergraph regions."""
+        nodes = list(self.carrier.V.keys())
+        signals = {tid: {} for tid in TensorID}
+        if not nodes:
+            return signals
+
+        avg_grad_T = float(np.mean([self.geometry.gradient(n, 0) for n in nodes]))
+        avg_grad_S = float(np.mean([self.geometry.gradient(n, 1) for n in nodes]))
+        avg_grad_B = float(np.mean([self.geometry.gradient(n, 2) for n in nodes]))
+        avg_grad_M = float(np.mean([self.geometry.gradient(n, 3) for n in nodes]))
+        avg_curv_T = float(np.mean([self.geometry.curvature(n, 0) for n in nodes]))
+        avg_dens_B = float(np.mean([self.geometry.density({n}, 2) for n in nodes]))
+        annotations = {nid: self.carrier.V[nid].payload for nid in self.carrier.V}
+        chi_G = self.geometry.semantic_curvature(annotations)
+
+        # P1 SATYA: truth gradient drives violation/conflict pressure
+        signals[TensorID.P1_SATYA] = {
+            "violation_pressure": max(0.0, -avg_grad_T),
+            "oscillation_pressure": abs(avg_curv_T),
+            "conflict_pressure": chi_G,
+        }
+        # P2 NOISE: modulation and truth gradients feed noise channels
+        signals[TensorID.P2_NOISE] = {
+            "noise_in": np.array([abs(avg_grad_M), abs(avg_grad_T),
+                                  abs(avg_grad_S), abs(avg_grad_B)])
+        }
+        # P5 SURVIVAL: negative blanket gradient = externality pressure
+        signals[TensorID.P5_SURVIVAL] = {
+            "externality_pressure": max(0.0, -avg_grad_B),
+        }
+        # P6 TEMPERAMENT: modulation pressure drives temperament
+        signals[TensorID.P6_TEMPERAMENT] = {
+            "pressure": np.full(7, abs(avg_grad_M))
+        }
+        # P7 GRAPH: structural gradient drives graph topology tension
+        signals[TensorID.P7_GRAPH] = {
+            "delta_graph": np.array([avg_grad_S, avg_curv_T, chi_G, abs(avg_grad_B)])
+        }
+        # S6 OPERATIONAL: runtime telemetry from geometry (PRIMARY Phi_M generator)
+        signals[TensorID.S6_OPERATIONAL] = {
+            "telemetry": np.array([avg_dens_B, abs(avg_grad_M),
+                                   abs(avg_grad_S), abs(avg_grad_T), chi_G])
+        }
+        # Structural violation gate for SATYA
+        if not self.carrier.validate_graph_structure():
+            signals[TensorID.P1_SATYA]["violation_pressure"] = 0.5
+        return signals
+
     def execute_cycle(self, dt: float = DEFAULT_DT) -> Dict[str, Any]:
         """Runs the loop according to Equation of Existence + Field PDEs."""
-        
+
         # 0. TRACE SNAPSHOT (EQ-05: pre-cycle graph state)
         self.chitra.save_graph_snapshot(self.t, self.carrier.get_snapshot())
-        
-        # 1. TENSOR CALCULATION (Precedence loop)
-        signals = {tid: {} for tid in TensorID}
-        if not self.carrier.validate_graph_structure():
-             signals[TensorID.P1_SATYA] = {"violation_pressure": 0.5}
 
+        # 1. TENSOR CALCULATION — dynamic update path: geometry → tensor signals (§0.2)
+        signals = self._build_tensor_signals_from_geometry()
         self.tensors.update_all(dt, signals, ledger=self.chitra)
 
         # 2. FIELD PROJECTION
@@ -178,6 +227,21 @@ class MobiusMasterPipeline:
             existing = self.geometry._node_fields.get(nid, np.zeros(4))
             # Blend: 70% new projection + 30% existing (EMA smoothing for stability)
             self.geometry._node_fields[nid] = 0.7 * field_coords + 0.3 * existing
+
+        # 2b. BLANKET PRESSURE (§1.3): blankets generated from B_coupling · Θ_norms — NOT asserted
+        _B_TENSOR_ORDER = [
+            TensorID.P1_SATYA, TensorID.P2_NOISE, TensorID.P3_KNOWLEDGE,
+            TensorID.P4_WORLD, TensorID.P5_SURVIVAL, TensorID.P6_TEMPERAMENT,
+            TensorID.P7_GRAPH, TensorID.S1_RESILIENCE, TensorID.S2_RUNE,
+            TensorID.S3_IGNITION, TensorID.S4_SAI, TensorID.S5_MONET_VINCI,
+            TensorID.S6_OPERATIONAL, TensorID.S7_ECONOMIC,
+        ]
+        tensor_norms_14 = np.array([
+            np.linalg.norm(self.tensors.registry[tid].state) if tid in self.tensors.registry else 0.0
+            for tid in _B_TENSOR_ORDER
+        ])
+        blanket_pressures = BlanketTensorCoupling.compute_blanket_pressures(tensor_norms_14)
+        self.chitra.emit("BLANKET_PRESSURE", blanket_pressures, str(self.t))
 
         # 3. CLOSURE CONSTRAINT: C(O) = ΔF + χ + r
         state_repr = np.hstack([t.state for t in self.tensors.registry.values()])
@@ -194,10 +258,10 @@ class MobiusMasterPipeline:
         stability_vec = self.stability_diag.check_5d_stability(self.geometry, self.carrier, self.chitra)
         
         self.t += dt
-        
-        return self.get_full_state(jg, active_morphisms, stability_vec)
 
-    def get_full_state(self, jg: float = 0.0, active_morphisms: List = None, stability_vec: Any = None) -> Dict[str, Any]:
+        return self.get_full_state(jg, active_morphisms, stability_vec, blanket_pressures)
+
+    def get_full_state(self, jg: float = 0.0, active_morphisms: List = None, stability_vec: Any = None, blanket_pressures: Dict[str, float] = None) -> Dict[str, Any]:
         """Provides a JSON-serializable snapshot of the system state."""
         if stability_vec is None:
              stability_vec = self.stability_diag.check_5d_stability(self.geometry, self.carrier, self.chitra)
@@ -219,6 +283,7 @@ class MobiusMasterPipeline:
             "morphisms_active": len(active_morphisms) if active_morphisms else 0,
             "tensors": t_states,
             "fields": field_avgs,
+            "blanket_pressures": blanket_pressures or {},
             "stability": stability_vec.__get_state__() if hasattr(stability_vec, '__get_state__') else str(stability_vec),
             "lawful_closure": self.closure.is_lawful()
         }
@@ -450,6 +515,7 @@ class IgnitionController:
         self.thresholds: Dict[str, Dict[str, float]] = {
             "default": {"PHI_T": 0.1, "PHI_S": 0.05, "PHI_B": 0.1, "PHI_M": 0.3}
         }
+        self._ignited_regions: set = set()
 
     def get_thresholds(self, region_id: str = "default") -> Dict[str, Any]:
         """EQ-57: θ_α^R values per field family and region type."""
@@ -461,37 +527,65 @@ class IgnitionController:
         return {"region_id": region_id, "thresholds": thresholds, "status": "UPDATED"}
 
     def execute_ignition(self, region_id: str) -> Dict[str, Any]:
-        """Apply bifurcation: region transitions from latent to active."""
+        """Closure-preserving bifurcation: E_p → E_c. IRREVERSIBLE (§5.2).
+        Once ignited a region cannot return to pre-ignition state."""
+        if region_id in self._ignited_regions:
+            return {
+                "region_id": region_id,
+                "status": "ALREADY_IGNITED",
+                "reason": "Ignition is a closure-preserving irreversible bifurcation",
+            }
         readiness = self.check_containment(region_id)
         if not readiness.get("ignition_permitted", False):
             return {"region_id": region_id, "status": "BLOCKED", "reason": readiness}
+        self._ignited_regions.add(region_id)
+        self.pipeline.chitra.emit("IGNITION_BIFURCATION", {
+            "region_id": region_id,
+            "irreversible": True,
+            "phase_transition": "E_p -> E_c",
+        }, str(uuid.uuid4()))
         return {
             "region_id": region_id,
             "status": "IGNITED",
-            "phase_transition": "L2 -> L3",
-            "trace_recorded": True
+            "phase_transition": "E_p -> E_c",
+            "irreversible": True,
+            "trace_recorded": True,
         }
 
     def check_containment(self, region_id: str = "") -> Dict[str, Any]:
-        """Ch.24: Gate(R;Φ_B)=1 AND T(R;Φ_T)=1 before ignition."""
+        """Canonical ignition: all five conditions simultaneously (Doc6 §4.5).
+        dΦ_T/dt > θ_T AND dΦ_S/dt > θ_S AND dΦ_B/dt > θ_B AND dΦ_M/dt > θ_M AND C(O)≈0."""
         nodes = list(self.pipeline.carrier.V.keys())
         if not nodes:
             return {"ignition_permitted": False, "reason": "No nodes"}
-        
-        avg_t = float(np.mean([self.pipeline.geometry.field_at_node(n, 0) for n in nodes]))
-        avg_b = float(np.mean([self.pipeline.geometry.field_at_node(n, 2) for n in nodes]))
-        stab = self.pipeline.stability_diag.check_5d_stability(
-            self.pipeline.geometry, self.pipeline.carrier, self.pipeline.chitra)
-        
-        truth_ok = avg_t >= 0.0  # Permissive threshold
-        blanket_ok = avg_b >= 0.0
-        stable = stab.is_globally_stable()
-        
+
+        thresh = self.thresholds.get(region_id, self.thresholds["default"])
+        geo = self.pipeline.geometry
+
+        # Field rate proxies: |∇_G Φ_α| as spatial rate-of-change
+        dPhi_T = float(np.mean([abs(geo.gradient(n, 0)) for n in nodes]))
+        dPhi_S = float(np.mean([abs(geo.gradient(n, 1)) for n in nodes]))
+        dPhi_B = float(np.mean([abs(geo.gradient(n, 2)) for n in nodes]))
+        dPhi_M = float(np.mean([abs(geo.gradient(n, 3)) for n in nodes]))
+
+        # C(O) = 0 within numerical tolerance
+        state_repr = np.hstack([t.state for t in self.pipeline.tensors.registry.values()])
+        jg = self.pipeline.closure.compute(geo, self.pipeline.carrier, state_repr)
+        closure_zero = abs(jg) < 1e-3
+
+        rate_T_ok = dPhi_T > thresh["PHI_T"]
+        rate_S_ok = dPhi_S > thresh["PHI_S"]
+        rate_B_ok = dPhi_B > thresh["PHI_B"]
+        rate_M_ok = dPhi_M > thresh["PHI_M"]
+        ignition_permitted = rate_T_ok and rate_S_ok and rate_B_ok and rate_M_ok and closure_zero
+
         return {
-            "ignition_permitted": truth_ok and blanket_ok,
-            "truth_check": {"passed": truth_ok, "value": avg_t},
-            "blanket_check": {"passed": blanket_ok, "value": avg_b},
-            "globally_stable": stable
+            "ignition_permitted": ignition_permitted,
+            "rate_T": {"value": dPhi_T, "threshold": thresh["PHI_T"], "passed": rate_T_ok},
+            "rate_S": {"value": dPhi_S, "threshold": thresh["PHI_S"], "passed": rate_S_ok},
+            "rate_B": {"value": dPhi_B, "threshold": thresh["PHI_B"], "passed": rate_B_ok},
+            "rate_M": {"value": dPhi_M, "threshold": thresh["PHI_M"], "passed": rate_M_ok},
+            "closure_zero": {"value": float(jg), "passed": closure_zero},
         }
 
     def get_failure_mode(self) -> Dict[str, Any]:

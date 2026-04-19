@@ -181,24 +181,32 @@ class MutationGater:
         return violations
 
 class StabilityGater:
-    """Evaluates the 5D Stability Vector."""
+    """Evaluates the 5D Stability Vector S(O) = (S_G, S_T, S_B, S_M, S_psi)."""
     def __init__(self, thresholds: Optional[Dict[str, float]] = None):
-        self.thresholds = thresholds or {"T": 0.1, "B": 0.05, "M_delta": 0.5}
+        self.thresholds = thresholds or {"T": 0.1, "B": 0.05, "M_delta": 0.5, "G_delta": 0.5}
         self._prev_phi_m: float = 0.0
 
-    def evaluate(self, state: OrganismState, geometry: Optional[Any] = None) -> StabilityVector:
-        s_g = True # Structural (mock valid)
+    def evaluate(self, state: OrganismState, geometry: Optional[Any] = None,
+                 jg_history: Optional[List[float]] = None) -> StabilityVector:
+        # S_G: ||ΔJ(G)|| ≤ ε_G over observation window (§5.1).
+        # Fails when closure metric oscillates beyond bounds.
+        eps_G = self.thresholds.get("G_delta", 0.5)
+        if jg_history and len(jg_history) >= 2:
+            s_g = abs(jg_history[-1] - jg_history[-2]) <= eps_G
+        else:
+            s_g = True  # Insufficient history — provisionally stable
+
         s_t = state.Phi.get("T", 1.0) >= self.thresholds["T"]
         s_b = state.Phi.get("B", 1.0) >= self.thresholds["B"]
-        
-        # Modulation Stability (bounded oscillation)
+
+        # S_M: bounded modulation oscillation ||ΔF_M|| ≤ C_M
         curr_m = state.Phi.get("M", 0.0)
         s_m = abs(curr_m - self._prev_phi_m) <= self.thresholds["M_delta"]
         self._prev_phi_m = curr_m
-        
-        # Trace Continuity (psi ledger existence)
+
+        # S_psi: trace ledger exists and is non-empty
         s_psi = state.psi is not None
-        
+
         return StabilityVector(s_g, s_t, s_b, s_m, s_psi)
 
 class TraceOperator:
@@ -293,8 +301,12 @@ class MobiusOrganism:
         # 5. Apply mutation (If lawful)
         state.G = best_G
 
-        # 6. Stability Diagnostics (Section 16)
-        self.last_stability_vector = self.stability_gater.evaluate(state, geometry)
+        # 6. Stability Diagnostics (Section 16) — pass J(G) history for S_G computation
+        jg_history: List[float] = []
+        if hasattr(self.closure, '_history'):
+            jg_history = [c.total if hasattr(c, 'total') else float(c)
+                          for c in self.closure._history]
+        self.last_stability_vector = self.stability_gater.evaluate(state, geometry, jg_history)
         if not self.last_stability_vector.is_globally_stable():
              if hasattr(state.psi, "emit"):
                     state.psi.emit("STABILITY_VIOLATION", self.last_stability_vector.to_dict(), "")
@@ -303,3 +315,87 @@ class MobiusOrganism:
         state = self.trace_op.update(state, G_old, best_G)
 
         return state
+
+
+class DynamicPurposeCoupling:
+    """
+    DYNAMIC↔PURPOSE Coupled Dual Loop (§14.8).
+
+    Coupled system:
+        dE/dt = −∇_E F(E, I) + u(t)   [DYNAMIC: field energy descent]
+        dI/dt = −∇_I C(E, I)           [PURPOSE: intent/constraint descent]
+
+    E ∈ ℝ^n  — DYNAMIC state (e.g., field energy vector [Φ_T, Φ_S, Φ_B, Φ_M])
+    I ∈ ℝ^m  — PURPOSE/INTENT state (goal coordinates)
+    F(E, I)  — free energy functional: misalignment between dynamic state and intent
+    C(E, I)  — cost functional: constraint violation measure
+    u(t)     — external control input (same dim as E)
+
+    Gradients computed by central finite difference (h=1e-5).
+    Not wired into MobiusOrganism — caller binds when ready.
+    """
+
+    def __init__(
+        self,
+        F: Callable[[np.ndarray, np.ndarray], float],
+        C: Callable[[np.ndarray, np.ndarray], float],
+        E0: np.ndarray,
+        I0: np.ndarray,
+        h: float = 1e-5,
+    ):
+        self.F = F
+        self.C = C
+        self.E = E0.astype(float).copy()
+        self.I = I0.astype(float).copy()
+        self.h = h
+
+    def _grad_E(self) -> np.ndarray:
+        """∇_E F(E, I) via central finite difference."""
+        g = np.zeros_like(self.E)
+        for k in range(len(self.E)):
+            Ep = self.E.copy(); Ep[k] += self.h
+            Em = self.E.copy(); Em[k] -= self.h
+            g[k] = (self.F(Ep, self.I) - self.F(Em, self.I)) / (2 * self.h)
+        return g
+
+    def _grad_I(self) -> np.ndarray:
+        """∇_I C(E, I) via central finite difference."""
+        g = np.zeros_like(self.I)
+        for k in range(len(self.I)):
+            Ip = self.I.copy(); Ip[k] += self.h
+            Im = self.I.copy(); Im[k] -= self.h
+            g[k] = (self.C(self.E, Ip) - self.C(self.E, Im)) / (2 * self.h)
+        return g
+
+    def step(self, dt: float, u: Optional[np.ndarray] = None) -> Dict[str, Any]:
+        """
+        One forward-Euler integration step.
+        Returns E, I, gradients, and functional values for the caller.
+        """
+        if u is None:
+            u = np.zeros_like(self.E)
+
+        grad_E = self._grad_E()
+        grad_I = self._grad_I()
+
+        self.E = self.E + dt * (-grad_E + u)
+        self.I = self.I + dt * (-grad_I)
+
+        return {
+            "E": self.E.copy(),
+            "I": self.I.copy(),
+            "dE": -grad_E + u,
+            "dI": -grad_I,
+            "grad_E_F": grad_E,
+            "grad_I_C": grad_I,
+            "F_val": float(self.F(self.E, self.I)),
+            "C_val": float(self.C(self.E, self.I)),
+        }
+
+    def run(self, n_steps: int, dt: float, u_seq: Optional[List[np.ndarray]] = None) -> List[Dict[str, Any]]:
+        """Integrate n_steps, optionally with a per-step control sequence u_seq."""
+        history = []
+        for k in range(n_steps):
+            u = u_seq[k] if (u_seq is not None and k < len(u_seq)) else None
+            history.append(self.step(dt, u))
+        return history

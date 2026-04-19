@@ -1,7 +1,7 @@
 """
 Closure Loop and 5D Stability Vector.
 =====================================
-Calculates the closure equation C(O) = Delta_F + chi + r <= 0
+Calculates J(G) = F(G) + chi(G) + r(G) with components tracked separately.
 Evaluates the 5D True Stability System (S_G, S_T, S_B, S_M, S_psi).
 """
 import numpy as np
@@ -10,6 +10,19 @@ from typing import Dict, List, Optional, Set, Tuple
 
 from mobius.constants import FieldFamily
 from mobius.geometry import FieldGeometry
+
+
+@dataclass
+class JGComponents:
+    """J(G) = F(G) + chi(G) + r(G) tracked separately per canonical mandate.
+    The three components must never be collapsed before individual inspection."""
+    F_G: float    # Structural energy gap
+    chi_G: float  # Semantic curvature residual  Tr(ML_G^+M^T)
+    r_G: float    # Coherence residual  (Laplacian-weighted field divergence)
+
+    @property
+    def total(self) -> float:
+        return self.F_G + self.chi_G + self.r_G
 
 @dataclass
 class SystemStability:
@@ -93,8 +106,11 @@ class StabilityDiagnostician:
         # D2: Attractor (Negative Curvature of PHI_S)
         d2 = -geometry.curvature(node_id, FieldFamily.PHI_S.value)
         
-        # D3: Tension (Approximated as absolute gradient of PHI_B density)
-        d3 = abs(geometry.density({node_id}, FieldFamily.PHI_B.value))
+        # D3: Tension = density gradient (field pressure differential) per K_T §4.2
+        neighbors_set = set(geometry.hg.get_certified_neighbors(node_id))
+        local_dens  = geometry.density({node_id}, FieldFamily.PHI_S.value)
+        region_dens = geometry.density(neighbors_set, FieldFamily.PHI_S.value) if neighbors_set else local_dens
+        d3 = abs(local_dens - region_dens)
         
         # D4: Energy (Flux of PHI_B across boundaries)
         neighbors = set(geometry.hg.get_neighbors(node_id))
@@ -120,25 +136,44 @@ class StabilityDiagnostician:
 
 class ClosureLoop:
     def __init__(self):
-        self.F_current: float = 0.0
-        self._history: List[float] = []
+        self._history: List[JGComponents] = []
 
-    def compute(self, geometry: FieldGeometry, carrier, tensor_state: np.ndarray, observation: np.ndarray = None) -> float:
-        """C(O) = Delta F + chi + r"""
-        df = 0.0
-        if observation is not None:
-             df = np.sum((observation[:4] - tensor_state[:4]) ** 2) * 0.5
-        
-        chi = geometry.semantic_curvature()
-        
-        # r = mean Absolute gradient of Structure field
+    def compute(self, geometry: FieldGeometry, carrier, tensor_state: np.ndarray,
+                observation: np.ndarray = None) -> float:
+        """J(G) = F(G) + chi(G) + r(G). All three components evaluated every cycle.
+        Components tracked separately per canonical mandate (§7.1)."""
         nodes = list(carrier.V.keys())
-        r = np.mean([abs(geometry.gradient(n, FieldFamily.PHI_S.value)) for n in nodes]) if nodes else 0.0
-        
-        jg = df + chi + r
-        self._history.append(jg)
-        return jg
+
+        # F(G): Structural energy gap — always computed, not zero on non-observation cycles
+        F_G = float(np.mean(tensor_state ** 2)) * 0.5
+        if observation is not None:
+            n = min(len(observation), len(tensor_state))
+            F_G = float(np.sum((observation[:n] - tensor_state[:n]) ** 2)) * 0.5
+
+        # chi(G): Semantic curvature Tr(ML_G^+M^T) with runtime-derived M from BPAC annotations
+        annotations = {nid: carrier.V[nid].payload for nid in carrier.V}
+        chi_G = geometry.semantic_curvature(annotations)
+
+        # r(G): Coherence residual — Laplacian-weighted field divergence across T and S fields
+        if nodes:
+            r_G = float(np.mean([
+                abs(geometry.laplacian(n, FieldFamily.PHI_T.value)) +
+                abs(geometry.laplacian(n, FieldFamily.PHI_S.value))
+                for n in nodes
+            ]))
+        else:
+            r_G = 0.0
+
+        components = JGComponents(F_G=F_G, chi_G=chi_G, r_G=r_G)
+        self._history.append(components)
+        return components.total
+
+    def get_components(self) -> Optional[JGComponents]:
+        """Returns the last separately-tracked J(G) decomposition."""
+        return self._history[-1] if self._history else None
 
     def is_lawful(self) -> bool:
-        if len(self._history) < 2: return True
-        return self._history[-1] <= self._history[-2] + 1e-4
+        """PP.1: J(G+S) < J(G) — closure must be non-increasing."""
+        if len(self._history) < 2:
+            return True
+        return self._history[-1].total <= self._history[-2].total + 1e-4

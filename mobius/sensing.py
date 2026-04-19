@@ -20,12 +20,18 @@ class StallEvent:
 
 class SensingMatrix:
     def __init__(self):
-        # 4 Field Families x 9 KT Dimensions
+        # Canonical 4×9 sensing matrix (Field Engineering Compiler Part 6).
+        # Columns = D1..D9 (Novelty, Attractor, Tension, Energy, Provenance,
+        #                    Transfer, Compose, Execute, Civilis.)
+        # ★PRI = 1.0 (primary sensory dimension), SEC = 0.4.
+        # F_T: D1★PRI, D5★PRI  |  F_S: D2★PRI, D7★PRI
+        # F_B: D4★PRI           |  F_M: D6★PRI, D8★PRI
         self.matrix = np.array([
-            [0.4, 1.0, 0.4, 0.4, 0.4, 0.4, 1.0, 0.4, 0.4], # PHI_T
-            [0.4, 0.4, 0.4, 1.0, 0.4, 0.4, 0.4, 0.4, 0.4], # PHI_S
-            [1.0, 0.4, 0.4, 0.4, 1.0, 0.4, 0.4, 0.4, 0.4], # PHI_B
-            [0.4, 0.4, 0.4, 0.4, 0.4, 1.0, 0.4, 1.0, 0.4], # PHI_M
+            # D1    D2    D3    D4    D5    D6    D7    D8    D9
+            [1.0,  0.4,  0.4,  0.4,  1.0,  0.4,  0.4,  0.4,  0.4],  # F_T
+            [0.4,  1.0,  0.4,  0.4,  0.4,  0.4,  1.0,  0.4,  0.4],  # F_S
+            [0.4,  0.4,  0.4,  1.0,  0.4,  0.4,  0.4,  0.4,  0.4],  # F_B
+            [0.4,  0.4,  0.4,  0.4,  0.4,  1.0,  0.4,  1.0,  0.4],  # F_M
         ])
 
     def sensory_coverage(self, active_fields: List[FieldFamily]) -> np.ndarray:

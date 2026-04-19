@@ -203,14 +203,11 @@ class CanonicalTensor:
         return self.state.copy()
 
     def _compute_survival(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
-        """P5 SURVIVAL — Decision tree with RAV = clip(viability · (1 − burden)) (Ch.7).
+        """P5 SURVIVAL — Decision tree with V_x(t) SVF four-branch law (Doc6 §6.6).
         5D: [viability, runway, adaptability, burden, externality].
         Per Tensor.txt: Uses C4/C5 Econ/Game, P1/P4 as gates."""
         viability, runway, adaptability, burden, externality = self.state
-        rav = np.clip(viability * (1 - burden), 0, 1)
 
-        # Decision tree per spec:
-        # Branch 1: If adaptability < min_adaptability → reduce viability
         min_adapt = self._read_param("min_adaptability", 0.3)
         max_burden = self._read_param("max_burden", 0.8)
 
@@ -220,14 +217,49 @@ class CanonicalTensor:
             new_viability = np.clip(viability - 0.01 * dt, 0, 1)
         if burden > max_burden:
             new_viability = np.clip(new_viability - 0.02 * dt, 0, 1)
-        # Runway decays over time unless replenished
         runway_input = signals.get("runway_input", 0.0)
         new_runway = np.clip(runway - 0.001 * dt + runway_input, 0, 1)
-        # Externality pressure from signals
         ext_pressure = signals.get("externality_pressure", 0.0)
         new_externality = np.clip(externality + ext_pressure * dt, 0, 1)
 
         return np.array([new_viability, new_runway, adaptability, burden, new_externality])
+
+    def compute_survival_value_function(self) -> Dict[str, Any]:
+        """V_x(t) Survival Grammar (Doc6 §6.6). Four symmetric resolutions.
+        SVF weights grounded in P5 SURVIVAL tensor state (B_coupling rows).
+        Admissibility: each resolution must strictly dominate ALL three alternatives.
+        V_x(t) >= 0 is the admissibility condition for continuation."""
+        viability, runway, adaptability, burden, externality = self.state
+
+        w_viability    = float(viability)
+        w_runway       = float(runway)
+        w_adaptability = float(adaptability)
+        w_burden       = float(1.0 - burden)
+        w_externality  = float(1.0 - externality)
+
+        V_birth   = w_viability * w_runway * w_adaptability
+        V_adapt   = w_adaptability * w_burden
+        V_silence = w_burden * w_externality
+        V_death   = (1.0 - w_viability) * (1.0 - w_runway)
+
+        def strictly_dominates(val: float, others: List[float]) -> bool:
+            return all(val > o for o in others)
+
+        if strictly_dominates(V_birth, [V_adapt, V_silence, V_death]):
+            resolution = "Birth"
+        elif strictly_dominates(V_adapt, [V_birth, V_silence, V_death]):
+            resolution = "Adaptation"
+        elif strictly_dominates(V_death, [V_birth, V_adapt, V_silence]):
+            resolution = "Death"
+        else:
+            resolution = "Silence"
+
+        return {
+            "V_birth": V_birth, "V_adapt": V_adapt,
+            "V_silence": V_silence, "V_death": V_death,
+            "resolution": resolution,
+            "admissible": max(V_birth, V_adapt, V_silence, V_death) >= 0.0,
+        }
 
     def _compute_temperament(self, dt: float, signals: Dict[str, Any]) -> np.ndarray:
         # P6 TEMPERAMENT - 0.9 · x_prev + 0.1 · clip(x_prev + 0.02 · pressure_x)
@@ -406,6 +438,8 @@ class CanonicalTensor:
         return new_state
 
 class TensorSystem:
+    FIELD_NORM_BOUND: float = 10.0  # §5.3 stability envelope: ||F(t)|| ≤ C ∀t
+
     def __init__(self, carrier):
         self.carrier = carrier
         self.registry: Dict[TensorID, CanonicalTensor] = {}
@@ -417,22 +451,40 @@ class TensorSystem:
         self._init_coupling_matrix()
 
     def _init_coupling_matrix(self):
-        """Matches Mobius Spec. Sparse structure is immutable."""
-        # Phi_T (Row 0): P1(0), P3(3), S2(9), S4(11)
-        self.C_matrix[0, 0] = 1.0
-        self.C_matrix[0, 3] = 1.0
-        
-        # Phi_S (Row 1): P7(7), P4(4), S5(12)
-        self.C_matrix[1, 7] = 1.0
-        self.C_matrix[1, 4] = 1.0
-        
-        # Phi_B (Row 2): P5(5), S3(10), S7(14)
-        self.C_matrix[2, 5] = 1.0
-        self.C_matrix[2, 10] = 1.0
-        
-        # Phi_M (Row 3): P2(1), P6(6), S1(8), S6(13)
-        self.C_matrix[3, 1] = 1.0
-        self.C_matrix[3, 6] = 1.0
+        """Canonical C in R^(4x15). Fixed non-zero structure from PO-4 RESOLVED (Doc7 Part 4).
+        Row indices: 0=Phi_T, 1=Phi_S, 2=Phi_B, 3=Phi_M
+        Column indices follow TENSOR_REGISTRY insertion order:
+          P1=0, P2=1, P2A=2, P3=3, P4=4, P5=5, P6=6, P7=7,
+          S1=8, S2=9, S3=10, S4=11, S5=12, S6=13, S7=14
+        PRIMARY=1.0, SECONDARY=0.4, NEGLIGIBLE=0.0 (immutable — do not tune)."""
+        C = self.C_matrix
+        # Phi_T (row 0)
+        C[0, 0]  = 1.0   # P1  SATYA        — PRIMARY
+        C[0, 1]  = 0.4   # P2  NOISE         — SECONDARY
+        C[0, 3]  = 1.0   # P3  KNOWLEDGE     — PRIMARY
+        C[0, 9]  = 1.0   # S2  RUNE          — PRIMARY
+        C[0, 11] = 1.0   # S4  SAI           — PRIMARY
+        # Phi_S (row 1)
+        C[1, 4]  = 0.4   # P4  WORLD         — SECONDARY
+        C[1, 7]  = 1.0   # P7  GRAPH         — PRIMARY
+        C[1, 9]  = 0.4   # S2  RUNE          — SECONDARY
+        C[1, 12] = 0.4   # S5  MONET_VINCI   — SECONDARY
+        # Phi_B (row 2)
+        C[2, 0]  = 0.4   # P1  SATYA         — SECONDARY
+        C[2, 4]  = 0.4   # P4  WORLD         — SECONDARY
+        C[2, 5]  = 1.0   # P5  SURVIVAL      — PRIMARY
+        C[2, 7]  = 0.4   # P7  GRAPH         — SECONDARY
+        C[2, 10] = 1.0   # S3  IGNITION      — PRIMARY
+        C[2, 13] = 0.4   # S6  OPERATIONAL   — SECONDARY
+        C[2, 14] = 0.4   # S7  ECONOMIC      — SECONDARY
+        # Phi_M (row 3)
+        C[3, 1]  = 1.0   # P2  NOISE         — PRIMARY
+        C[3, 6]  = 1.0   # P6  TEMPERAMENT   — PRIMARY
+        C[3, 8]  = 0.4   # S1  RESILIENCE    — SECONDARY
+        C[3, 10] = 0.4   # S3  IGNITION      — SECONDARY
+        C[3, 11] = 0.4   # S4  SAI           — SECONDARY
+        C[3, 13] = 1.0   # S6  OPERATIONAL   — PRIMARY  (anti-pattern corrected)
+        C[3, 14] = 0.4   # S7  ECONOMIC      — SECONDARY
 
     def update_all(self, dt: float, signal_map: Dict[TensorID, Dict[str, Any]], ledger: Optional[Any] = None):
         """Absolute Precedence law loop."""
@@ -452,15 +504,19 @@ class TensorSystem:
                 self.registry[tid].update(dt, signal_map.get(tid, {}), context_kwargs, ledger)
 
     def project_fields(self, blanket_mask: np.ndarray = None) -> np.ndarray:
-        """[Phi_T, Phi_S, Phi_B, Phi_M]^T = C * Theta(t)"""
-        # Linearize Theta across all tensor scalar representations
+        """[Phi_T, Phi_S, Phi_B, Phi_M]^T = C * Theta(t). Enforces ||F(t)|| ≤ FIELD_NORM_BOUND per §5.3."""
         tensors = list(self.registry.values())
         theta = np.array([np.linalg.norm(t.state) for t in tensors])
-        
+
         if blanket_mask is not None:
-             theta = theta * blanket_mask
-             
+            theta = theta * blanket_mask
+
         fields = self.C_matrix @ theta
+
+        norm = float(np.linalg.norm(fields))
+        if norm > self.FIELD_NORM_BOUND:
+            fields = fields * (self.FIELD_NORM_BOUND / norm)
+
         return fields
 
     # ══════════════════════════════════════════════════════════
